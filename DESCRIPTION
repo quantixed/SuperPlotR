@@ -1,12 +1,29 @@
 Package: SuperPlotR
-Title: What the Package Does (One Line, Title Case)
+Title: Making SuperPlots in R
 Version: 0.0.0.9000
-Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Authors@R:
+    person(given = "Stephen J",
+           family = "Royle",
+           role = c("cre", "aut"),
+           email = "admin@quantixed.org",
+           comment = c(ORCID = "0000-0001-8927-6967"))
+Maintainer: Stephen Royle <admin@quantixed.org>
+Description: SuperPlots are a way to show experimental data in a way that
+  communicates the individual variability as well as the experimental
+  reproducibility. They were described in Lord et al. "SuperPlots, Communicating
+  reproducibility and variability in cell biology". J. Cell Biol. (2020) 219(6)
+  e202001064. (doi 10.1083/jcb.202001064).
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.1
+Depends: 
+    R (>= 2.10)
+LazyData: true
+Imports:
+    ggplot2,
+    dplyr,
+    ggforce,
+    cowplot
+URL: https://github.com/quantixed/SuperPlotR
+BugReports: https://github.com/quantixed/SuperPlotR/issues
