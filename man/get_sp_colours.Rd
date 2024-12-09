@@ -9,7 +9,10 @@ get_sp_colours(n, scheme)
 \arguments{
 \item{n}{integer number of colours to return}
 
-\item{scheme}{character name, colour scheme to use (default is "tol_bright")}
+\item{scheme}{character name, colour scheme to use
+Choose from one of four palettes from Paul Tol ("tol_bright", "tol_vibrant",
+"tol_muted", "tol_light"), or Color Universal Design ("cud"). Or a vector of
+colours in hex format, e.g. c("#FF0000", "#00FF00", "#0000FF").}
 }
 \value{
 character vector of colours

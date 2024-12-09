@@ -7,6 +7,7 @@
 #' @param pal name of colour palette to use (default is "tol_bright")
 #' @param xlab string for x label (default is empty)
 #' @param ylab string for y label (default is "Measurement")
+#' @param gg ggplot object to add to (default is NULL)
 #'
 #' @return ggplot object
 #' @import ggplot2
@@ -23,7 +24,8 @@
 superplot <- function(df,
                       meas, cond, repl,
                       pal = "tol_bright",
-                      xlab = "", ylab = "Measurement") {
+                      xlab = "", ylab = "Measurement",
+                      gg = NULL){
 
   ncond <- nrepl <- Mean <- SD <- NULL
 
@@ -51,8 +53,15 @@ superplot <- function(df,
   # get colour values for the repl column
   sp_colours <- get_sp_colours(nrepl, pal)
 
+  # we may have an existing ggplot object to add to
+  if(is.null(gg)){
+    p <- ggplot()
+  } else {
+    p <- gg
+  }
+
   # make superplot
-  p <- ggplot() +
+  p <- p +
     geom_sina(data = df,
               aes(x = {{cond}}, y = {{meas}}, colour = {{repl}}),
               shape = 16, alpha = 0.5, position = "auto",

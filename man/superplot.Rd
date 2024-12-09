@@ -11,7 +11,8 @@ superplot(
   repl,
   pal = "tol_bright",
   xlab = "",
-  ylab = "Measurement"
+  ylab = "Measurement",
+  gg = NULL
 )
 }
 \arguments{
@@ -28,6 +29,8 @@ superplot(
 \item{xlab}{string for x label (default is empty)}
 
 \item{ylab}{string for y label (default is "Measurement")}
+
+\item{gg}{ggplot object to add to (default is NULL)}
 }
 \value{
 ggplot object
