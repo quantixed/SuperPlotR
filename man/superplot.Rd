@@ -12,23 +12,28 @@ superplot(
   pal = "tol_bright",
   xlab = "",
   ylab = "Measurement",
+  rep_summary = "rep_mean",
   gg = NULL
 )
 }
 \arguments{
 \item{df}{data frame with at least three columns: meas, cond, repl}
 
-\item{meas}{name of column with measurement (e.g. intensity or speed)}
+\item{meas}{character name of column with measurement (e.g. intensity)}
 
-\item{cond}{name of column with condition (e.g. Control, WT)}
+\item{cond}{character name of column with condition (e.g. Control, WT)}
 
-\item{repl}{name of column with replicate (e.g. unique experiment ids)}
+\item{repl}{character name of column with replicate (e.g. unique experiment
+identifiers)}
 
 \item{pal}{name of colour palette to use (default is "tol_bright")}
 
 \item{xlab}{string for x label (default is empty)}
 
 \item{ylab}{string for y label (default is "Measurement")}
+
+\item{rep_summary}{string for summary statistic to use for replicates, select
+("rep_mean" or "rep_median")}
 
 \item{gg}{ggplot object to add to (default is NULL)}
 }
@@ -39,6 +44,7 @@ ggplot object
 Make a SuperPlot
 }
 \examples{
-superplot(lord_jcb, Speed, Treatment, Replicate, ylab = "Speed (um/min)")
+superplot(lord_jcb,
+"Speed", "Treatment", "Replicate", ylab = "Speed (um/min)")
 
 }
