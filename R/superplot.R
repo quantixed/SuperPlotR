@@ -8,8 +8,11 @@
 #' @param pal name of colour palette to use (default is "tol_bright")
 #' @param xlab string for x label (default is empty)
 #' @param ylab string for y label (default is "Measurement")
+#' @param datadist string for data distribution to use, select ("sina" default,
+#' "jitter", or "violin")
+#' @param shapes logical for whether to use different shapes for replicates
 #' @param rep_summary string for summary statistic to use for replicates, select
-#' ("rep_mean" or "rep_median")
+#' ("rep_mean" default, or "rep_median")
 #' @param gg ggplot object to add to (default is NULL)
 #'
 #' @return ggplot object
@@ -23,13 +26,17 @@
 #'
 #' @examples
 #' superplot(lord_jcb,
-#' "Speed", "Treatment", "Replicate", ylab = "Speed (um/min)")
+#'   "Speed", "Treatment", "Replicate",
+#'   ylab = "Speed (um/min)"
+#' )
 #'
 superplot <- function(df,
                       meas, cond, repl,
                       pal = "tol_bright",
                       xlab = "", ylab = "Measurement",
+                      datadist = "sina",
                       rep_summary = "rep_mean",
+                      shapes = FALSE,
                       gg = NULL) {
   ncond <- nrepl <- NULL
   rep_mean <- rep_sd <- rep_sem <- rep_ci <- NULL
@@ -40,8 +47,14 @@ superplot <- function(df,
   }
 
   # how many unique values in cond and repl?
-  ncond <- df %>% pull(!!sym(cond)) %>% unique() %>% length()
-  nrepl <- df %>% pull(!!sym(repl)) %>% unique() %>% length()
+  ncond <- df %>%
+    pull(!!sym(cond)) %>%
+    unique() %>%
+    length()
+  nrepl <- df %>%
+    pull(!!sym(repl)) %>%
+    unique() %>%
+    length()
 
   # calculate summary statistics
   summary_df <- df %>%
@@ -61,6 +74,7 @@ superplot <- function(df,
   }
   # get colour values for the repl column
   sp_colours <- get_sp_colours(nrepl, pal)
+  sp_shapes <- get_sp_shapes(nrepl, shapes)
 
   # we may have an existing ggplot object to add to
   if (is.null(gg)) {
@@ -70,19 +84,44 @@ superplot <- function(df,
   }
 
   # make superplot
-  p <- p +
-    geom_sina(
-      data = df,
-      aes(x = !!sym(cond), y = !!sym(meas), colour = !!sym(repl)),
-      shape = 16, alpha = 0.5, position = "auto",
-      size = 0.8, maxwidth = 0.3
-    )
+  if (datadist == "sina") {
+    p <- p +
+      geom_sina(
+        data = df,
+        aes(x = !!sym(cond), y = !!sym(meas),
+            colour = !!sym(repl), fill = !!sym(repl), shape = !!sym(repl)),
+        alpha = 0.5, stroke = 0, position = "auto",
+        size = 0.8, maxwidth = 0.3
+      )
+  } else if (datadist == "jitter") {
+    p <- p +
+      geom_jitter(
+        data = df,
+        aes(x = !!sym(cond), y = !!sym(meas),
+            colour = !!sym(repl), fill = !!sym(repl), shape = !!sym(repl)),
+        alpha = 0.5, stroke = 0, position = "auto",
+        size = 0.8
+      )
+  } else if (datadist == "violin") {
+    p <- p +
+      geom_violin(
+        data = df,
+        aes(x = !!sym(cond), y = !!sym(meas), group = !!sym(cond)),
+        fill = "grey", width = 0.5, alpha = 0.5
+      )
+    # remove the first nrepl shapes from sp_shapes
+    sp_shapes <- sp_shapes[-(1:nrepl)]
+  } else {
+    warning("datadist must be one of 'sina', 'jitter', or 'violin'")
+  }
   p <- p + geom_point(
-      data = summary_df,
-      aes(x = !!sym(cond), y = !!sym(rep_summary), fill = !!sym(repl)),
-      shape = 22, size = 1.5, stroke = 0.5, alpha = 0.7
-    )
-  p <-  p + scale_color_manual(values = sp_colours) +
+    data = summary_df,
+    aes(x = !!sym(cond), y = !!sym(rep_summary),
+        fill = !!sym(repl), shape = !!sym(repl)),
+    size = 1.5, stroke = 0.5, alpha = 0.7
+  )
+  p <- p + scale_color_manual(values = sp_colours) +
+    scale_shape_manual(values = sp_shapes) +
     scale_fill_manual(values = sp_colours) +
     labs(x = xlab, y = ylab) +
     lims(y = c(0, NA)) +

@@ -12,7 +12,9 @@ superplot(
   pal = "tol_bright",
   xlab = "",
   ylab = "Measurement",
+  datadist = "sina",
   rep_summary = "rep_mean",
+  shapes = FALSE,
   gg = NULL
 )
 }
@@ -32,8 +34,13 @@ identifiers)}
 
 \item{ylab}{string for y label (default is "Measurement")}
 
+\item{datadist}{string for data distribution to use, select ("sina" default,
+"jitter", or "violin")}
+
 \item{rep_summary}{string for summary statistic to use for replicates, select
-("rep_mean" or "rep_median")}
+("rep_mean" default, or "rep_median")}
+
+\item{shapes}{logical for whether to use different shapes for replicates}
 
 \item{gg}{ggplot object to add to (default is NULL)}
 }
@@ -45,6 +52,8 @@ Make a SuperPlot
 }
 \examples{
 superplot(lord_jcb,
-"Speed", "Treatment", "Replicate", ylab = "Speed (um/min)")
+  "Speed", "Treatment", "Replicate",
+  ylab = "Speed (um/min)"
+)
 
 }

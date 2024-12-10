@@ -19,6 +19,7 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Depends: 
     R (>= 2.10)
+Config/rcmdcheck/ignore-inconsequential-notes: true
 LazyData: true
 Imports:
     ggplot2,

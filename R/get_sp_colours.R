@@ -1,16 +1,16 @@
-#" SuperPlot Colour Palette Selection
-#"
-#" @param n integer number of colours to return
-#" @param scheme character name, colour scheme to use
-#"  Choose from one of four palettes from Paul Tol ("tol_bright", "tol_vibrant",
-#"  "tol_muted", "tol_light"), or Color Universal Design ("cud"). Or a vector of
-#"  colours, e.g. c("#FF0000", "green", "#0000FF").
-#"
-#" @return character vector of colours
-#" @export
-#"
-#" @examples
-#" get_sp_colours(3, "tol_bright")
+#' SuperPlot Colour Palette Selection
+#'
+#' @param n integer number of colours to return
+#' @param scheme character name, colour scheme to use
+#'  Choose from one of four palettes from Paul Tol ("tol_bright", "tol_vibrant",
+#'  "tol_muted", "tol_light"), or Color Universal Design ("cud"). Or a vector of
+#'  colours, e.g. c("#FF0000", "green", "#0000FF").
+#'
+#' @return character vector of colours
+#' @export
+#'
+#' @examples
+#' get_sp_colours(3, "tol_bright")
 get_sp_colours <- function(n, scheme) {
   colours <- NULL
 
