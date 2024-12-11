@@ -10,6 +10,15 @@
 #' @param ylab string for y label (default is "Measurement")
 #' @param datadist string for data distribution to use, select ("sina" default,
 #' "jitter", or "violin")
+#' @param size numeric vector of size range data and summary points (default is
+#' c(0.8, 1.5))
+#' @param alpha numeric vector of alpha range data and summary points (default is
+#' c(0.5, 0.7))
+#' @param bars string for type of error bars to add, select ("none" default,
+#' "mean_sd", "mean_sem", or "mean_ci")
+#' @param linking logical for whether to link summary points between conditions
+#' (default is FALSE)
+#' @param fsize numeric font size for text (default is 9)
 #' @param shapes logical for whether to use different shapes for replicates
 #' @param rep_summary string for summary statistic to use for replicates, select
 #' ("rep_mean" default, or "rep_median")
@@ -35,8 +44,13 @@ superplot <- function(df,
                       pal = "tol_bright",
                       xlab = "", ylab = "Measurement",
                       datadist = "sina",
+                      size = c(0.8, 1.5),
+                      alpha = c(0.5, 0.7),
+                      bars = "",
+                      linking = FALSE,
                       rep_summary = "rep_mean",
                       shapes = FALSE,
+                      fsize = 9,
                       gg = NULL) {
   ncond <- nrepl <- NULL
   rep_mean <- rep_sd <- rep_sem <- rep_ci <- NULL
@@ -76,6 +90,7 @@ superplot <- function(df,
   sp_colours <- get_sp_colours(nrepl, pal)
   sp_shapes <- get_sp_shapes(nrepl, shapes)
 
+  # make superplot ----
   # we may have an existing ggplot object to add to
   if (is.null(gg)) {
     p <- ggplot()
@@ -83,15 +98,15 @@ superplot <- function(df,
     p <- gg
   }
 
-  # make superplot
+  # data points get plotted here
   if (datadist == "sina") {
     p <- p +
       geom_sina(
         data = df,
         aes(x = !!sym(cond), y = !!sym(meas),
             colour = !!sym(repl), fill = !!sym(repl), shape = !!sym(repl)),
-        alpha = 0.5, stroke = 0, position = "auto",
-        size = 0.8, maxwidth = 0.3
+        alpha = alpha[1], stroke = 0, position = "auto",
+        size = size[1], maxwidth = 0.3
       )
   } else if (datadist == "jitter") {
     p <- p +
@@ -99,33 +114,45 @@ superplot <- function(df,
         data = df,
         aes(x = !!sym(cond), y = !!sym(meas),
             colour = !!sym(repl), fill = !!sym(repl), shape = !!sym(repl)),
-        alpha = 0.5, stroke = 0, position = "auto",
-        size = 0.8
+        alpha = alpha[1], stroke = 0, position = "auto",
+        size = size[1]
       )
   } else if (datadist == "violin") {
     p <- p +
       geom_violin(
         data = df,
         aes(x = !!sym(cond), y = !!sym(meas), group = !!sym(cond)),
-        fill = "grey", width = 0.5, alpha = 0.5
+        fill = "grey", width = 0.5, alpha = alpha[1]
       )
     # remove the first nrepl shapes from sp_shapes
     sp_shapes <- sp_shapes[-(1:nrepl)]
   } else {
     warning("datadist must be one of 'sina', 'jitter', or 'violin'")
   }
+  if (linking == TRUE) {
+    p <- p + geom_path(
+      data = summary_df,
+      aes(x = !!sym(cond), y = !!sym(rep_summary), group = !!sym(repl)),
+      linetype = "dashed", alpha = 0.5
+    )
+  }
+  # add mean and error bars here if requested
+  if (bars != "") {
+    p <- add_sp_bars(p, bars, summary_df, cond, rep_summary)
+  }
+
   p <- p + geom_point(
     data = summary_df,
     aes(x = !!sym(cond), y = !!sym(rep_summary),
         fill = !!sym(repl), shape = !!sym(repl)),
-    size = 1.5, stroke = 0.5, alpha = 0.7
+    size = size[2], stroke = 0.5, alpha = alpha[2]
   )
   p <- p + scale_color_manual(values = sp_colours) +
     scale_shape_manual(values = sp_shapes) +
     scale_fill_manual(values = sp_colours) +
     labs(x = xlab, y = ylab) +
     lims(y = c(0, NA)) +
-    theme_cowplot(9) +
+    theme_cowplot(fsize) +
     theme(legend.position = "none")
 
   return(p)

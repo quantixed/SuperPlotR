@@ -13,8 +13,13 @@ superplot(
   xlab = "",
   ylab = "Measurement",
   datadist = "sina",
+  size = c(0.8, 1.5),
+  alpha = c(0.5, 0.7),
+  bars = "",
+  linking = FALSE,
   rep_summary = "rep_mean",
   shapes = FALSE,
+  fsize = 9,
   gg = NULL
 )
 }
@@ -37,10 +42,24 @@ identifiers)}
 \item{datadist}{string for data distribution to use, select ("sina" default,
 "jitter", or "violin")}
 
+\item{size}{numeric vector of size range data and summary points (default is
+c(0.8, 1.5))}
+
+\item{alpha}{numeric vector of alpha range data and summary points (default is
+c(0.5, 0.7))}
+
+\item{bars}{string for type of error bars to add, select ("none" default,
+"mean_sd", "mean_sem", or "mean_ci")}
+
+\item{linking}{logical for whether to link summary points between conditions
+(default is FALSE)}
+
 \item{rep_summary}{string for summary statistic to use for replicates, select
 ("rep_mean" default, or "rep_median")}
 
 \item{shapes}{logical for whether to use different shapes for replicates}
+
+\item{fsize}{numeric font size for text (default is 9)}
 
 \item{gg}{ggplot object to add to (default is NULL)}
 }

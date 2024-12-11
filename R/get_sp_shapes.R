@@ -23,7 +23,7 @@ get_sp_shapes <- function(n, shape_logical) {
     sp_shapes <- rep(data_shapes, length.out = n)
   } else {
     # just circles
-    sp_shapes <- rep(22, length.out = n)
+    sp_shapes <- rep(21, length.out = n)
   }
 
   return(sp_shapes)
