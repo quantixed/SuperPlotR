@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# SuperPlotR <img src="man/figures/logo.png" align="right" height="139" alt="" />
+# SuperPlotR <a href="https://quantixed.github.io/SuperPlotR/"><img src="man/figures/logo.png" align="right" height="139" alt="SuperPlotR website" /></a>
 
 <!-- badges: start -->
 <!-- badges: end -->
