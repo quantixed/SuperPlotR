@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# SuperPlotR
+# SuperPlotR <img src="man/figures/logo.png" align="right" height="139" alt="" />
 
 <!-- badges: start -->
 <!-- badges: end -->
@@ -13,8 +13,8 @@ SuperPlots are a way to visualise data in a way that emphasises the
 experimental reproducibility. You can read more about SuperPlots in the
 [original paper](https://doi.org/10.1083/jcb.202001064):
 
-Lord et al (2020) SuperPlots: Communicating reproducibility and
-variability in cell biology. J Cell Biol 219(6):e202001064
+Lord *et al.* (2020) SuperPlots: Communicating reproducibility and
+variability in cell biology. *J. Cell Biol.* 219(6):e202001064
 
 ## Installation
 
@@ -58,6 +58,6 @@ See `vignette("getting-started")` for more examples, or
 My SuperPlot package for IGOR Pro is available
 [here](https://github.com/quantixed/SuperPlot)
 
-A popular web-based app for generating SuperPlots, developed by (Joachim
-Goedhart)\[<https://github.com/JoachimGoedhart>\] is available
+A popular web-based app for generating SuperPlots, developed by [Joachim
+Goedhart](https://github.com/JoachimGoedhart) is available
 [here](https://huygens.science.uva.nl/SuperPlotsOfData/)
