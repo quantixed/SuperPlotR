@@ -28,3 +28,7 @@ Imports:
     cowplot
 URL: https://github.com/quantixed/SuperPlotR
 BugReports: https://github.com/quantixed/SuperPlotR/issues
+Suggests: 
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr

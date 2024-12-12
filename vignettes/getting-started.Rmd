@@ -1,0 +1,157 @@
+---
+title: "Getting Started"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting Started}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width=6,
+  fig.height=4
+)
+```
+
+# A basic SuperPlot
+
+Example data from the original paper is included in the package. We'll use this
+for demonstration. The data is called `lord_jcb`.
+A basic SuperPlot can be generated with the following code:
+
+```{r setup}
+library(SuperPlotR)
+superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)")
+```
+
+This will generate a SuperPlot of the `Speed` data, with `Treatment` on the
+x-axis and `Replicate` is used to group the data. The y-axis label is set to
+"Speed".
+
+An equivalent call in long form is:
+
+```{r setup2, echo = TRUE, results = "hide"}
+superplot(
+  df = lord_jcb,
+  meas = "Speed",
+  cond = "Treatment",
+  repl = "Replicate",
+  ylab = "Speed (µm/min)"
+)
+```
+
+# Customising the SuperPlot
+
+A separate vignete describes how to customise the sizing of the plot. Here we
+will look at major customisations.
+
+## Data distribution
+
+The underlying data can be rendered as violins,
+
+```{r violin}
+superplot(lord_jcb, "Speed", "Treatment", "Replicate",
+          ylab = "Speed (µm/min)", datadist = "violin")
+```
+
+or with a jittered scatter plot, the default (shown in the first example on this
+page) uses `sina` which is a jittered scatter plot with a density estimate.
+
+```{r jitter}
+superplot(lord_jcb, "Speed", "Treatment", "Replicate",
+          ylab = "Speed (µm/min)", datadist = "jitter")
+```
+
+## Colours
+
+The colours of the points can be changed. The default is Paul Tol's bright
+palette (`"tol_bright"`) but you can select from:
+
+- "tol_bright"
+- "tol_vibrant"
+- "tol_muted"
+- "tol_light"
+- or Color Universal Design ("cud")
+
+```{r colours}
+superplot(lord_jcb, "Speed", "Treatment", "Replicate",
+          ylab = "Speed (µm/min)", pal = "cud")
+```
+
+It's possible to supply your own palette as a vector of colours (in hex or description format)
+
+```{r custom_palette}
+superplot(lord_jcb, "Speed", "Treatment", "Replicate",
+          ylab = "Speed (µm/min)", pal = c("#ff0000", "blue", "green"))
+```
+
+## Summary points
+
+The mean of each replicate is shown by default. You can also show the median
+
+```{r median}
+superplot(lord_jcb, "Speed", "Treatment", "Replicate",
+          ylab = "Speed (µm/min)", rep_summary = "rep_median")
+```
+
+## Bars
+
+The default SuperPlot does not include bars to indicate the mean ± error. They
+can be added by using the `bars` argument. Options are:
+
+- "mean_sd" = mean ± standard deviation
+- "mean_sem" = mean ± standard error of the mean
+- "mean_ci" = mean ± 95% confidence interval
+
+Note that these bars show the mean ± error of the replicate means not the
+underlying data points.
+
+```{r bars}
+superplot(lord_jcb, "Speed", "Treatment", "Replicate",
+          ylab = "Speed (µm/min)", bars = "mean_sd")
+```
+
+## Data point shapes
+
+By default, all data points are circles. If you want to use different shapes for
+different conditions, you can use the `shapes` argument. Set to `TRUE` to use
+different shapes for each replicate.
+
+```{r shapes}
+superplot(lord_jcb, "Speed", "Treatment", "Replicate",
+          ylab = "Speed (µm/min)", shapes = TRUE)
+```
+
+If you'd like to link the summary points, set `linking = TRUE`.
+
+```{r linking}
+superplot(lord_jcb, "Speed", "Treatment", "Replicate",
+          ylab = "Speed (µm/min)", linking = TRUE)
+```
+
+# Saving the SuperPlot
+
+The SuperPlot can be saved as a PDF or PNG file using the `ggsave` function from
+the `ggplot2` package.
+
+```{r save}
+library(ggplot2)
+p <- superplot(lord_jcb, "Speed", "Treatment", "Replicate",
+               ylab = "Speed (µm/min)")
+ggsave("superplot.pdf", p)
+```
+
+# More customisation
+
+A separate vignette describes how to customise the SuperPlot further.
+See `vignette("going-deeper")`.
+
+# Session Info
+
+```{r}
+sessionInfo()
+```
+

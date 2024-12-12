@@ -1,0 +1,111 @@
+---
+title: "Going Deeper"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Going Deeper}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.width=6,
+  fig.height=4
+)
+```
+
+# Going deeper: advanced SuperPlots
+
+In this vignette, we will explore some of the more advanced features of SuperPlotR.
+
+But first, we need to deal with how to simply scale the plot so it looks good in
+your paper!
+
+## Sizing the SuperPlot
+
+The default setting is to use point sizes of 2 for the data and 3 for the
+summary points. The font size is 12. This looks good in the RStudio viewer, but
+is not well suited to a figure which is likely to be very small.
+
+```{r sizing}
+library(SuperPlotR)
+# the default plot
+superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)")
+# the same plot but with custom sizing
+superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)",
+          size = c(0.8,1.5), fsize = 9)
+```
+
+This does not look great in the viewer, but it will look better in a figure.
+
+```{r sizing2, fig.height=1.8, fig.width=1.8}
+library(ggplot2)
+# the same plot but with custom sizing
+superplot(lord_jcb, "Speed", "Treatment", "Replicate",
+               ylab = "Speed (µm/min)", size = c(0.8,1.5), fsize = 9)
+ggsave("plot.pdf", width = 88, height = 50, units = "mm")
+```
+
+## Customising the SuperPlot
+
+A couple of simple tweaks: and x label can be added and transparency of points
+can be altered like this.
+
+```{r tweaks}
+superplot(lord_jcb, "Speed", "Treatment", "Replicate",
+          xlab = "Drug", ylab = "Speed (µm/min)", alpha = c(0.3,1))
+```
+
+SuperPlotR returns a ggplot object which can be customised how you like. For
+example, the theme can be overridden like this:
+
+```{r theme}
+p <- superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)")
+p + theme_minimal()
+```
+
+It can also accept a ggplot object and add the SuperPlot to it (within reason!).
+For example, you might want to plot some things behind the data points.
+
+```{r ggplot}
+p <- ggplot() +
+  geom_hline(yintercept = 20, linetype = "dashed", col = "grey")
+superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)", gg = p)
+```
+
+## Facetting
+
+Facetting is partially supported. In the simple scenario of facetting by
+replicate, you can do this:
+
+```{r facet}
+p <- superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)")
+p + facet_wrap(~Replicate)
+```
+
+If we had another variable that we wished to facet by, it is possible but with
+a limitation. The summary points will be the same for each facet, which may not
+be what you want.
+
+```{r facet2}
+df <- cbind(lord_jcb, other = rep(c("A", "B"), 150))
+p <- superplot(df, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)")
+p + facet_wrap(~other)
+```
+
+The best way to do this and have the correct summary points is to make two
+superplots after filtering the data for A and B, and then combine them using
+`patchwork` or similar package.
+
+## Ordering the x-axis
+
+This is best done by reordering the levels of the factor in the input dataframe
+before calling `superplot`.
+
+```{r order}
+df <- lord_jcb
+df$Treatment <- factor(df$Treatment, levels = c("Drug", "Control"))
+superplot(df, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)")
+```

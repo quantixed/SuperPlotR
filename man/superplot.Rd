@@ -13,13 +13,13 @@ superplot(
   xlab = "",
   ylab = "Measurement",
   datadist = "sina",
-  size = c(0.8, 1.5),
+  size = c(2, 3),
   alpha = c(0.5, 0.7),
   bars = "",
   linking = FALSE,
   rep_summary = "rep_mean",
   shapes = FALSE,
-  fsize = 9,
+  fsize = 12,
   gg = NULL
 )
 }
@@ -45,8 +45,8 @@ identifiers)}
 \item{size}{numeric vector of size range data and summary points (default is
 c(0.8, 1.5))}
 
-\item{alpha}{numeric vector of alpha range data and summary points (default is
-c(0.5, 0.7))}
+\item{alpha}{numeric vector of alpha range data and summary points (default
+is c(0.5, 0.7))}
 
 \item{bars}{string for type of error bars to add, select ("none" default,
 "mean_sd", "mean_sem", or "mean_ci")}

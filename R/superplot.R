@@ -12,8 +12,8 @@
 #' "jitter", or "violin")
 #' @param size numeric vector of size range data and summary points (default is
 #' c(0.8, 1.5))
-#' @param alpha numeric vector of alpha range data and summary points (default is
-#' c(0.5, 0.7))
+#' @param alpha numeric vector of alpha range data and summary points (default
+#' is c(0.5, 0.7))
 #' @param bars string for type of error bars to add, select ("none" default,
 #' "mean_sd", "mean_sem", or "mean_ci")
 #' @param linking logical for whether to link summary points between conditions
@@ -44,16 +44,16 @@ superplot <- function(df,
                       pal = "tol_bright",
                       xlab = "", ylab = "Measurement",
                       datadist = "sina",
-                      size = c(0.8, 1.5),
+                      size = c(2, 3),
                       alpha = c(0.5, 0.7),
                       bars = "",
                       linking = FALSE,
                       rep_summary = "rep_mean",
                       shapes = FALSE,
-                      fsize = 9,
+                      fsize = 12,
                       gg = NULL) {
   ncond <- nrepl <- NULL
-  rep_mean <- rep_sd <- rep_sem <- rep_ci <- NULL
+  rep_mean <- rep_median <- NULL
 
   # if the repl column is not character, convert it
   if (!is.character(df[[repl]])) {
@@ -75,10 +75,7 @@ superplot <- function(df,
     group_by(!!sym(cond), !!sym(repl)) %>%
     summarise(
       rep_mean = mean(!!sym(meas), na.rm = TRUE),
-      rep_median = median(!!sym(meas), na.rm = TRUE),
-      rep_sd = sd(!!sym(meas), na.rm = TRUE),
-      rep_sem = sd(!!sym(meas), na.rm = TRUE) / sqrt(n()),
-      rep_ci = 1.96 * sd(!!sym(meas), na.rm = TRUE) / sqrt(n())
+      rep_median = median(!!sym(meas), na.rm = TRUE)
     )
   # generate a warning if NROW of summary_df doesn't equal the product of
   # unique values in cond and repl
@@ -105,7 +102,7 @@ superplot <- function(df,
         data = df,
         aes(x = !!sym(cond), y = !!sym(meas),
             colour = !!sym(repl), fill = !!sym(repl), shape = !!sym(repl)),
-        alpha = alpha[1], stroke = 0, position = "auto",
+        alpha = alpha[1], stroke = 0, jitter_y = FALSE, position = "auto",
         size = size[1], maxwidth = 0.3
       )
   } else if (datadist == "jitter") {
@@ -114,7 +111,7 @@ superplot <- function(df,
         data = df,
         aes(x = !!sym(cond), y = !!sym(meas),
             colour = !!sym(repl), fill = !!sym(repl), shape = !!sym(repl)),
-        alpha = alpha[1], stroke = 0, position = "auto",
+        alpha = alpha[1], stroke = 0,
         size = size[1]
       )
   } else if (datadist == "violin") {
@@ -124,8 +121,6 @@ superplot <- function(df,
         aes(x = !!sym(cond), y = !!sym(meas), group = !!sym(cond)),
         fill = "grey", width = 0.5, alpha = alpha[1]
       )
-    # remove the first nrepl shapes from sp_shapes
-    sp_shapes <- sp_shapes[-(1:nrepl)]
   } else {
     warning("datadist must be one of 'sina', 'jitter', or 'violin'")
   }

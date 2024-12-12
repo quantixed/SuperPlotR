@@ -32,7 +32,7 @@ A simple example of how to use SuperPlotR is shown below:
 
 ``` r
 library(SuperPlotR)
-superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed")
+superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)")
 ```
 
 <img src="man/figures/README-example-1.png" width="100%" />
@@ -50,7 +50,8 @@ columns. These columns are:
 The `superplot` function takes the data frame, the names of these three
 columns, and is further customisable with additional arguments.
 
-See vignette for more examples.
+See `vignette("getting-started")` for more examples, or
+`vignette("going-deeper")` for more advanced usage.
 
 ## More information
 
