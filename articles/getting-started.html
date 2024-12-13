@@ -22,7 +22,7 @@
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
-    <nav class="navbar navbar-expand-lg fixed-top bg-light" data-bs-theme="light" aria-label="Site navigation"><div class="container">
+    <nav class="navbar navbar-expand-lg fixed-top bg-primary" data-bs-theme="dark" aria-label="Site navigation"><div class="container">
 
     <a class="navbar-brand me-2" href="../index.html">SuperPlotR</a>
 
@@ -100,7 +100,7 @@ to group the data. The y-axis label is set to “Speed”.</p>
 <h2 id="customising-the-superplot">Customising the SuperPlot<a class="anchor" aria-label="anchor" href="#customising-the-superplot"></a>
 </h2>
 <p>A separate vignete describes how to customise the sizing of the plot.
-Here we will look at major customisations.</p>
+Here, we will look at major customisation options.</p>
 <div class="section level3">
 <h3 id="data-distribution">Data distribution<a class="anchor" aria-label="anchor" href="#data-distribution"></a>
 </h3>
@@ -123,11 +123,11 @@ plot with a density estimate.</p>
 <p>The colours of the points can be changed. The default is Paul Tol’s
 bright palette (<code>"tol_bright"</code>) but you can select from:</p>
 <ul>
-<li>“tol_bright”</li>
-<li>“tol_vibrant”</li>
-<li>“tol_muted”</li>
-<li>“tol_light”</li>
-<li>or Color Universal Design (“cud”)</li>
+<li><code>"tol_bright"</code></li>
+<li><code>"tol_vibrant"</code></li>
+<li><code>"tol_muted"</code></li>
+<li><code>"tol_light"</code></li>
+<li>or Color Universal Design (<code>"cud"</code>)</li>
 </ul>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>,</span>
@@ -143,8 +143,8 @@ hex or description format)</p>
 <div class="section level3">
 <h3 id="summary-points">Summary points<a class="anchor" aria-label="anchor" href="#summary-points"></a>
 </h3>
-<p>The mean of each replicate is shown by default. You can also show the
-median</p>
+<p>The mean of each replicate is shown by default. You can show the
+median instead</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>,</span>
 <span>          ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span>, rep_summary <span class="op">=</span> <span class="st">"rep_median"</span><span class="op">)</span></span></code></pre></div>
@@ -157,9 +157,12 @@ median</p>
 error. They can be added by using the <code>bars</code> argument.
 Options are:</p>
 <ul>
-<li>“mean_sd” = mean ± standard deviation</li>
-<li>“mean_sem” = mean ± standard error of the mean</li>
-<li>“mean_ci” = mean ± 95% confidence interval</li>
+<li>
+<code>"mean_sd"</code> = mean ± standard deviation</li>
+<li>
+<code>"mean_sem"</code> = mean ± standard error of the mean</li>
+<li>
+<code>"mean_ci"</code> = mean ± 95% confidence interval</li>
 </ul>
 <p>Note that these bars show the mean ± error of the replicate means not
 the underlying data points.</p>
