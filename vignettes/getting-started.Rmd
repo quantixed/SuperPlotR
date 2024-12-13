@@ -45,8 +45,8 @@ superplot(
 
 # Customising the SuperPlot
 
-A separate vignete describes how to customise the sizing of the plot. Here we
-will look at major customisations.
+A separate vignete describes how to customise the sizing of the plot. Here, we
+will look at major customisation options.
 
 ## Data distribution
 
@@ -70,18 +70,19 @@ superplot(lord_jcb, "Speed", "Treatment", "Replicate",
 The colours of the points can be changed. The default is Paul Tol's bright
 palette (`"tol_bright"`) but you can select from:
 
-- "tol_bright"
-- "tol_vibrant"
-- "tol_muted"
-- "tol_light"
-- or Color Universal Design ("cud")
+- `"tol_bright"`
+- `"tol_vibrant"`
+- `"tol_muted"`
+- `"tol_light"`
+- or Color Universal Design (`"cud"`)
 
 ```{r colours}
 superplot(lord_jcb, "Speed", "Treatment", "Replicate",
           ylab = "Speed (µm/min)", pal = "cud")
 ```
 
-It's possible to supply your own palette as a vector of colours (in hex or description format)
+It's possible to supply your own palette as a vector of colours (in hex or
+description format)
 
 ```{r custom_palette}
 superplot(lord_jcb, "Speed", "Treatment", "Replicate",
@@ -90,7 +91,7 @@ superplot(lord_jcb, "Speed", "Treatment", "Replicate",
 
 ## Summary points
 
-The mean of each replicate is shown by default. You can also show the median
+The mean of each replicate is shown by default. You can show the median instead
 
 ```{r median}
 superplot(lord_jcb, "Speed", "Treatment", "Replicate",
@@ -102,9 +103,9 @@ superplot(lord_jcb, "Speed", "Treatment", "Replicate",
 The default SuperPlot does not include bars to indicate the mean ± error. They
 can be added by using the `bars` argument. Options are:
 
-- "mean_sd" = mean ± standard deviation
-- "mean_sem" = mean ± standard error of the mean
-- "mean_ci" = mean ± 95% confidence interval
+- `"mean_sd"` = mean ± standard deviation
+- `"mean_sem"` = mean ± standard error of the mean
+- `"mean_ci"` = mean ± 95% confidence interval
 
 Note that these bars show the mean ± error of the replicate means not the
 underlying data points.

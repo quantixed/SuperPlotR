@@ -18,7 +18,8 @@ knitr::opts_chunk$set(
 
 # Going deeper: advanced SuperPlots
 
-In this vignette, we will explore some of the more advanced features of SuperPlotR.
+In this vignette, we will explore some of the more advanced features of
+SuperPlotR.
 
 But first, we need to deal with how to simply scale the plot so it looks good in
 your paper!
@@ -45,13 +46,23 @@ library(ggplot2)
 # the same plot but with custom sizing
 superplot(lord_jcb, "Speed", "Treatment", "Replicate",
                ylab = "Speed (µm/min)", size = c(0.8,1.5), fsize = 9)
-ggsave("plot.pdf", width = 88, height = 50, units = "mm")
+ggsave("plot.pdf", width = 88, height = 50, units = "mm") # final size
+```
+
+This is preferable to
+
+```{r sizing3, fig.height=1.8, fig.width=1.8}
+library(ggplot2)
+# the same plot but with custom sizing
+superplot(lord_jcb, "Speed", "Treatment", "Replicate",
+               ylab = "Speed (µm/min)")
+ggsave("plot.pdf", width = 88, height = 50, units = "mm") # final size
 ```
 
 ## Customising the SuperPlot
 
-A couple of simple tweaks: and x label can be added and transparency of points
-can be altered like this.
+A couple of simple tweaks: an x label can be added, and the transparency of
+points can be altered like this.
 
 ```{r tweaks}
 superplot(lord_jcb, "Speed", "Treatment", "Replicate",
@@ -66,8 +77,9 @@ p <- superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/m
 p + theme_minimal()
 ```
 
-It can also accept a ggplot object and add the SuperPlot to it (within reason!).
-For example, you might want to plot some things behind the data points.
+It can also accept a ggplot object using the `gg` parameter, and then add a
+SuperPlot to it (within reason!).
+For example, you might want to plot something behind the SuperPlot.
 
 ```{r ggplot}
 p <- ggplot() +
@@ -85,9 +97,9 @@ p <- superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/m
 p + facet_wrap(~Replicate)
 ```
 
-If we had another variable that we wished to facet by, it is possible but with
-a limitation. The summary points will be the same for each facet, which may not
-be what you want.
+If we had another variable that we wished to facet by, it is possible, but with
+a limitation: The summary points will remain as the replicate summary and
+therefore will be the same for each facet. This may not be what you want.
 
 ```{r facet2}
 df <- cbind(lord_jcb, other = rep(c("A", "B"), 150))
@@ -95,9 +107,9 @@ p <- superplot(df, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)")
 p + facet_wrap(~other)
 ```
 
-The best way to do this and have the correct summary points is to make two
-superplots after filtering the data for A and B, and then combine them using
-`patchwork` or similar package.
+The best way to "facet" like this and have the correct summary points, is to
+make two superplots after filtering the data for A and B, and then combine them
+using `patchwork` or similar package.
 
 ## Ordering the x-axis
 
