@@ -45,7 +45,11 @@ superplot(
 
 # Customising the SuperPlot
 
+<<<<<<< HEAD
 A separate vignete describes how to customise the sizing of the plot. Here, we
+=======
+A separate vignete describes how to customise the sizing of the plot. Here we
+>>>>>>> 2235435 (Fix: merge docs)
 will look at major customisation options.
 
 ## Data distribution
