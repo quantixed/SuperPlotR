@@ -1,5 +1,10 @@
 # SuperPlotR (development version)
 
+## SuperPlotR 0.0.3
+
+* Improved vignettes
+* Better error handling
+
 ## SuperPlotR 0.0.2
 
 * Vignettes added, bugs squashed.

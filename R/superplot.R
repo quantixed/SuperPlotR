@@ -55,6 +55,15 @@ superplot <- function(df,
   ncond <- nrepl <- NULL
   rep_mean <- rep_median <- NULL
 
+  if (verify_columns(df, meas, cond, repl) == FALSE) {
+    return(NULL)
+  }
+
+  # if the cond column is not character, convert it
+  if (!is.character(df[[cond]])) {
+    df[[cond]] <- as.character(df[[cond]])
+  }
+
   # if the repl column is not character, convert it
   if (!is.character(df[[repl]])) {
     df[[repl]] <- as.character(df[[repl]])
@@ -81,7 +90,7 @@ superplot <- function(df,
   # unique values in cond and repl
   if (nrow(summary_df) != ncond * nrepl) {
     warning("Summary statistics were not calculated for all combinations of
-            condition and replicate.")
+            condition and replicate.\r\nCheck for missing data.")
   }
   # get colour values for the repl column
   sp_colours <- get_sp_colours(nrepl, pal)
@@ -135,19 +144,26 @@ superplot <- function(df,
   if (bars != "") {
     p <- add_sp_bars(p, bars, summary_df, cond, rep_summary)
   }
-
+  # add summary points here
   p <- p + geom_point(
     data = summary_df,
     aes(x = !!sym(cond), y = !!sym(rep_summary),
         fill = !!sym(repl), shape = !!sym(repl)),
     size = size[2], stroke = 0.5, alpha = alpha[2]
   )
+  # colours, shapes, and labels
   p <- p + scale_color_manual(values = sp_colours) +
     scale_shape_manual(values = sp_shapes) +
     scale_fill_manual(values = sp_colours) +
-    labs(x = xlab, y = ylab) +
-    lims(y = c(0, NA)) +
-    theme_cowplot(fsize) +
+    labs(x = xlab, y = ylab)
+  # limits
+  if (min(df[[meas]], na.rm = TRUE) > 0) {
+    p <- p + lims(y = c(0, NA))
+  } else {
+    # plot is scaled automatically
+  }
+  # theme
+  p <- p + theme_cowplot(fsize) +
     theme(legend.position = "none")
 
   return(p)

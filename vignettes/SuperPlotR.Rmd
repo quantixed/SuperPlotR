@@ -133,6 +133,18 @@ superplot(lord_jcb, "Speed", "Treatment", "Replicate",
           ylab = "Speed (µm/min)", linking = TRUE)
 ```
 
+Linkages can be made when there are more than two groups. To demonstrate this
+we will use some toy data:
+
+```{r linking2}
+set.seed(123)
+example <- data.frame(meas = rep(rep(c(10, 9, 6, 6), each = 25), 4) + rnorm(400),
+                      cond = rep(rep(c("ctrl", "drug 1", "drug 2", "drug 3"), each = 25), 4),
+                      expt = rep(c("exp1","exp2","exp3","exp4"), each = 100))
+superplot(example, "meas", "cond", "expt",
+          linking = TRUE)
+```
+
 # Saving the SuperPlot
 
 The SuperPlot can be saved as a PDF or PNG file using the `ggsave` function from
@@ -148,7 +160,7 @@ ggsave("superplot.pdf", p)
 # More customisation
 
 A separate vignette describes how to customise the SuperPlot further.
-See `vignette("going-deeper")`.
+See `vignette("advanced")`.
 
 # Session Info
 

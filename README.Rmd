@@ -59,8 +59,8 @@ These columns are:
 The `superplot` function takes the data frame, the names of these three columns,
 and is further customisable with additional arguments.
 
-See `vignette("getting-started")` for more examples, or
-`vignette("going-deeper")` for more advanced usage.
+See `vignette("SuperPlotR")` for more examples, or
+`vignette("advanced")` for more advanced usage.
 
 ## More information
 

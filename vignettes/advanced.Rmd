@@ -1,8 +1,8 @@
 ---
-title: "Going Deeper"
+title: "Advanced Usage"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Going Deeper}
+  %\VignetteIndexEntry{Advanced Usage}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -93,7 +93,8 @@ Facetting is partially supported. In the simple scenario of facetting by
 replicate, you can do this:
 
 ```{r facet}
-p <- superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)")
+p <- superplot(lord_jcb, "Speed", "Treatment", "Replicate",
+               ylab = "Speed (µm/min)")
 p + facet_wrap(~Replicate)
 ```
 
@@ -107,9 +108,15 @@ p <- superplot(df, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)")
 p + facet_wrap(~other)
 ```
 
+<<<<<<< HEAD:vignettes/going-deeper.Rmd
 The best way to "facet" like this and have the correct summary points, is to
 make two superplots after filtering the data for A and B, and then combine them
 using `patchwork` or similar package.
+=======
+The best way to do this and have the correct summary points is to make two
+superplots after filtering the data for A and B, and then combine them using
+`{patchwork}` or similar package.
+>>>>>>> f264446 (v.0.0.3):vignettes/advanced.Rmd
 
 ## Ordering the x-axis
 
@@ -121,3 +128,19 @@ df <- lord_jcb
 df$Treatment <- factor(df$Treatment, levels = c("Drug", "Control"))
 superplot(df, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)")
 ```
+
+## Conditions and Replicates are categories
+
+If you have a dataset where the conditions and replicates are numeric,
+SuperPlotR converts them to character for plotting. This is the intended
+behaviour for a SuperPlot.
+
+Currently, if your data has Conditions that are numeric, for example time points, and these
+are unevenly spaced, e.g. 0, 1, 3, 9 hours; then these will appear evenly spaced
+on the x-axis.
+
+## Adding statistics
+
+This is currently not supported due to the number of different ways that users
+may wish to add them. However, it is possible to add them manually to the
+SuperPlot object.
