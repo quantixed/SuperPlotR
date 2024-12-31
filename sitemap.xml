@@ -2,8 +2,8 @@
 <url><loc>https://quantixed.github.io/SuperPlotR/404.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/LICENSE-text.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/LICENSE.html</loc></url>
-<url><loc>https://quantixed.github.io/SuperPlotR/articles/getting-started.html</loc></url>
-<url><loc>https://quantixed.github.io/SuperPlotR/articles/going-deeper.html</loc></url>
+<url><loc>https://quantixed.github.io/SuperPlotR/articles/SuperPlotR.html</loc></url>
+<url><loc>https://quantixed.github.io/SuperPlotR/articles/advanced.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/articles/index.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/authors.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/index.html</loc></url>
@@ -18,5 +18,6 @@
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/trio_mean.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/trio_sd.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/trio_sem.html</loc></url>
+<url><loc>https://quantixed.github.io/SuperPlotR/reference/verify_columns.html</loc></url>
 </urlset>
 
