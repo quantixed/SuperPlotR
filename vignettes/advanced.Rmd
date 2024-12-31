@@ -107,21 +107,9 @@ p <- superplot(df, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)")
 p + facet_wrap(~other)
 ```
 
-<<<<<<< HEAD
-<<<<<<< HEAD:vignettes/going-deeper.Rmd
-The best way to "facet" like this and have the correct summary points, is to
-make two superplots after filtering the data for A and B, and then combine them
-using `patchwork` or similar package.
-=======
 The best way to do this and have the correct summary points is to make two
 superplots after filtering the data for A and B, and then combine them using
 `{patchwork}` or similar package.
->>>>>>> f264446 (v.0.0.3):vignettes/advanced.Rmd
-=======
-The best way to "facet" like this and have the correct summary points, is to
-make two superplots after filtering the data for A and B, and then combine them
-using `patchwork` or similar package.
->>>>>>> 2235435 (Fix: merge docs)
 
 ## Ordering the x-axis
 
