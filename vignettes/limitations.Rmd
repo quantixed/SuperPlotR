@@ -1,13 +1,13 @@
 ---
-  title: "Limitations to SuperPlotR"
+title: "Limitations to SuperPlotR"
 output: rmarkdown::html_vignette
 vignette: >
   %\VignetteIndexEntry{Limitations to SuperPlotR}
-%\VignetteEngine{knitr::rmarkdown}
-%\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
 ---
 
-  ```{r, include = FALSE}
+```{r, include = FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   comment = "#>",
@@ -26,8 +26,11 @@ solutions where possible.
 Facetting is _partially supported_. In the simple scenario of facetting by
 replicate, you can do this:
 
-  ```{r facet}
-p <- superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)")
+```{r facet}
+library(SuperPlotR)
+library(ggplot2)
+p <- superplot(lord_jcb, "Speed", "Treatment", "Replicate",
+               ylab = "Speed (µm/min)")
 p + facet_wrap(~Replicate)
 ```
 
