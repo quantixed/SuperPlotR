@@ -41,6 +41,7 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/advanced.html">Advanced Usage</a></li>
+    <li><a class="dropdown-item" href="../articles/limitations.html">Limitations to SuperPlotR</a></li>
   </ul>
 </li>
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
@@ -72,7 +73,7 @@
     
     
 <div class="section level2">
-<h2 id="going-deeper-advanced-superplots">Going deeper: advanced SuperPlots<a class="anchor" aria-label="anchor" href="#going-deeper-advanced-superplots"></a>
+<h2 id="advanced-superplots">Advanced SuperPlots<a class="anchor" aria-label="anchor" href="#advanced-superplots"></a>
 </h2>
 <p>In this vignette, we will explore some of the more advanced features
 of SuperPlotR.</p>
@@ -142,54 +143,20 @@ you might want to plot something behind the SuperPlot.</p>
 <p><img src="advanced_files/figure-html/ggplot-1.png" width="576"></p>
 </div>
 <div class="section level3">
-<h3 id="facetting">Facetting<a class="anchor" aria-label="anchor" href="#facetting"></a>
-</h3>
-<p>Facetting is partially supported. In the simple scenario of facetting
-by replicate, you can do this:</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>, ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span><span class="op">)</span></span>
-<span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">Replicate</span><span class="op">)</span></span></code></pre></div>
-<p><img src="advanced_files/figure-html/facet-1.png" width="576"></p>
-<p>If we had another variable that we wished to facet by, it is
-possible, but with a limitation: The summary points will remain as the
-replicate summary and therefore will be the same for each facet. This
-may not be what you want.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">lord_jcb</span>, other <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span>, <span class="fl">150</span><span class="op">)</span><span class="op">)</span></span>
-<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>, ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span><span class="op">)</span></span>
-<span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span><span class="va">other</span><span class="op">)</span></span></code></pre></div>
-<p><img src="advanced_files/figure-html/facet2-1.png" width="576"></p>
-<p>The best way to do this and have the correct summary points is to
-make two superplots after filtering the data for A and B, and then
-combine them using <a href="https://patchwork.data-imaginist.com" class="external-link">patchwork</a> or similar package.</p>
-</div>
-<div class="section level3">
 <h3 id="ordering-the-x-axis">Ordering the x-axis<a class="anchor" aria-label="anchor" href="#ordering-the-x-axis"></a>
 </h3>
 <p>This is best done by reordering the levels of the factor in the input
 dataframe before calling <code>superplot</code>.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">lord_jcb</span></span>
 <span><span class="va">df</span><span class="op">$</span><span class="va">Treatment</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">Treatment</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Drug"</span>, <span class="st">"Control"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>, ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="advanced_files/figure-html/order-1.png" width="576"></p>
-</div>
-<div class="section level3">
-<h3 id="conditions-and-replicates-are-categories">Conditions and Replicates are categories<a class="anchor" aria-label="anchor" href="#conditions-and-replicates-are-categories"></a>
-</h3>
-<p>If you have a dataset where the conditions and replicates are
-numeric, SuperPlotR converts them to character for plotting. This is the
-intended behaviour for a SuperPlot.</p>
-<p>Currently, if your data has Conditions that are numeric, for example
-time points, and these are unevenly spaced, e.g. 0, 1, 3, 9 hours; then
-these will appear evenly spaced on the x-axis.</p>
-</div>
-<div class="section level3">
-<h3 id="adding-statistics">Adding statistics<a class="anchor" aria-label="anchor" href="#adding-statistics"></a>
-</h3>
-<p>This is currently not supported due to the number of different ways
-that users may wish to add them. However, it is possible to add them
-manually to the SuperPlot object.</p>
+<p>It is also possible to reorder the Replicates using a similar
+strategy. You might want to do this so that the order of colours and
+shapes matches a different order to the default. Another way to achieve
+the same thing is to supply a reordered colour palette to
+<code>superplot</code>.</p>
 </div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
