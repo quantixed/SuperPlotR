@@ -9,7 +9,12 @@
 #' @return logical to allow plot to go ahead
 #' @keywords internal
 verify_columns <- function(df, meas, cond, repl) {
-  # Function to verify the data frame check if the required columns are present
+  # check that meas, cond and repl are character
+  if (!is.character(meas) | !is.character(cond) | !is.character(repl)) {
+    message("meas, cond and repl must be character")
+    return(FALSE)
+  }
+  # verify the data frame - check if the required columns are present
   if (!cond %in% colnames(df) | !repl %in% colnames(df) | !meas %in% colnames(df)) {
     message("The data frame does not contain the required columns")
     return(FALSE)

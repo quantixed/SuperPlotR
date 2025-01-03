@@ -13,8 +13,9 @@ SuperPlots are a way to visualise data in a way that emphasises the
 experimental reproducibility. You can read more about SuperPlots in the
 [original paper](https://doi.org/10.1083/jcb.202001064):
 
-Lord *et al.* (2020) SuperPlots: Communicating reproducibility and
-variability in cell biology. *J. Cell Biol.* 219(6):e202001064
+Lord, S.J., Velle, K.B., Mullins, R.D. & Fritz-Laylin, L.K. (2020)
+**SuperPlots: Communicating reproducibility and variability in cell
+biology.** *J. Cell Biol.* 219(6):e202001064
 
 ## Installation
 

@@ -55,6 +55,13 @@ superplot <- function(df,
   ncond <- nrepl <- NULL
   rep_mean <- rep_median <- NULL
 
+  # validate args
+  validate_args(pal = pal, xlab = xlab, ylab = ylab, datadist = datadist,
+                size = size, alpha = alpha, bars = bars, linking = linking,
+                rep_summary = rep_summary, shapes = shapes, fsize = fsize,
+                gg = gg)
+
+  # verify that the data frame to make sure that it is suitable for SuperPlot
   if (verify_columns(df, meas, cond, repl) == FALSE) {
     return(NULL)
   }
@@ -90,7 +97,7 @@ superplot <- function(df,
   # unique values in cond and repl
   if (nrow(summary_df) != ncond * nrepl) {
     warning("Summary statistics were not calculated for all combinations of
-            condition and replicate.\r\nCheck for missing data.")
+            condition and replicate.\nCheck for missing data.")
   }
   # get colour values for the repl column
   sp_colours <- get_sp_colours(nrepl, pal)

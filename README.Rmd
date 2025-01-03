@@ -25,8 +25,9 @@ reproducibility.
 You can read more about SuperPlots in the
 [original paper](https://doi.org/10.1083/jcb.202001064):
 
-Lord _et al._ (2020) SuperPlots: Communicating reproducibility and variability
-in cell biology. _J. Cell Biol._ 219(6):e202001064
+Lord, S.J., Velle, K.B., Mullins, R.D. & Fritz-Laylin, L.K. (2020)
+**SuperPlots: Communicating reproducibility and variability in cell biology.**
+_J. Cell Biol._ 219(6):e202001064
 
 ## Installation
 
