@@ -10,6 +10,18 @@
 <url><loc>https://quantixed.github.io/SuperPlotR/index.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/news/index.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/add_sp_bars.html</loc></url>
+<url><loc>https://quantixed.github.io/SuperPlotR/reference/check_alpha.html</loc></url>
+<url><loc>https://quantixed.github.io/SuperPlotR/reference/check_bars.html</loc></url>
+<url><loc>https://quantixed.github.io/SuperPlotR/reference/check_datadist.html</loc></url>
+<url><loc>https://quantixed.github.io/SuperPlotR/reference/check_fsize.html</loc></url>
+<url><loc>https://quantixed.github.io/SuperPlotR/reference/check_gg.html</loc></url>
+<url><loc>https://quantixed.github.io/SuperPlotR/reference/check_linking.html</loc></url>
+<url><loc>https://quantixed.github.io/SuperPlotR/reference/check_pal.html</loc></url>
+<url><loc>https://quantixed.github.io/SuperPlotR/reference/check_rep_summary.html</loc></url>
+<url><loc>https://quantixed.github.io/SuperPlotR/reference/check_shapes.html</loc></url>
+<url><loc>https://quantixed.github.io/SuperPlotR/reference/check_size.html</loc></url>
+<url><loc>https://quantixed.github.io/SuperPlotR/reference/check_xlab.html</loc></url>
+<url><loc>https://quantixed.github.io/SuperPlotR/reference/check_ylab.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/get_sp_colours.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/get_sp_shapes.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/index.html</loc></url>
@@ -19,6 +31,7 @@
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/trio_mean.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/trio_sd.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/trio_sem.html</loc></url>
+<url><loc>https://quantixed.github.io/SuperPlotR/reference/validate_args.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/verify_columns.html</loc></url>
 </urlset>
 
