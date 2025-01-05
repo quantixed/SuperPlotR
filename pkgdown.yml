@@ -3,9 +3,10 @@ pkgdown: 2.1.1
 pkgdown_sha: ~
 articles:
   advanced: advanced.html
+  flatplot: flatplot.html
   limitations: limitations.html
   SuperPlotR: SuperPlotR.html
-last_built: 2025-01-05T15:23Z
+last_built: 2025-01-05T21:47Z
 urls:
   reference: https://quantixed.github.io/SuperPlotR/reference
   article: https://quantixed.github.io/SuperPlotR/articles

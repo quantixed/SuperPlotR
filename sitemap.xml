@@ -4,6 +4,7 @@
 <url><loc>https://quantixed.github.io/SuperPlotR/LICENSE.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/articles/SuperPlotR.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/articles/advanced.html</loc></url>
+<url><loc>https://quantixed.github.io/SuperPlotR/articles/flatplot.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/articles/index.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/articles/limitations.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/authors.html</loc></url>
@@ -12,6 +13,7 @@
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/add_sp_bars.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/check_alpha.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/check_bars.html</loc></url>
+<url><loc>https://quantixed.github.io/SuperPlotR/reference/check_colour.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/check_datadist.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/check_fsize.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/check_gg.html</loc></url>
@@ -24,6 +26,8 @@
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/check_stats_test.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/check_xlab.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/check_ylab.html</loc></url>
+<url><loc>https://quantixed.github.io/SuperPlotR/reference/flatplot.html</loc></url>
+<url><loc>https://quantixed.github.io/SuperPlotR/reference/get_fp_colour.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/get_sp_colours.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/get_sp_shapes.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/get_sp_stats.html</loc></url>
@@ -35,6 +39,7 @@
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/trio_sd.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/trio_sem.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/validate_args.html</loc></url>
-<url><loc>https://quantixed.github.io/SuperPlotR/reference/verify_columns.html</loc></url>
+<url><loc>https://quantixed.github.io/SuperPlotR/reference/verify_fp_columns.html</loc></url>
+<url><loc>https://quantixed.github.io/SuperPlotR/reference/verify_sp_columns.html</loc></url>
 </urlset>
 
