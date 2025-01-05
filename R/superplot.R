@@ -23,6 +23,9 @@
 #' @param rep_summary string for summary statistic to use for replicates, select
 #' ("rep_mean" default, or "rep_median")
 #' @param gg ggplot object to add to (default is NULL)
+#' @param stats logical for whether to add statistical tests (default is FALSE)
+#' @param stats_test string for statistical test to use, select
+#' ("para_unpaired", "para_paired", "nonpara_unpaired", or "nonpara_paired")
 #'
 #' @return ggplot object
 #' @import ggplot2
@@ -36,8 +39,7 @@
 #' @examples
 #' superplot(lord_jcb,
 #'   "Speed", "Treatment", "Replicate",
-#'   ylab = "Speed (um/min)"
-#' )
+#'   ylab = "Speed (um/min)")
 #'
 superplot <- function(df,
                       meas, cond, repl,
@@ -51,7 +53,9 @@ superplot <- function(df,
                       rep_summary = "rep_mean",
                       shapes = FALSE,
                       fsize = 12,
-                      gg = NULL) {
+                      gg = NULL,
+                      stats = FALSE,
+                      stats_test = "para_unpaired") {
   ncond <- nrepl <- NULL
   rep_mean <- rep_median <- NULL
 
@@ -59,7 +63,7 @@ superplot <- function(df,
   validate_args(pal = pal, xlab = xlab, ylab = ylab, datadist = datadist,
                 size = size, alpha = alpha, bars = bars, linking = linking,
                 rep_summary = rep_summary, shapes = shapes, fsize = fsize,
-                gg = gg)
+                gg = gg, stats = stats, stats_test = stats_test)
 
   # verify that the data frame to make sure that it is suitable for SuperPlot
   if (verify_columns(df, meas, cond, repl) == FALSE) {
@@ -172,6 +176,10 @@ superplot <- function(df,
   # theme
   p <- p + theme_cowplot(fsize) +
     theme(legend.position = "none")
+  # add stats if requested
+  if (stats == TRUE) {
+    get_sp_stats(as.data.frame(summary_df), rep_summary, cond, repl, ncond, nrepl, stats_test)
+  }
 
   return(p)
 }

@@ -12,13 +12,16 @@
 #' @param shapes argument passed to shapes
 #' @param fsize argument passed to fsize
 #' @param gg argument passed to gg
+#' @param stats argument passed to stats
+#' @param stats_test argument passed to stats_test
 #'
 #' @returns none
 #' @keywords internal
 validate_args <- function(pal = NULL, xlab = NULL, ylab = NULL, datadist = NULL,
                           size = NULL, alpha = NULL, bars = NULL,
                           linking = NULL, rep_summary = NULL, shapes = NULL,
-                          fsize = NULL, gg = NULL) {
+                          fsize = NULL, gg = NULL, stats = NULL,
+                          stats_test = NULL) {
   if (!is.null(pal)) check_pal(pal)
   if (!is.null(xlab)) check_xlab(xlab)
   if (!is.null(ylab)) check_ylab(ylab)
@@ -31,6 +34,8 @@ validate_args <- function(pal = NULL, xlab = NULL, ylab = NULL, datadist = NULL,
   if (!is.null(shapes)) check_shapes(shapes)
   if (!is.null(fsize)) check_fsize(fsize)
   if (!is.null(gg)) check_gg(gg)
+  if (!is.null(stats)) check_stats(stats)
+  if (!is.null(stats_test)) check_stats_test(stats_test)
 }
 
 #' Check pal argument
@@ -188,5 +193,32 @@ check_fsize <- function(arg) {
 check_gg <- function(arg) {
   if (!inherits(arg, "gg")) {
     stop("'gg' must be a ggplot object", call. = FALSE)
+  }
+}
+
+#' Check stats argument
+#'
+#' @param arg argument passed as stats
+#' @returns none
+#' @keywords internal
+check_stats <- function(arg) {
+  # stats should be either TRUE or FALSE only
+  if (!is.logical(arg)) {
+    stop("'stats' must be a logical", call. = FALSE)
+  }
+}
+
+#' Check stats_test argument
+#'
+#' @param arg argument passed as stats_test
+#' @returns none
+#' @keywords internal
+check_stats_test <- function(arg) {
+  # stats_test should be one of the following:
+  # "para_unpaired", "para_paired", "nonpara_unpaired", or "nonpara_paired"
+  if (!arg %in% c("para_unpaired", "para_paired", "nonpara_unpaired",
+                  "nonpara_paired")) {
+    stop("'stats_test' must be one of para_unpaired, para_paired,
+         nonpara_unpaired, nonpara_paired", call. = FALSE)
   }
 }

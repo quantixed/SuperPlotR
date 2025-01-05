@@ -20,7 +20,9 @@ superplot(
   rep_summary = "rep_mean",
   shapes = FALSE,
   fsize = 12,
-  gg = NULL
+  gg = NULL,
+  stats = FALSE,
+  stats_test = "para_unpaired"
 )
 }
 \arguments{
@@ -62,6 +64,11 @@ is c(0.5, 0.7))}
 \item{fsize}{numeric font size for text (default is 9)}
 
 \item{gg}{ggplot object to add to (default is NULL)}
+
+\item{stats}{logical for whether to add statistical tests (default is FALSE)}
+
+\item{stats_test}{string for statistical test to use, select
+("para_unpaired", "para_paired", "nonpara_unpaired", or "nonpara_paired")}
 }
 \value{
 ggplot object
@@ -72,7 +79,6 @@ Make a SuperPlot
 \examples{
 superplot(lord_jcb,
   "Speed", "Treatment", "Replicate",
-  ylab = "Speed (um/min)"
-)
+  ylab = "Speed (um/min)")
 
 }

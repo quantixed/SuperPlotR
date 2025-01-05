@@ -16,7 +16,9 @@ validate_args(
   rep_summary = NULL,
   shapes = NULL,
   fsize = NULL,
-  gg = NULL
+  gg = NULL,
+  stats = NULL,
+  stats_test = NULL
 )
 }
 \arguments{
@@ -43,6 +45,10 @@ validate_args(
 \item{fsize}{argument passed to fsize}
 
 \item{gg}{argument passed to gg}
+
+\item{stats}{argument passed to stats}
+
+\item{stats_test}{argument passed to stats_test}
 }
 \value{
 none

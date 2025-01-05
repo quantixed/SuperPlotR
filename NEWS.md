@@ -1,9 +1,13 @@
 # SuperPlotR (development version)
 
+## SuperPlotR 0.0.4
+
+* Added simple statistical testing for the `superplot` function.
+
 ## SuperPlotR 0.0.3
 
-* Improved vignettes
-* Better error handling
+* Improved vignettes.
+* Better error handling.
 
 ## SuperPlotR 0.0.2
 
