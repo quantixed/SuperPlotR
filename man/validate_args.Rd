@@ -6,6 +6,7 @@
 \usage{
 validate_args(
   pal = NULL,
+  colour = NULL,
   xlab = NULL,
   ylab = NULL,
   datadist = NULL,
@@ -23,6 +24,8 @@ validate_args(
 }
 \arguments{
 \item{pal}{argument passed to pal}
+
+\item{colour}{argument passed to colour}
 
 \item{xlab}{argument passed to xlab}
 

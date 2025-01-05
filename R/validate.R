@@ -1,6 +1,7 @@
 #' Validate SuperPlot Arguments
 #'
 #' @param pal argument passed to pal
+#' @param colour argument passed to colour
 #' @param xlab argument passed to xlab
 #' @param ylab argument passed to ylab
 #' @param datadist argument passed to datadist
@@ -17,12 +18,13 @@
 #'
 #' @returns none
 #' @keywords internal
-validate_args <- function(pal = NULL, xlab = NULL, ylab = NULL, datadist = NULL,
-                          size = NULL, alpha = NULL, bars = NULL,
-                          linking = NULL, rep_summary = NULL, shapes = NULL,
-                          fsize = NULL, gg = NULL, stats = NULL,
+validate_args <- function(pal = NULL, colour = NULL, xlab = NULL, ylab = NULL,
+                          datadist = NULL, size = NULL, alpha = NULL,
+                          bars = NULL, linking = NULL, rep_summary = NULL,
+                          shapes = NULL, fsize = NULL, gg = NULL, stats = NULL,
                           stats_test = NULL) {
   if (!is.null(pal)) check_pal(pal)
+  if (!is.null(colour)) check_colour(colour)
   if (!is.null(xlab)) check_xlab(xlab)
   if (!is.null(ylab)) check_ylab(ylab)
   if (!is.null(datadist)) check_datadist(datadist)
@@ -58,6 +60,28 @@ check_pal <- function(arg) {
         stop("'pal' must be a vector of colours or one of tol_bright, tol_vibrant,
              tol_muted, tol_light, cud", call. = FALSE)
       }
+    }
+  }
+}
+
+#' Check colour argument
+#'
+#' @param arg argument passed as colour
+#' @returns none
+#' @keywords internal
+check_colour <- function(arg) {
+  # colour should be character, one of the following:
+  # "rl_green", "rl_red", "rl_blue", "rl_purple", "rl_orange", "rl_magenta", or
+  # a hex colour
+  # first test if it is a character vector of length 1
+  if (length(arg) > 1) {
+    stop("'colour' must be a hex colour or one of rl_green, rl_red, rl_blue,
+         rl_purple, rl_orange, or rl_magenta", call. = FALSE)
+  } else if (!arg %in% c("rl_green", "rl_red", "rl_blue", "rl_purple",
+                         "rl_orange", "rl_magenta")) {
+    if (!grepl("^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$", arg)) {
+      stop("'colour' must be a hex colour or one of rl_green, rl_red, rl_blue,
+           rl_purple, rl_orange, or rl_magenta", call. = FALSE)
     }
   }
 }

@@ -34,7 +34,7 @@ p <- superplot(lord_jcb, "Speed", "Treatment", "Replicate",
 p + facet_wrap(~Replicate)
 ```
 
-If we had another variable that we wished to facet by, then facetting by a this
+If we had another variable that we wished to facet by, then facetting by this
 variable is possible, but with a limitation: The summary points will remain as
 the replicate summary and therefore will be the same for each facet.
 This may not be what you want.
@@ -110,6 +110,6 @@ set.seed(123)
 example <- data.frame(meas = rep(rep(c(10, 9, 6, 6), each = 25), 4) + rnorm(400),
                       cond = rep(rep(c("ctrl", "drug 1", "drug 2", "drug 3"), each = 25), 4),
                       expt = rep(c("exp1","exp2","exp3","exp4"), each = 100))
-p <- superplot(example, "meas", "cond", "expt",
+superplot(example, "meas", "cond", "expt", linking = TRUE,
           stats_test = "para_unpaired")
 ```

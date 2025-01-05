@@ -1,0 +1,60 @@
+---
+title: "Making non-SuperPlots - FlatPlots"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Making non-SuperPlots - FlatPlots}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Making non-SuperPlots - FlatPlots
+
+SuperPlotR is designed to make SuperPlots, but sometimes you just want a simple
+plot. This vignette will show you how to make a "FlatPlot" using SuperPlotR.
+
+In contrast to SuperPlots, which emphasise the experimental replicates,
+FlatPlots have a flat structure, where the replicates are not shown. They can
+be used to look at data from a single experiment, or when the replicates are the
+individual data points.
+
+```{r flatplot}
+library(SuperPlotR)
+flatplot(lord_jcb, "Speed", "Treatment", ylab = "Speed (um/min)")
+```
+
+Many of the arguments are the same as for `superplot()`, but the `replicate`
+argument is not used.
+
+```{r flatplot2}
+flatplot(lord_jcb, "Speed", "Treatment", ylab = "Speed (um/min)",
+         colour = "rl_green")
+```
+
+The control of colour is by a single colour, which can be a hex code or one of
+our lab's publication colour palette.
+
+```{r flatplot3}
+flatplot(lord_jcb, "Speed", "Treatment", ylab = "Speed (um/min)",
+         colour = "rl_red", stats = TRUE)
+```
+
+We can request statistical testing as for SuperPlots, but the p-values will be
+calculated for the whole dataset, not for each replicate.
+
+```{r flatplot4}
+flatplot(lord_jcb, "Speed", "Treatment", ylab = "Speed (um/min)",
+         colour = "rl_red", size = 4, alpha = 0.25,
+         bars = "mean_ci")
+```
+
+In this example, we have increased the size of the points, made them slightly
+more transparent, and added error bars to show the mean and 95% confidence
+interval.
+

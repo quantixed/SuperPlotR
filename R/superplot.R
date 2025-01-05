@@ -11,14 +11,14 @@
 #' @param datadist string for data distribution to use, select ("sina" default,
 #' "jitter", or "violin")
 #' @param size numeric vector of size range data and summary points (default is
-#' c(0.8, 1.5))
+#' c(2, 3))
 #' @param alpha numeric vector of alpha range data and summary points (default
 #' is c(0.5, 0.7))
 #' @param bars string for type of error bars to add, select ("none" default,
 #' "mean_sd", "mean_sem", or "mean_ci")
 #' @param linking logical for whether to link summary points between conditions
 #' (default is FALSE)
-#' @param fsize numeric font size for text (default is 9)
+#' @param fsize numeric font size for text (default is 12)
 #' @param shapes logical for whether to use different shapes for replicates
 #' @param rep_summary string for summary statistic to use for replicates, select
 #' ("rep_mean" default, or "rep_median")
@@ -66,7 +66,7 @@ superplot <- function(df,
                 gg = gg, stats = stats, stats_test = stats_test)
 
   # verify that the data frame to make sure that it is suitable for SuperPlot
-  if (verify_columns(df, meas, cond, repl) == FALSE) {
+  if (verify_sp_columns(df, meas, cond, repl) == FALSE) {
     return(NULL)
   }
 

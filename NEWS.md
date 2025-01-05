@@ -1,5 +1,9 @@
 # SuperPlotR (development version)
 
+## SuperPlotR 0.0.5
+
+* Added `plainplot` function for simple plots.
+
 ## SuperPlotR 0.0.4
 
 * Added simple statistical testing for the `superplot` function.

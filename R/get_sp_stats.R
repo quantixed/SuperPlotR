@@ -12,7 +12,7 @@
 #' @returns nothing, prints results to console
 #' @importFrom stats t.test wilcox.test kruskal.test TukeyHSD
 #' @export
-get_sp_stats <-  function(df, rep_summary, cond, repl, ncond, nrepl,
+get_sp_stats <- function(df, rep_summary, cond, repl, ncond, nrepl,
                           stats_test) {
   # if ncond is 1, then we can't do any tests
   if (ncond == 1) {
@@ -66,15 +66,20 @@ get_sp_stats <-  function(df, rep_summary, cond, repl, ncond, nrepl,
         cat("ANOVA not significant, no Tukey's HSD test performed\n")
       }
     } else {
-      cat("Performing repeated measures ANOVA\n")
-      aov <- aov(df[[rep_summary]] ~ df[[cond]] + Error(df[[repl]]))
-      print(aov)
-      print(summary(aov))
-      # if Pr is < 0.05, then we do Tukey's HSD test
-      if (summary(aov)[[2]][[1]]["Pr(>F)"][[1]][1] < 0.05) {
-        cat("Pr < 0.05, perform multiple comparisons manually\n")
+      if (!is.null(repl)) {
+        cat("Performing repeated measures ANOVA\n")
+        aov <- aov(df[[rep_summary]] ~ df[[cond]] + Error(df[[repl]]))
+        print(aov)
+        print(summary(aov))
+        # if Pr is < 0.05, then we do Tukey's HSD test
+        if (summary(aov)[[2]][[1]]["Pr(>F)"][[1]][1] < 0.05) {
+          cat("Pr < 0.05, perform multiple comparisons manually\n")
+        } else {
+          cat("ANOVA not significant\n")
+        }
       } else {
-        cat("ANOVA not significant\n")
+        cat("Selected para_paired, and there are more than 2 groups. Please
+            consider performing a repeated measures ANOVA manually\n")
       }
     }
   }
@@ -92,7 +97,7 @@ get_sp_stats <-  function(df, rep_summary, cond, repl, ncond, nrepl,
         cat("Kruskal-Wallis test not significant\n")
       }
     } else {
-      cat("Selected nonpara-paired, and there are more than 2 groups. Please
+      cat("Selected nonpara_paired, and there are more than 2 groups. Please
           consider performing a Friedman test manually\n")
     }
   }
