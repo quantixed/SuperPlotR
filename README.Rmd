@@ -16,6 +16,7 @@ knitr::opts_chunk$set(
 # SuperPlotR <a href="https://quantixed.github.io/SuperPlotR/"><img src="man/figures/logo.png" align="right" height="139" alt="SuperPlotR website" /></a>
 
 <!-- badges: start -->
+[![DOI](https://zenodo.org/badge/900481659.svg)](https://doi.org/10.5281/zenodo.14606751)
 <!-- badges: end -->
 
 The goal of SuperPlotR is to allow the user to easily generate SuperPlots in R.
