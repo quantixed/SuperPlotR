@@ -1,5 +1,9 @@
 # SuperPlotR (development version)
 
+## SuperPlotR 0.0.6
+
+* Fixed factoring bug.
+
 ## SuperPlotR 0.0.5
 
 * Added `plainplot` function for simple plots.

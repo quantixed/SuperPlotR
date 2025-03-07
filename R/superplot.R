@@ -71,7 +71,8 @@ superplot <- function(df,
   }
 
   # if the cond column is not character, convert it
-  if (!is.character(df[[cond]])) {
+  # but only if it is not already a factor
+  if (!is.factor(df[[cond]]) && !is.character(df[[cond]])) {
     df[[cond]] <- as.character(df[[cond]])
   }
 
