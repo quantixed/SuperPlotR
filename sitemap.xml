@@ -17,6 +17,7 @@
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/check_datadist.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/check_fsize.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/check_gg.html</loc></url>
+<url><loc>https://quantixed.github.io/SuperPlotR/reference/check_info.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/check_linking.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/check_pal.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/check_rep_summary.html</loc></url>
@@ -29,10 +30,13 @@
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/flatplot.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/get_fp_colour.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/get_sp_colours.html</loc></url>
+<url><loc>https://quantixed.github.io/SuperPlotR/reference/get_sp_info.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/get_sp_shapes.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/get_sp_stats.html</loc></url>
+<url><loc>https://quantixed.github.io/SuperPlotR/reference/get_sp_summary.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/index.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/lord_jcb.html</loc></url>
+<url><loc>https://quantixed.github.io/SuperPlotR/reference/representative.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/superplot.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/trio_ci.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/trio_mean.html</loc></url>

@@ -6,12 +6,11 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <title>Advanced Usage • SuperPlotR</title>
-<!-- favicons --><link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
-<link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
-<link rel="apple-touch-icon" type="image/png" sizes="180x180" href="../apple-touch-icon.png">
-<link rel="apple-touch-icon" type="image/png" sizes="120x120" href="../apple-touch-icon-120x120.png">
-<link rel="apple-touch-icon" type="image/png" sizes="76x76" href="../apple-touch-icon-76x76.png">
-<link rel="apple-touch-icon" type="image/png" sizes="60x60" href="../apple-touch-icon-60x60.png">
+<!-- favicons --><link rel="icon" type="image/png" sizes="96x96" href="../favicon-96x96.png">
+<link rel="icon" type="”image/svg+xml”" href="../favicon.svg">
+<link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+<link rel="icon" sizes="any" href="../favicon.ico">
+<link rel="manifest" href="../site.webmanifest">
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
@@ -26,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">SuperPlotR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.6</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.7</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -157,6 +156,129 @@ shapes matches a different order to the default. Another way to achieve
 the same thing is to supply a reordered colour palette to
 <code>superplot</code>.</p>
 </div>
+<div class="section level3">
+<h3 id="getting-information-about-your-superplot">Getting information about your SuperPlot<a class="anchor" aria-label="anchor" href="#getting-information-about-your-superplot"></a>
+</h3>
+<p>Having made your SuperPlot, you might want to know a bit more about
+it. For example, you might wonder which replicate is which or perhaps
+you received a warning that some replicates are missing some
+conditions.</p>
+<p>You can set the option <code>info = TRUE</code> when you call
+<code>superplot</code> to get more detailed information.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>, ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span>,</span>
+<span>          info <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
+<span><span class="co">#&gt; SuperPlot information</span></span>
+<span><span class="co">#&gt; =====================</span></span>
+<span><span class="co">#&gt; Number of conditions: 2</span></span>
+<span><span class="co">#&gt; Number of replicates: 3</span></span>
+<span><span class="co">#&gt; Number of data points: 300</span></span>
+<span><span class="co">#&gt; Number of summary points: 6</span></span>
+<span><span class="co">#&gt; =====================</span></span>
+<span><span class="co">#&gt; Colour palette: tol_bright</span></span>
+<span><span class="co">#&gt; Data distribution: sina</span></span>
+<span><span class="co">#&gt; Summary statistic: rep_mean</span></span>
+<span><span class="co">#&gt; No bars</span></span>
+<span><span class="co">#&gt; X-axis label:</span></span>
+<span><span class="co">#&gt; Y-axis label: Speed (µm/min)</span></span>
+<span><span class="co">#&gt; Point sizes: 2 (individual), 3 (summary)</span></span>
+<span><span class="co">#&gt; Alpha for points: 0.5 (individual), 0.7 (summary)</span></span>
+<span><span class="co">#&gt; Font size: 12</span></span>
+<span><span class="co">#&gt; No statistics</span></span>
+<span><span class="co">#&gt; =====================</span></span>
+<span><span class="co">#&gt; Colours for replicates: #4477AA, #CCBB44, #EE6677</span></span>
+<span><span class="co">#&gt; Shapes for replicates: 21, 21, 21</span></span>
+<span><span class="co">#&gt; =====================</span></span>
+<span><span class="co">#&gt; Summary statistics:</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 6</span></span></span>
+<span><span class="co">#&gt;   Treatment Replicate rep_mean rep_median sp_colour sp_shape</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>        <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;fct&gt;</span>   </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Control   1             41.5       41.7 #4477AA   21      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Control   2             32.6       34.4 #CCBB44   21      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Control   3             20.6       20.3 #EE6677   21      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Drug      1             29.6       30.1 #4477AA   21      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Drug      2             22.3       21.9 #CCBB44   21      </span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Drug      3             12.9       12.6 #EE6677   21</span></span></code></pre></div>
+<p><img src="advanced_files/figure-html/info-1.png" width="576"></p>
+<p>When this is set, the SuperPlot will contain a legend, otherwise, the
+legend is not shown by default. This is because the legend is not very
+useful in most cases, as the colours and shapes are already shown in the
+plot. However, if you want to see the legend, you can either set
+<code>info = TRUE</code> or use the append one the output using
+<code>+ theme(legend.position = "right")</code>.</p>
+<div class="section level4">
+<h4 id="retrieving-the-summary-data">Retrieving the summary data<a class="anchor" aria-label="anchor" href="#retrieving-the-summary-data"></a>
+</h4>
+<p>If you need to retrieve the summary data used to create the
+SuperPlot, you can use the <code>get_sp_summary</code> function. This
+will return a data frame with the summary data used to create the
+SuperPlot.</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">summary_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_sp_summary.html">get_sp_summary</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span><span class="op">)</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">summary_data</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 4</span></span></span>
+<span><span class="co">#&gt;   Treatment Replicate rep_mean rep_median</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>         <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span>      <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Control           1     41.5       41.7</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Control           2     32.6       34.4</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Control           3     20.6       20.3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Drug              1     29.6       30.1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Drug              2     22.3       21.9</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Drug              3     12.9       12.6</span></span></code></pre></div>
+</div>
+<div class="section level4">
+<h4 id="finding-representative-datapoints">Finding representative datapoints<a class="anchor" aria-label="anchor" href="#finding-representative-datapoints"></a>
+</h4>
+<p>If you want to find the representative datapoints for each condition,
+then you can use the <code><a href="../reference/representative.html">representative()</a></code> function. This is
+handy if the data come from a set of images and you’d like to show a
+representative image in the figure.</p>
+<p>The function returns a data frame with the datapoints ranked by
+closeness to the summary of each replicate or condition (see
+<code><a href="../reference/representative.html">?representative</a></code> for more information). It also prints the
+top ranked datapoint to the console.</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">representative_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/representative.html">representative</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 6</span></span></span>
+<span><span class="co">#&gt;   Treatment Replicate Speed rowno     diff  rank</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>    <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Control   1          41.5     5 0.052<span style="text-decoration: underline;">4</span>       1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Control   2          32.9    98 0.220        1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Control   3          20.7   124 0.054<span style="text-decoration: underline;">1</span>       1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Drug      1          29.4   178 0.217        1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Drug      2          22.3   207 0.000<span style="text-decoration: underline;">237</span>     1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Drug      3          12.9   285 0.011<span style="text-decoration: underline;">3</span>       1</span></span>
+<span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">representative_data</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 6</span></span></span>
+<span><span class="co">#&gt;   Treatment Replicate Speed rowno   diff  rank</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span>  <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Control   1          41.5     5 0.052<span style="text-decoration: underline;">4</span>     1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Control   1          41.4    13 0.087<span style="text-decoration: underline;">5</span>     2</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Control   1          41.9     2 0.366      3</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Control   1          42.2    31 0.688      4</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Control   1          40.2    26 1.26       5</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Control   1          39.6    36 1.86       6</span></span></code></pre></div>
+<p>In this example, the dataset has no label column, so the row number
+is used as the label. If you have a label column, you can specify it
+using the <code>label</code> parameter. The label could be a filename or
+other identifier to identify where the datapoint came from.</p>
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="co"># Assuming lord_jcb has a column "FileName" with the labels</span></span>
+<span><span class="va">example</span> <span class="op">&lt;-</span> <span class="va">lord_jcb</span></span>
+<span><span class="va">example</span><span class="op">$</span><span class="va">FileName</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"Image_"</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">example</span><span class="op">)</span><span class="op">)</span>, <span class="st">".tif"</span><span class="op">)</span></span>
+<span><span class="va">representative_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/representative.html">representative</a></span><span class="op">(</span><span class="va">example</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>,</span>
+<span>                                      label <span class="op">=</span> <span class="st">"FileName"</span><span class="op">)</span></span>
+<span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 6</span></span></span>
+<span><span class="co">#&gt;   Treatment Replicate Speed FileName          diff  rank</span></span>
+<span><span class="co">#&gt;   <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>     <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;chr&gt;</span>            <span style="color: #949494; font-style: italic;">&lt;dbl&gt;</span> <span style="color: #949494; font-style: italic;">&lt;int&gt;</span></span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">1</span> Control   1          41.5 Image_5.tif   0.052<span style="text-decoration: underline;">4</span>       1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">2</span> Control   2          32.9 Image_98.tif  0.220        1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">3</span> Control   3          20.7 Image_124.tif 0.054<span style="text-decoration: underline;">1</span>       1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">4</span> Drug      1          29.4 Image_178.tif 0.217        1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">5</span> Drug      2          22.3 Image_207.tif 0.000<span style="text-decoration: underline;">237</span>     1</span></span>
+<span><span class="co">#&gt; <span style="color: #BCBCBC;">6</span> Drug      3          12.9 Image_285.tif 0.011<span style="text-decoration: underline;">3</span>       1</span></span></code></pre></div>
+</div>
+</div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
@@ -169,7 +291,7 @@ the same thing is to supply a reordered colour palette to
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.1.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
 </div>
 
     </footer>
