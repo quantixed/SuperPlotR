@@ -22,7 +22,7 @@ validate_args <- function(pal = NULL, colour = NULL, xlab = NULL, ylab = NULL,
                           datadist = NULL, size = NULL, alpha = NULL,
                           bars = NULL, linking = NULL, rep_summary = NULL,
                           shapes = NULL, fsize = NULL, gg = NULL, stats = NULL,
-                          stats_test = NULL) {
+                          stats_test = NULL, info = NULL) {
   if (!is.null(pal)) check_pal(pal)
   if (!is.null(colour)) check_colour(colour)
   if (!is.null(xlab)) check_xlab(xlab)
@@ -38,6 +38,7 @@ validate_args <- function(pal = NULL, colour = NULL, xlab = NULL, ylab = NULL,
   if (!is.null(gg)) check_gg(gg)
   if (!is.null(stats)) check_stats(stats)
   if (!is.null(stats_test)) check_stats_test(stats_test)
+  if (!is.null(info)) check_info(info)
 }
 
 #' Check pal argument
@@ -244,5 +245,17 @@ check_stats_test <- function(arg) {
                   "nonpara_paired")) {
     stop("'stats_test' must be one of para_unpaired, para_paired,
          nonpara_unpaired, nonpara_paired", call. = FALSE)
+  }
+}
+
+#' Check info argument
+#'
+#' @param arg argument passed as info
+#' @returns none
+#' @keywords internal
+check_info <- function(arg) {
+  # info should be a logical
+  if (!is.logical(arg)) {
+    stop("'info' must be a logical", call. = FALSE)
   }
 }

@@ -102,3 +102,62 @@ It is also possible to reorder the Replicates using a similar strategy. You
 might want to do this so that the order of colours and shapes matches a
 different order to the default. Another way to achieve the same thing is to
 supply a reordered colour palette to `superplot`.
+
+## Getting information about your SuperPlot
+
+Having made your SuperPlot, you might want to know a bit more about it.
+For example, you might wonder which replicate is which or perhaps you received
+a warning that some replicates are missing some conditions.
+
+You can set the option `info = TRUE` when you call `superplot` to get more
+detailed information.
+
+```{r info}
+superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)",
+          info = TRUE)
+```
+
+When this is set, the SuperPlot will contain a legend, otherwise, the legend is
+not shown by default. This is because the legend is not very useful in most
+cases, as the colours and shapes are already shown in the plot. However, if you
+want to see the legend, you can either set `info = TRUE` or use the append one
+the output using `+ theme(legend.position = "right")`.
+
+### Retrieving the summary data
+
+If you need to retrieve the summary data used to create the SuperPlot, you can
+use the `get_sp_summary` function. This will return a data frame with the
+summary data used to create the SuperPlot.
+
+```{r summary}
+summary_data <- get_sp_summary(lord_jcb, "Speed", "Treatment", "Replicate")
+head(summary_data)
+```
+
+### Finding representative datapoints
+
+If you want to find the representative datapoints for each condition, then you
+can use the `representative()` function. This is handy if the data come from
+a set of images and you'd like to show a representative image in the figure.
+
+The function returns a data frame with the datapoints ranked by closeness to
+the summary of each replicate or condition (see `?representative` for more
+information). It also prints the top ranked datapoint to the console.
+
+```{r representative}
+representative_data <- representative(lord_jcb, "Speed", "Treatment", "Replicate")
+head(representative_data)
+```
+
+In this example, the dataset has no label column, so the row number is used as
+the label. If you have a label column, you can specify it using the `label`
+parameter. The label could be a filename or other identifier to identify where
+the datapoint came from.
+
+```{r representative_label}
+# Assuming lord_jcb has a column "FileName" with the labels
+example <- lord_jcb
+example$FileName <- paste0("Image_", seq_len(nrow(example)), ".tif")
+representative_data <- representative(example, "Speed", "Treatment", "Replicate",
+                                      label = "FileName")
+```

@@ -26,6 +26,8 @@
 #' @param stats logical for whether to add statistical tests (default is FALSE)
 #' @param stats_test string for statistical test to use, select
 #' ("para_unpaired", "para_paired", "nonpara_unpaired", or "nonpara_paired")
+#' @param info logical for whether to print information about the plot (default
+#' is FALSE)
 #'
 #' @return ggplot object
 #' @import ggplot2
@@ -55,7 +57,8 @@ superplot <- function(df,
                       fsize = 12,
                       gg = NULL,
                       stats = FALSE,
-                      stats_test = "para_unpaired") {
+                      stats_test = "para_unpaired",
+                      info = FALSE) {
   ncond <- nrepl <- NULL
   rep_mean <- rep_median <- NULL
 
@@ -63,7 +66,7 @@ superplot <- function(df,
   validate_args(pal = pal, xlab = xlab, ylab = ylab, datadist = datadist,
                 size = size, alpha = alpha, bars = bars, linking = linking,
                 rep_summary = rep_summary, shapes = shapes, fsize = fsize,
-                gg = gg, stats = stats, stats_test = stats_test)
+                gg = gg, stats = stats, stats_test = stats_test, info = info)
 
   # verify that the data frame to make sure that it is suitable for SuperPlot
   if (verify_sp_columns(df, meas, cond, repl) == FALSE) {
@@ -77,7 +80,8 @@ superplot <- function(df,
   }
 
   # if the repl column is not character, convert it
-  if (!is.character(df[[repl]])) {
+  # but only if it is not already a factor
+  if (!is.character(df[[repl]]) && !is.factor(df[[repl]])) {
     df[[repl]] <- as.character(df[[repl]])
   }
 
@@ -92,21 +96,32 @@ superplot <- function(df,
     length()
 
   # calculate summary statistics
-  summary_df <- df %>%
-    group_by(!!sym(cond), !!sym(repl)) %>%
-    summarise(
-      rep_mean = mean(!!sym(meas), na.rm = TRUE),
-      rep_median = median(!!sym(meas), na.rm = TRUE)
-    )
+  summary_df <- get_sp_summary(df = df,
+                               meas = meas, cond = cond, repl = repl)
+
   # generate a warning if NROW of summary_df doesn't equal the product of
   # unique values in cond and repl
-  if (nrow(summary_df) != ncond * nrepl) {
+  if (nrow(summary_df) != ncond * nrepl && info == FALSE) {
     warning("Summary statistics were not calculated for all combinations of
-            condition and replicate.\nCheck for missing data.")
+            condition and replicate.\nCheck for missing data.\n
+            Call again with `info = TRUE` to see more details.")
   }
   # get colour values for the repl column
   sp_colours <- get_sp_colours(nrepl, pal)
   sp_shapes <- get_sp_shapes(nrepl, shapes)
+
+  # if info is TRUE, print information about the plot
+  if (info == TRUE) {
+    get_sp_info(df = df,
+                meas = meas, cond = cond, repl = repl,
+                pal = pal, xlab = xlab, ylab = ylab,
+                datadist = datadist, size = size, alpha = alpha,
+                bars = bars, linking = linking,
+                rep_summary = rep_summary, shapes = shapes,
+                fsize = fsize, gg = gg,
+                stats = stats, stats_test = stats_test
+    )
+  }
 
   # make superplot ----
   # we may have an existing ggplot object to add to
@@ -175,8 +190,13 @@ superplot <- function(df,
     # plot is scaled automatically
   }
   # theme
-  p <- p + theme_cowplot(fsize) +
-    theme(legend.position = "none")
+  p <- p + theme_cowplot(fsize)
+  # info is FALSE hide legend
+  if (info == TRUE) {
+    p <- p + theme(legend.position = "right")
+  }
+  p <- p + theme(legend.position = "none")
+
   # add stats if requested
   if (stats == TRUE) {
     get_sp_stats(as.data.frame(summary_df), rep_summary, cond, repl, ncond, nrepl, stats_test)

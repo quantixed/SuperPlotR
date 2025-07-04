@@ -22,7 +22,8 @@ superplot(
   fsize = 12,
   gg = NULL,
   stats = FALSE,
-  stats_test = "para_unpaired"
+  stats_test = "para_unpaired",
+  info = FALSE
 )
 }
 \arguments{
@@ -69,6 +70,9 @@ is c(0.5, 0.7))}
 
 \item{stats_test}{string for statistical test to use, select
 ("para_unpaired", "para_paired", "nonpara_unpaired", or "nonpara_paired")}
+
+\item{info}{logical for whether to print information about the plot (default
+is FALSE)}
 }
 \value{
 ggplot object

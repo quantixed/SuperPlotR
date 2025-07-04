@@ -1,5 +1,14 @@
 # SuperPlotR (development version)
 
+## SuperPlotR 0.0.7
+
+* Added ability to find representative datapoints with `representative()`
+* Added ability to retrieve information about superplot using the option
+  `info = TRUE`. User is prompted to do this if there are unequal numbers of
+  replicates in each condition
+* Added `get_sp_summary()` to retrieve the data frame that is overlaid
+  on the superplot
+
 ## SuperPlotR 0.0.6
 
 * Fixed factoring bug.

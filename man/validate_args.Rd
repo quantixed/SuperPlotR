@@ -19,7 +19,8 @@ validate_args(
   fsize = NULL,
   gg = NULL,
   stats = NULL,
-  stats_test = NULL
+  stats_test = NULL,
+  info = NULL
 )
 }
 \arguments{

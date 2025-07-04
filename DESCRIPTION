@@ -1,6 +1,6 @@
 Package: SuperPlotR
 Title: Making SuperPlots in R
-Version: 0.0.6
+Version: 0.0.7
 Authors@R:
     person(given = "Stephen J",
            family = "Royle",
@@ -25,7 +25,8 @@ Imports:
     ggplot2,
     dplyr,
     ggforce,
-    cowplot
+    cowplot,
+    rlang
 URL: https://github.com/quantixed/SuperPlotR, https://quantixed.github.io/SuperPlotR/
 BugReports: https://github.com/quantixed/SuperPlotR/issues
 Suggests: 
