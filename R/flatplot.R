@@ -71,7 +71,7 @@ flatplot <- function(df,
     df[[cond]] <- as.character(df[[cond]])
   }
 
-  fp_colour <- get_fp_colour(colour)
+  fp_colour <- get_fp_colours(colour)
 
   # how many unique values in cond?
   ncond <- df %>%
@@ -79,7 +79,7 @@ flatplot <- function(df,
     unique() %>%
     length()
 
-  # make superplot ----
+  # make flatplot ----
   # we may have an existing ggplot object to add to
   if (is.null(gg)) {
     p <- ggplot()
@@ -89,23 +89,49 @@ flatplot <- function(df,
 
   # data points get plotted here
   if (datadist == "sina") {
-    p <- p +
-      geom_sina(
-        data = df,
-        aes(x = !!sym(cond), y = !!sym(meas)),
-        colour = fp_colour,
-        alpha = alpha, shape = 16, jitter_y = FALSE,
-        size = size, maxwidth = 0.8
-      )
+    if (length(fp_colour) == 1) {
+      # Single color - use as fixed aesthetic
+      p <- p +
+        geom_sina(
+          data = df,
+          aes(x = !!sym(cond), y = !!sym(meas)),
+          colour = fp_colour,
+          alpha = alpha, shape = 16, jitter_y = FALSE,
+          size = size, maxwidth = 0.8
+        )
+    } else {
+      # Multiple colors - map to condition levels
+      p <- p +
+        geom_sina(
+          data = df,
+          aes(x = !!sym(cond), y = !!sym(meas), colour = !!sym(cond)),
+          alpha = alpha, shape = 16, jitter_y = FALSE,
+          size = size, maxwidth = 0.8
+        ) +
+        scale_colour_manual(values = fp_colour)
+    }
   } else if (datadist == "jitter") {
-    p <- p +
-      geom_jitter(
-        data = df,
-        aes(x = !!sym(cond), y = !!sym(meas)),
-        colour = fp_colour,
-        alpha = alpha, shape = 16,
-        size = size
-      )
+    if (length(fp_colour) == 1) {
+      # Single color - use as fixed aesthetic
+      p <- p +
+        geom_jitter(
+          data = df,
+          aes(x = !!sym(cond), y = !!sym(meas)),
+          colour = fp_colour,
+          alpha = alpha, shape = 16,
+          size = size
+        )
+    } else {
+      # Multiple colors - map to condition levels
+      p <- p +
+        geom_jitter(
+          data = df,
+          aes(x = !!sym(cond), y = !!sym(meas), colour = !!sym(cond)),
+          alpha = alpha, shape = 16,
+          size = size
+        ) +
+        scale_colour_manual(values = fp_colour)
+    }
   } else {
     warning("datadist must be one of 'sina' or 'jitter'")
   }

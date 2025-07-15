@@ -26,11 +26,24 @@ pie chart using `ggplot2`. It can also take a second vector of values to create
 a pie chart with two layers.
 
 ```{r pieplot1}
-pieplot(x1 = c(143, 459),
+pieplot(x1 = c(123, 456),
         cols = c("#44aa99", "#117733"))
 ```
 ```{r pieplot2}
-pieplot(x1 = c(61 - 9, 9, 593, 3595 - 593),
+pieplot(x1 = c(50 - 20, 20, 80, 180 - 80),
         cols = c("#bbbbbb", "#44aa99", "#117733", "#dddddd"),
-        x2 = c(61, 3595))
+        x2 = c(100, 130))
 ```
+
+The `cols` argument should be a character vector of colours, which can be
+hex codes or one of our lab's publication colour palette. The function will
+convert the colours to a format that `ggplot2` can use.
+
+```{r pieplot3}
+pieplot(x1 = c(50 - 20, 20, 80, 180 - 80),
+        cols = c("#bbbbbb", "rl_blue", "#117733", "lavender"),
+        x2 = c(10, 13), label = "Example Pie Chart")
+```
+
+Note that the values for the second pie chart layer do not have the same
+as the first layer. The function will automatically scale the second layer.

@@ -24,16 +24,15 @@ second layer of the pie chart.}
 ggplot object
 }
 \description{
-The function \code{pie_maker} creates a pie chart using
-\code{ggplot2}. It takes two vectors of values and optionally a
+The function \code{pie_maker} creates a pie chart using \code{ggplot2}.
+It takes two vectors of values and optionally a
 second vector of values to create a pie chart with two layers.
 }
 \examples{
-pieplot(x1 = c(143, 459),
+pieplot(x1 = c(123, 456),
   cols = c("#44aa99", "#117733"))
 
-pieplot(x1 = c(61 - 9, 9, 593, 3595 - 593),
-  cols = c("#bbbbbb", "#44aa99", "#117733", "#dddddd"),
-  x2 = c(61, 3595))
+pieplot(x1 = c(50 - 20, 20, 80, 180 - 80),
+  cols = c("#bbbbbb", "#44aa99", "#117733", "#dddddd"), x2 = c(100,130))
 
 }

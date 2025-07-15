@@ -1,4 +1,15 @@
 url: https://quantixed.github.io/SuperPlotR/
+
 template:
   bootstrap: 5
   bootswatch: flatly
+
+articles:
+- title: How to...
+  navbar: ~
+  contents:
+  - SuperPlotR
+  - advanced
+  - limitations
+  - flatplot
+  - pieplot

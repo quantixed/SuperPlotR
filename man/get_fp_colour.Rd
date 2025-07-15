@@ -2,19 +2,19 @@
 % Please edit documentation in R/get_fp_colour.R
 \name{get_fp_colour}
 \alias{get_fp_colour}
-\title{FlatPlot Colour Selection}
+\title{FlatPlot Colour Selection (Single Color)}
 \usage{
 get_fp_colour(key)
 }
 \arguments{
 \item{key}{character name, can be "rl_green", "rl_red", "rl_blue",
-"rl_purple", "rl_orange", "rl_magenta", or a hex colour}
+"rl_yellow", "rl_purple", "rl_orange", "rl_magenta", or a hex colour}
 }
 \value{
 character of hex colour
 }
 \description{
-FlatPlot Colour Selection
+FlatPlot Colour Selection (Single Color)
 }
 \examples{
 get_fp_colour("rl_green")

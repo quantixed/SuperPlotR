@@ -69,20 +69,34 @@ check_pal <- function(arg) {
 #'
 #' @param arg argument passed as colour
 #' @returns none
+#' @importFrom grDevices colors
 #' @keywords internal
 check_colour <- function(arg) {
-  # colour should be character, one of the following:
-  # "rl_green", "rl_red", "rl_blue", "rl_purple", "rl_orange", "rl_magenta", or
-  # a hex colour
-  # first test if it is a character vector of length 1
-  if (length(arg) > 1) {
-    stop("'colour' must be a hex colour or one of rl_green, rl_red, rl_blue,
-         rl_purple, rl_orange, or rl_magenta", call. = FALSE)
-  } else if (!arg %in% c("rl_green", "rl_red", "rl_blue", "rl_purple",
-                         "rl_orange", "rl_magenta")) {
-    if (!grepl("^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$", arg)) {
-      stop("'colour' must be a hex colour or one of rl_green, rl_red, rl_blue,
-           rl_purple, rl_orange, or rl_magenta", call. = FALSE)
+  # colour should be character vector, each element one of the following:
+  # "rl_green", "rl_red", "rl_blue", "rl_yellow", "rl_purple", "rl_orange",
+  # "rl_magenta", or a hex colour
+
+  # Check if arg is a character vector
+  if (!is.character(arg)) {
+    stop("'colour' must be a character vector", call. = FALSE)
+  }
+
+  # Define valid named colours
+  valid_colours <- c(colors(), "rl_green", "rl_red", "rl_blue", "rl_yellow",
+                     "rl_purple", "rl_orange", "rl_magenta")
+
+  # Check each element in the vector
+  for (i in seq_along(arg)) {
+    colour <- arg[i]
+
+    # Check if it's a valid named colour
+    if (!colour %in% valid_colours) {
+      # If not a named colour, check if it's a valid hex colour
+      if (!grepl("^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$", colour)) {
+        stop("'colour[", i, "]' must be a hex colour, a named colour or one of
+        rl_green, rl_red, rl_blue, rl_yellow, rl_purple, rl_orange,
+             or rl_magenta", call. = FALSE)
+      }
     }
   }
 }
