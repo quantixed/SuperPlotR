@@ -1,5 +1,9 @@
 # SuperPlotR (development version)
 
+## SuperPlotR 0.0.8
+
+* Added `pieplot()` to conveniently make pie charts with ggplot2
+
 ## SuperPlotR 0.0.7
 
 * Added ability to find representative datapoints with `representative()`

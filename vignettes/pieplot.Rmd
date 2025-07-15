@@ -1,0 +1,36 @@
+---
+title: "Making non-SuperPlots - PiePlots"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{pieplot}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(SuperPlotR)
+```
+
+# Making non-SuperPlots - FlatPlots
+
+For convenience, SuperPlotR also provides a function to make pie charts. Called
+`pieplot()`, it takes a vector of values and a vector of colours, and returns a
+pie chart using `ggplot2`. It can also take a second vector of values to create
+a pie chart with two layers.
+
+```{r pieplot1}
+pieplot(x1 = c(143, 459),
+        cols = c("#44aa99", "#117733"))
+```
+```{r pieplot2}
+pieplot(x1 = c(61 - 9, 9, 593, 3595 - 593),
+        cols = c("#bbbbbb", "#44aa99", "#117733", "#dddddd"),
+        x2 = c(61, 3595))
+```
