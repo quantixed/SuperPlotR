@@ -5,8 +5,9 @@ articles:
   advanced: advanced.html
   flatplot: flatplot.html
   limitations: limitations.html
+  pieplot: pieplot.html
   SuperPlotR: SuperPlotR.html
-last_built: 2025-07-04T11:02Z
+last_built: 2025-07-15T09:44Z
 urls:
   reference: https://quantixed.github.io/SuperPlotR/reference
   article: https://quantixed.github.io/SuperPlotR/articles
