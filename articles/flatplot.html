@@ -40,8 +40,8 @@
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
 <li><a class="dropdown-item" href="../articles/advanced.html">Advanced Usage</a></li>
-    <li><a class="dropdown-item" href="../articles/flatplot.html">Making non-SuperPlots - FlatPlots</a></li>
     <li><a class="dropdown-item" href="../articles/limitations.html">Limitations to SuperPlotR</a></li>
+    <li><a class="dropdown-item" href="../articles/flatplot.html">Making non-SuperPlots - FlatPlots</a></li>
     <li><a class="dropdown-item" href="../articles/pieplot.html">Making non-SuperPlots - PiePlots</a></li>
   </ul>
 </li>
@@ -93,8 +93,8 @@ but the <code>replicate</code> argument is not used.</p>
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/flatplot.html">flatplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, ylab <span class="op">=</span> <span class="st">"Speed (um/min)"</span>,</span>
 <span>         colour <span class="op">=</span> <span class="st">"rl_green"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="flatplot_files/figure-html/flatplot2-1.png" width="700"></p>
-<p>The control of colour is by a single colour, which can be a hex code
-or one of our lab’s publication colour palette.</p>
+<p>The control of colour is usually by a single colour, which can be a
+hex code or one of our lab’s publication colour palette.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/flatplot.html">flatplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, ylab <span class="op">=</span> <span class="st">"Speed (um/min)"</span>,</span>
 <span>         colour <span class="op">=</span> <span class="st">"rl_red"</span>, stats <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
@@ -111,14 +111,21 @@ or one of our lab’s publication colour palette.</p>
 <span><span class="co">#&gt; mean of x mean of y </span></span>
 <span><span class="co">#&gt;  31.58355  21.59657</span></span></code></pre></div>
 <p><img src="flatplot_files/figure-html/flatplot3-1.png" width="700"></p>
+<p>It is also possible to specify a vector of colours, which will be
+used for each condition. Any extra colours are ignored, and valid inputs
+are R colors, hex codes or our lab’s colour palette.</p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/flatplot.html">flatplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, ylab <span class="op">=</span> <span class="st">"Speed (um/min)"</span>,</span>
+<span>         colour <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"rl_red"</span>, <span class="st">"rl_blue"</span>, <span class="st">"rl_green"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<p><img src="flatplot_files/figure-html/flatplot4-1.png" width="700"></p>
 <p>We can request statistical testing as for SuperPlots, but the
 p-values will be calculated for the whole dataset, not for each
 replicate.</p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/flatplot.html">flatplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, ylab <span class="op">=</span> <span class="st">"Speed (um/min)"</span>,</span>
 <span>         colour <span class="op">=</span> <span class="st">"rl_red"</span>, size <span class="op">=</span> <span class="fl">4</span>, alpha <span class="op">=</span> <span class="fl">0.25</span>,</span>
 <span>         bars <span class="op">=</span> <span class="st">"mean_ci"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="flatplot_files/figure-html/flatplot4-1.png" width="700"></p>
+<p><img src="flatplot_files/figure-html/flatplot5-1.png" width="700"></p>
 <p>In this example, we have increased the size of the points, made them
 slightly more transparent, and added error bars to show the mean and 95%
 confidence interval.</p>
