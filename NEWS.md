@@ -1,4 +1,8 @@
-# SuperPlotR (development version)
+# SuperPlotR
+
+## SuperPlotR 0.1.0
+
+* Test structure added. Bumping to 0.1.0 to reflect this change.
 
 ## SuperPlotR 0.0.8
 

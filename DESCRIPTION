@@ -1,6 +1,6 @@
 Package: SuperPlotR
 Title: Making SuperPlots in R
-Version: 0.0.8
+Version: 0.1.0
 Authors@R:
     person(given = "Stephen J",
            family = "Royle",
@@ -16,7 +16,7 @@ Description: SuperPlots are a way to show experimental data in a way that
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Depends: 
     R (>= 2.10)
 Config/rcmdcheck/ignore-inconsequential-notes: true
@@ -31,5 +31,7 @@ URL: https://github.com/quantixed/SuperPlotR, https://quantixed.github.io/SuperP
 BugReports: https://github.com/quantixed/SuperPlotR/issues
 Suggests: 
     knitr,
-    rmarkdown
+    rmarkdown,
+    testthat (>= 3.0.0)
 VignetteBuilder: knitr
+Config/testthat/edition: 3
