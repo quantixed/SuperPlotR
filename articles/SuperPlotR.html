@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">SuperPlotR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.8</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,7 +67,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Getting Started</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/quantixed/SuperPlotR/blob/v.0.0.8/vignettes/SuperPlotR.Rmd" class="external-link"><code>vignettes/SuperPlotR.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/quantixed/SuperPlotR/blob/master/vignettes/SuperPlotR.Rmd" class="external-link"><code>vignettes/SuperPlotR.Rmd</code></a></small>
       <div class="d-none name"><code>SuperPlotR.Rmd</code></div>
     </div>
 
@@ -83,7 +83,7 @@ following code:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/quantixed/SuperPlotR" class="external-link">SuperPlotR</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>, ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="SuperPlotR_files/figure-html/setup-1.png" width="576"></p>
+<p><img src="SuperPlotR_files/figure-html/setup-1.png" class="r-plt" alt="" width="576"></p>
 <p>This will generate a SuperPlot of the <code>Speed</code> data, with
 <code>Treatment</code> on the x-axis and <code>Replicate</code> is used
 to group the data. The y-axis label is set to “Speed”.</p>
@@ -96,7 +96,7 @@ to group the data. The y-axis label is set to “Speed”.</p>
 <span>  repl <span class="op">=</span> <span class="st">"Replicate"</span>,</span>
 <span>  ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span></span>
 <span><span class="op">)</span></span></code></pre></div>
-<p><img src="SuperPlotR_files/figure-html/setup2-1.png" width="576"></p>
+<p><img src="SuperPlotR_files/figure-html/setup2-1.png" class="r-plt" alt="" width="576"></p>
 </div>
 <div class="section level2">
 <h2 id="customising-the-superplot">Customising the SuperPlot<a class="anchor" aria-label="anchor" href="#customising-the-superplot"></a>
@@ -110,14 +110,14 @@ plot. Here, we will look at major customisation options.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>,</span>
 <span>          ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span>, datadist <span class="op">=</span> <span class="st">"violin"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="SuperPlotR_files/figure-html/violin-1.png" width="576"></p>
+<p><img src="SuperPlotR_files/figure-html/violin-1.png" class="r-plt" alt="" width="576"></p>
 <p>or with a jittered scatter plot, the default (shown in the first
 example on this page) uses <code>sina</code> which is a jittered scatter
 plot with a density estimate.</p>
 <div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>,</span>
 <span>          ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span>, datadist <span class="op">=</span> <span class="st">"jitter"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="SuperPlotR_files/figure-html/jitter-1.png" width="576"></p>
+<p><img src="SuperPlotR_files/figure-html/jitter-1.png" class="r-plt" alt="" width="576"></p>
 </div>
 <div class="section level3">
 <h3 id="colours">Colours<a class="anchor" aria-label="anchor" href="#colours"></a>
@@ -134,13 +134,13 @@ bright palette (<code>"tol_bright"</code>) but you can select from:</p>
 <div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>,</span>
 <span>          ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span>, pal <span class="op">=</span> <span class="st">"cud"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="SuperPlotR_files/figure-html/colours-1.png" width="576"></p>
+<p><img src="SuperPlotR_files/figure-html/colours-1.png" class="r-plt" alt="" width="576"></p>
 <p>It’s possible to supply your own palette as a vector of colours (in
 hex or description format)</p>
 <div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>,</span>
 <span>          ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span>, pal <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#ff0000"</span>, <span class="st">"blue"</span>, <span class="st">"green"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="SuperPlotR_files/figure-html/custom_palette-1.png" width="576"></p>
+<p><img src="SuperPlotR_files/figure-html/custom_palette-1.png" class="r-plt" alt="" width="576"></p>
 </div>
 <div class="section level3">
 <h3 id="summary-points">Summary points<a class="anchor" aria-label="anchor" href="#summary-points"></a>
@@ -150,7 +150,7 @@ median instead</p>
 <div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>,</span>
 <span>          ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span>, rep_summary <span class="op">=</span> <span class="st">"rep_median"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="SuperPlotR_files/figure-html/median-1.png" width="576"></p>
+<p><img src="SuperPlotR_files/figure-html/median-1.png" class="r-plt" alt="" width="576"></p>
 </div>
 <div class="section level3">
 <h3 id="bars">Bars<a class="anchor" aria-label="anchor" href="#bars"></a>
@@ -171,7 +171,7 @@ the underlying data points.</p>
 <div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>,</span>
 <span>          ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span>, bars <span class="op">=</span> <span class="st">"mean_sd"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="SuperPlotR_files/figure-html/bars-1.png" width="576"></p>
+<p><img src="SuperPlotR_files/figure-html/bars-1.png" class="r-plt" alt="" width="576"></p>
 </div>
 <div class="section level3">
 <h3 id="data-point-shapes">Data point shapes<a class="anchor" aria-label="anchor" href="#data-point-shapes"></a>
@@ -183,13 +183,13 @@ replicate.</p>
 <div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>,</span>
 <span>          ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span>, shapes <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="SuperPlotR_files/figure-html/shapes-1.png" width="576"></p>
+<p><img src="SuperPlotR_files/figure-html/shapes-1.png" class="r-plt" alt="" width="576"></p>
 <p>If you’d like to link the summary points, set
 <code>linking = TRUE</code>.</p>
 <div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>,</span>
 <span>          ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span>, linking <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="SuperPlotR_files/figure-html/linking-1.png" width="576"></p>
+<p><img src="SuperPlotR_files/figure-html/linking-1.png" class="r-plt" alt="" width="576"></p>
 <p>Linkages can be made when there are more than two groups. To
 demonstrate this we will use some toy data:</p>
 <div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
@@ -199,7 +199,7 @@ demonstrate this we will use some toy data:</p>
 <span>                      expt <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"exp1"</span>,<span class="st">"exp2"</span>,<span class="st">"exp3"</span>,<span class="st">"exp4"</span><span class="op">)</span>, each <span class="op">=</span> <span class="fl">100</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">example</span>, <span class="st">"meas"</span>, <span class="st">"cond"</span>, <span class="st">"expt"</span>,</span>
 <span>          linking <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></code></pre></div>
-<p><img src="SuperPlotR_files/figure-html/linking2-1.png" width="576"></p>
+<p><img src="SuperPlotR_files/figure-html/linking2-1.png" class="r-plt" alt="" width="576"></p>
 </div>
 </div>
 <div class="section level2">
@@ -225,9 +225,9 @@ See <code><a href="../articles/advanced.html">vignette("advanced")</a></code>.</
 </h2>
 <div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/sessionInfo.html" class="external-link">sessionInfo</a></span><span class="op">(</span><span class="op">)</span></span>
-<span><span class="co">#&gt; R version 4.5.1 (2025-06-13)</span></span>
+<span><span class="co">#&gt; R version 4.5.2 (2025-10-31)</span></span>
 <span><span class="co">#&gt; Platform: x86_64-pc-linux-gnu</span></span>
-<span><span class="co">#&gt; Running under: Ubuntu 24.04.2 LTS</span></span>
+<span><span class="co">#&gt; Running under: Ubuntu 24.04.3 LTS</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; Matrix products: default</span></span>
 <span><span class="co">#&gt; BLAS:   /usr/lib/x86_64-linux-gnu/openblas-pthread/libblas.so.3 </span></span>
@@ -246,21 +246,21 @@ See <code><a href="../articles/advanced.html">vignette("advanced")</a></code>.</
 <span><span class="co">#&gt; [1] stats     graphics  grDevices utils     datasets  methods   base     </span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; other attached packages:</span></span>
-<span><span class="co">#&gt; [1] ggplot2_3.5.2    SuperPlotR_0.0.8</span></span>
+<span><span class="co">#&gt; [1] ggplot2_4.0.2    SuperPlotR_0.1.0</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; loaded via a namespace (and not attached):</span></span>
-<span><span class="co">#&gt;  [1] gtable_0.3.6       jsonlite_2.0.0     dplyr_1.1.4        compiler_4.5.1    </span></span>
-<span><span class="co">#&gt;  [5] tidyselect_1.2.1   jquerylib_0.1.4    systemfonts_1.2.3  scales_1.4.0      </span></span>
-<span><span class="co">#&gt;  [9] textshaping_1.0.1  yaml_2.3.10        fastmap_1.2.0      R6_2.6.1          </span></span>
-<span><span class="co">#&gt; [13] labeling_0.4.3     generics_0.1.4     knitr_1.50         MASS_7.3-65       </span></span>
-<span><span class="co">#&gt; [17] polyclip_1.10-7    tibble_3.3.0       desc_1.4.3         bslib_0.9.0       </span></span>
-<span><span class="co">#&gt; [21] pillar_1.11.0      RColorBrewer_1.1-3 rlang_1.1.6        cachem_1.1.0      </span></span>
-<span><span class="co">#&gt; [25] xfun_0.52          fs_1.6.6           sass_0.4.10        cli_3.6.5         </span></span>
-<span><span class="co">#&gt; [29] withr_3.0.2        pkgdown_2.1.3      magrittr_2.0.3     tweenr_2.0.3      </span></span>
-<span><span class="co">#&gt; [33] digest_0.6.37      grid_4.5.1         ggforce_0.5.0      cowplot_1.2.0     </span></span>
-<span><span class="co">#&gt; [37] lifecycle_1.0.4    vctrs_0.6.5        evaluate_1.0.4     glue_1.8.0        </span></span>
-<span><span class="co">#&gt; [41] farver_2.1.2       ragg_1.4.0         rmarkdown_2.29     tools_4.5.1       </span></span>
-<span><span class="co">#&gt; [45] pkgconfig_2.0.3    htmltools_0.5.8.1</span></span></code></pre></div>
+<span><span class="co">#&gt;  [1] gtable_0.3.6       jsonlite_2.0.0     dplyr_1.2.0        compiler_4.5.2    </span></span>
+<span><span class="co">#&gt;  [5] tidyselect_1.2.1   jquerylib_0.1.4    systemfonts_1.3.2  scales_1.4.0      </span></span>
+<span><span class="co">#&gt;  [9] textshaping_1.0.5  yaml_2.3.12        fastmap_1.2.0      R6_2.6.1          </span></span>
+<span><span class="co">#&gt; [13] labeling_0.4.3     generics_0.1.4     knitr_1.51         MASS_7.3-65       </span></span>
+<span><span class="co">#&gt; [17] polyclip_1.10-7    tibble_3.3.1       desc_1.4.3         bslib_0.10.0      </span></span>
+<span><span class="co">#&gt; [21] pillar_1.11.1      RColorBrewer_1.1-3 rlang_1.1.7        cachem_1.1.0      </span></span>
+<span><span class="co">#&gt; [25] xfun_0.56          fs_1.6.7           sass_0.4.10        S7_0.2.1          </span></span>
+<span><span class="co">#&gt; [29] cli_3.6.5          withr_3.0.2        tweenr_2.0.3       pkgdown_2.2.0     </span></span>
+<span><span class="co">#&gt; [33] magrittr_2.0.4     digest_0.6.39      grid_4.5.2         ggforce_0.5.0     </span></span>
+<span><span class="co">#&gt; [37] cowplot_1.2.0      lifecycle_1.0.5    vctrs_0.7.1        evaluate_1.0.5    </span></span>
+<span><span class="co">#&gt; [41] glue_1.8.0         farver_2.1.2       ragg_1.5.1         rmarkdown_2.30    </span></span>
+<span><span class="co">#&gt; [45] tools_4.5.2        pkgconfig_2.0.3    htmltools_0.5.9</span></span></code></pre></div>
 </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
     </nav></aside>
@@ -273,7 +273,7 @@ See <code><a href="../articles/advanced.html">vignette("advanced")</a></code>.</
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>

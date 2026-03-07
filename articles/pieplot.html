@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">SuperPlotR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.0.8</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -67,7 +67,7 @@
       <img src="../logo.png" class="logo" alt=""><h1>Making non-SuperPlots - PiePlots</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/quantixed/SuperPlotR/blob/v.0.0.8/vignettes/pieplot.Rmd" class="external-link"><code>vignettes/pieplot.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/quantixed/SuperPlotR/blob/master/vignettes/pieplot.Rmd" class="external-link"><code>vignettes/pieplot.Rmd</code></a></small>
       <div class="d-none name"><code>pieplot.Rmd</code></div>
     </div>
 
@@ -86,12 +86,12 @@ two layers.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pieplot.html">pieplot</a></span><span class="op">(</span>x1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">123</span>, <span class="fl">456</span><span class="op">)</span>,</span>
 <span>        cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#44aa99"</span>, <span class="st">"#117733"</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="pieplot_files/figure-html/pieplot1-1.png" width="700"></p>
+<p><img src="pieplot_files/figure-html/pieplot1-1.png" class="r-plt" alt="" width="700"></p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pieplot.html">pieplot</a></span><span class="op">(</span>x1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50</span> <span class="op">-</span> <span class="fl">20</span>, <span class="fl">20</span>, <span class="fl">80</span>, <span class="fl">180</span> <span class="op">-</span> <span class="fl">80</span><span class="op">)</span>,</span>
 <span>        cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#bbbbbb"</span>, <span class="st">"#44aa99"</span>, <span class="st">"#117733"</span>, <span class="st">"#dddddd"</span><span class="op">)</span>,</span>
 <span>        x2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">100</span>, <span class="fl">130</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
-<p><img src="pieplot_files/figure-html/pieplot2-1.png" width="700"></p>
+<p><img src="pieplot_files/figure-html/pieplot2-1.png" class="r-plt" alt="" width="700"></p>
 <p>The <code>cols</code> argument should be a character vector of
 colours, which can be hex codes or one of our lab’s publication colour
 palette. The function will convert the colours to a format that
@@ -100,7 +100,7 @@ palette. The function will convert the colours to a format that
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pieplot.html">pieplot</a></span><span class="op">(</span>x1 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">50</span> <span class="op">-</span> <span class="fl">20</span>, <span class="fl">20</span>, <span class="fl">80</span>, <span class="fl">180</span> <span class="op">-</span> <span class="fl">80</span><span class="op">)</span>,</span>
 <span>        cols <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"#bbbbbb"</span>, <span class="st">"rl_blue"</span>, <span class="st">"#117733"</span>, <span class="st">"lavender"</span><span class="op">)</span>,</span>
 <span>        x2 <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">10</span>, <span class="fl">13</span><span class="op">)</span>, label <span class="op">=</span> <span class="st">"Example Pie Chart"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="pieplot_files/figure-html/pieplot3-1.png" width="700"></p>
+<p><img src="pieplot_files/figure-html/pieplot3-1.png" class="r-plt" alt="" width="700"></p>
 <p>Note that the values for the second pie chart layer do not have the
 same as the first layer. The function will automatically scale the
 second layer.</p>
@@ -115,7 +115,7 @@ second layer.</p>
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>
