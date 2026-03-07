@@ -8,7 +8,7 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/quantixed/SuperPlotR/blob/master/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/quantixed/SuperPlotR/blob/v0.1.0/DESCRIPTION)
 
 Royle S (2026). *SuperPlotR: Making SuperPlots in R*. R package version
 0.1.0, <https://github.com/quantixed/SuperPlotR>.
