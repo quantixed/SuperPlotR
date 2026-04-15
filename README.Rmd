@@ -35,7 +35,7 @@ _J. Cell Biol._ 219(6):e202001064
 
 You can install the development version of SuperPlotR from [GitHub](https://github.com/) with:
 
-``` r
+``` {r install, eval = FALSE}
 # install.packages("devtools")
 devtools::install_github("quantixed/SuperPlotR")
 ```
@@ -57,7 +57,7 @@ These columns are:
 
 1. the variable that is measured in the experiment,
 2. the experimental condition,
-3. the experimental repeat that the measurment comes from.
+3. the experimental repeat that the measurement comes from.
 
 The `superplot()` function takes the data frame, the names of these three columns,
 and is further customisable with additional arguments.

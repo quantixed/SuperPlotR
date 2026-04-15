@@ -49,10 +49,10 @@ columns. These columns are:
 
 1.  the variable that is measured in the experiment,
 2.  the experimental condition,
-3.  the experimental repeat that the measurment comes from.
+3.  the experimental repeat that the measurement comes from.
 
-The `superplot` function takes the data frame, the names of these three
-columns, and is further customisable with additional arguments.
+The `superplot()` function takes the data frame, the names of these
+three columns, and is further customisable with additional arguments.
 
 See `vignette("SuperPlotR")` for more examples, or
 `vignette("advanced")` for more advanced usage.
