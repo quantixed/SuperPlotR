@@ -1,6 +1,8 @@
 # Make a FlatPlot
 
-Make a FlatPlot
+The function `flatplot` creates a FlatPlot using `ggplot2`. A FlatPlot
+is a simplified version of a SuperPlot that does not require replicate
+information
 
 ## Usage
 
@@ -9,7 +11,9 @@ flatplot(
   df,
   meas,
   cond,
+  repl = NULL,
   colour = "#000000",
+  color = NULL,
   xlab = "",
   ylab = "Measurement",
   datadist = "sina",
@@ -37,11 +41,20 @@ flatplot(
 
   character name of column with condition (e.g. Control, WT)
 
+- repl:
+
+  not required for FlatPlot, but included for consistency with
+  SuperPlot; can be set to NULL
+
 - colour:
 
   string for colour palette to use, select ("rl_green", "rl_red",
   "rl_blue", "rl_purple", "rl_orange", "rl_magenta", or a hex colour,
   default is black)
+
+- color:
+
+  valid alternative spelling of colour
 
 - xlab:
 

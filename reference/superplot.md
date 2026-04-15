@@ -1,6 +1,6 @@
 # Make a SuperPlot
 
-Make a SuperPlot
+The function `superplot` creates a SuperPlot using `ggplot2`.
 
 ## Usage
 
@@ -16,7 +16,7 @@ superplot(
   datadist = "sina",
   size = c(2, 3),
   alpha = c(0.5, 0.7),
-  bars = "",
+  bars = "mean_sd",
   linking = FALSE,
   rep_summary = "rep_mean",
   shapes = FALSE,
@@ -76,8 +76,9 @@ superplot(
 
 - bars:
 
-  string for type of error bars to add, select ("none" default,
-  "mean_sd", "mean_sem", or "mean_ci")
+  string for type of error bars to add, select "mean_sd" (default),
+  "mean_sem", or "mean_ci"; for no bars use an empty string (""); for no
+  error bars but still show the mean with a crossbar, use "none".
 
 - linking:
 

@@ -136,7 +136,7 @@ superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)",
 #> Colour palette: tol_bright
 #> Data distribution: sina
 #> Summary statistic: rep_mean
-#> No bars
+#> Bars: mean_sd
 #> X-axis label:
 #> Y-axis label: Speed (µm/min)
 #> Point sizes: 2 (individual), 3 (summary)
