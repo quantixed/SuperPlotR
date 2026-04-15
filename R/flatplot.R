@@ -1,11 +1,18 @@
 #' Make a FlatPlot
 #'
+#' @description
+#' The function \code{flatplot} creates a FlatPlot using \code{ggplot2}.
+#' A FlatPlot is a simplified version of a SuperPlot that does not require
+#' replicate information
+#'
 #' @param df data frame with at least three columns: meas, cond, repl
 #' @param meas character name of column with measurement (e.g. intensity)
 #' @param cond character name of column with condition (e.g. Control, WT)
+#' @param repl not required for FlatPlot, but included for consistency with SuperPlot; can be set to NULL
 #' @param colour string for colour palette to use, select ("rl_green", "rl_red",
 #' "rl_blue", "rl_purple", "rl_orange", "rl_magenta", or a hex colour, default
 #' is black)
+#' @param color valid alternative spelling of colour
 #' @param xlab string for x label (default is empty)
 #' @param ylab string for y label (default is "Measurement")
 #' @param datadist string for data distribution to use, select ("sina" default,
@@ -34,19 +41,26 @@
 #' flatplot(lord_jcb, "Speed", "Treatment", ylab = "Speed (um/min)")
 #'
 flatplot <- function(df,
-                      meas, cond,
-                      colour = "#000000",
-                      xlab = "", ylab = "Measurement",
-                      datadist = "sina",
-                      size = 2,
-                      alpha = 0.5,
-                      bars = "mean_sd",
-                      fsize = 12,
-                      gg = NULL,
-                      stats = FALSE,
-                      stats_test = "para_unpaired") {
+                     meas, cond, repl = NULL,
+                     colour = "#000000",
+                     color = NULL,  # for American users who might use color instead of colour
+                     xlab = "", ylab = "Measurement",
+                     datadist = "sina",
+                     size = 2,
+                     alpha = 0.5,
+                     bars = "mean_sd",
+                     fsize = 12,
+                     gg = NULL,
+                     stats = FALSE,
+                     stats_test = "para_unpaired") {
   ncond <- nrepl <- NULL
   rep_mean <- rep_median <- NULL
+  if (!is.null(color)) {
+    colour <- color
+  }
+  if (!is.null(repl)) {
+    warning("repl argument is not used in flatplot and will be ignored")
+  }
 
   # validate args
   validate_args(colour = colour, xlab = xlab, ylab = ylab, datadist = datadist,

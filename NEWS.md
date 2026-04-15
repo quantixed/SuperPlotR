@@ -1,5 +1,10 @@
 # SuperPlotR
 
+## SuperPlotR 0.1.1
+
+* Use of mean ± sd bars is now the default
+* Minor changes to colour handling and documentation
+
 ## SuperPlotR 0.1.0
 
 * Test structure added. Bumping to 0.1.0 to reflect this change.

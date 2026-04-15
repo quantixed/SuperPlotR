@@ -2,8 +2,11 @@
 
 export(add_sp_bars)
 export(flatplot)
+export(get_fp_color)
+export(get_fp_colors)
 export(get_fp_colour)
 export(get_fp_colours)
+export(get_sp_colors)
 export(get_sp_colours)
 export(get_sp_shapes)
 export(get_sp_stats)

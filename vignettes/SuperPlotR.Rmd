@@ -100,19 +100,22 @@ superplot(lord_jcb, "Speed", "Treatment", "Replicate",
 
 ## Bars
 
-The default SuperPlot does not include bars to indicate the mean ± error. They
-can be added by using the `bars` argument. Options are:
+The default SuperPlot includes bars to indicate the mean ± sd. They
+can be modified by using the `bars` argument. Options are:
 
 - `"mean_sd"` = mean ± standard deviation
 - `"mean_sem"` = mean ± standard error of the mean
 - `"mean_ci"` = mean ± 95% confidence interval
+- `"none"` = no error bars, but still show the mean with a crossbar
+- `""` = no bars and no crossbar
 
-Note that these bars show the mean ± error of the replicate means not the
+Note that these bars show the mean ± error of the _replicate means_ not the
 underlying data points.
 
 ```{r bars}
+# remove bars
 superplot(lord_jcb, "Speed", "Treatment", "Replicate",
-          ylab = "Speed (µm/min)", bars = "mean_sd")
+          ylab = "Speed (µm/min)", bars = "")
 ```
 
 ## Data point shapes

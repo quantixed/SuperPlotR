@@ -2,9 +2,12 @@
 % Please edit documentation in R/get_sp_colours.R
 \name{get_sp_colours}
 \alias{get_sp_colours}
+\alias{get_sp_colors}
 \title{SuperPlot Colour Palette Selection}
 \usage{
 get_sp_colours(n, scheme)
+
+get_sp_colors(n, scheme)
 }
 \arguments{
 \item{n}{integer number of colours to return}
@@ -18,8 +21,17 @@ colours, e.g. c("#FF0000", "green", "#0000FF").}
 character vector of colours
 }
 \description{
-SuperPlot Colour Palette Selection
+This function takes an integer \code{n} and a character \code{scheme} and returns a
+character vector of \code{n} colours from the specified colour scheme. The
+function supports four colour schemes from Paul Tol ("tol_bright",
+"tol_vibrant", "tol_muted", "tol_light") and Color Universal Design ("cud"
+scheme). If the \code{scheme} argument is a vector of colours, the function will
+return the first \code{n} colours from that vector, repeating the vector if it has
+fewer than \code{n} colours. If the \code{scheme} argument is not a valid colour scheme
+or a vector of colours, the function will throw an error. Use of
+\code{get_sp_colors()} is valid too.
 }
 \examples{
 get_sp_colours(3, "tol_bright")
+get_sp_colors(3, "tol_bright")
 }

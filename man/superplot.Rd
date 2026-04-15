@@ -15,7 +15,7 @@ superplot(
   datadist = "sina",
   size = c(2, 3),
   alpha = c(0.5, 0.7),
-  bars = "",
+  bars = "mean_sd",
   linking = FALSE,
   rep_summary = "rep_mean",
   shapes = FALSE,
@@ -51,8 +51,9 @@ c(2, 3))}
 \item{alpha}{numeric vector of alpha range data and summary points (default
 is c(0.5, 0.7))}
 
-\item{bars}{string for type of error bars to add, select ("none" default,
-"mean_sd", "mean_sem", or "mean_ci")}
+\item{bars}{string for type of error bars to add, select "mean_sd" (default),
+"mean_sem", or "mean_ci"; for no bars use an empty string (""); for no
+error bars but still show the mean with a crossbar, use "none".}
 
 \item{linking}{logical for whether to link summary points between conditions
 (default is FALSE)}
@@ -78,7 +79,7 @@ is FALSE)}
 ggplot object
 }
 \description{
-Make a SuperPlot
+The function \code{superplot} creates a SuperPlot using \code{ggplot2}.
 }
 \examples{
 superplot(lord_jcb,

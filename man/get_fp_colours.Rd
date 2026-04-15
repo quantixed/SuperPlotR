@@ -2,21 +2,30 @@
 % Please edit documentation in R/get_fp_colour.R
 \name{get_fp_colours}
 \alias{get_fp_colours}
-\title{FlatPlot Colour Selection (Multiple Colors)}
+\alias{get_fp_colors}
+\title{FlatPlot Colour Selection (Multiple Colours)}
 \usage{
 get_fp_colours(keys)
+
+get_fp_colors(keys)
 }
 \arguments{
-\item{keys}{character vector of color names/codes, can be "rl_green", "rl_red", "rl_blue",
-"rl_yellow", "rl_purple", "rl_orange", "rl_magenta", hex colours, or valid R color names}
+\item{keys}{character vector of color names/codes, can be "rl_green",
+"rl_red", "rl_blue", "rl_yellow", "rl_purple", "rl_orange", "rl_magenta",
+"rl_inv", or hex colours, or valid R color names}
 }
 \value{
 character vector of hex colours
 }
 \description{
-FlatPlot Colour Selection (Multiple Colors)
+This function takes a character vector of color names/codes and returns a
+character vector of hex colours. It uses the \code{get_fp_colour} function to
+convert each color name/code to its corresponding hex colour. The input can
+include predefined color names like "rl_green", "rl_red", etc., as well as
+hex color codes or valid R color names. Use of \code{get_fp_colors} is valid too.
 }
 \examples{
 get_fp_colours(c("rl_green", "#FF0000", "blue"))
 get_fp_colours("rl_green")
+get_fp_colors("rl_green")
 }

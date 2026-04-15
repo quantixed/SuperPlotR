@@ -8,7 +8,9 @@ flatplot(
   df,
   meas,
   cond,
+  repl = NULL,
   colour = "#000000",
+  color = NULL,
   xlab = "",
   ylab = "Measurement",
   datadist = "sina",
@@ -28,9 +30,13 @@ flatplot(
 
 \item{cond}{character name of column with condition (e.g. Control, WT)}
 
+\item{repl}{not required for FlatPlot, but included for consistency with SuperPlot; can be set to NULL}
+
 \item{colour}{string for colour palette to use, select ("rl_green", "rl_red",
 "rl_blue", "rl_purple", "rl_orange", "rl_magenta", or a hex colour, default
 is black)}
+
+\item{color}{valid alternative spelling of colour}
 
 \item{xlab}{string for x label (default is empty)}
 
@@ -60,7 +66,9 @@ is c(0.5, 0.7))}
 ggplot object
 }
 \description{
-Make a FlatPlot
+The function \code{flatplot} creates a FlatPlot using \code{ggplot2}.
+A FlatPlot is a simplified version of a SuperPlot that does not require
+replicate information
 }
 \examples{
 flatplot(lord_jcb, "Speed", "Treatment", ylab = "Speed (um/min)")
