@@ -27,5 +27,7 @@
   : Make a pie chart using ggplot2
 - [`representative()`](https://quantixed.github.io/SuperPlotR/reference/representative.md)
   : Report the representative datapoints in a SuperPlot
+- [`setup_rproj()`](https://quantixed.github.io/SuperPlotR/reference/setup_rproj.md)
+  : Ensure working directory setup
 - [`superplot()`](https://quantixed.github.io/SuperPlotR/reference/superplot.md)
   : Make a SuperPlot
