@@ -21,6 +21,8 @@
   : Get statistical test results for the plotted data
 - [`get_sp_summary()`](https://quantixed.github.io/SuperPlotR/reference/get_sp_summary.md)
   : Get summary statistics for SuperPlot data
+- [`ignore_unused_imports()`](https://quantixed.github.io/SuperPlotR/reference/ignore_unused_imports.md)
+  : Ignore unused imports
 - [`lord_jcb`](https://quantixed.github.io/SuperPlotR/reference/lord_jcb.md)
   : Example cell migration data
 - [`pieplot()`](https://quantixed.github.io/SuperPlotR/reference/pieplot.md)

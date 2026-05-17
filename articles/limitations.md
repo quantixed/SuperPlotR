@@ -5,40 +5,6 @@
 There are some limitations to SuperPlotR. This vignette covers them and
 offers solutions where possible.
 
-### Facetting
-
-Facetting is *partially supported*. In the simple scenario of facetting
-by replicate, you can do this:
-
-``` r
-library(SuperPlotR)
-library(ggplot2)
-p <- superplot(lord_jcb, "Speed", "Treatment", "Replicate",
-               ylab = "Speed (µm/min)")
-p + facet_wrap(~Replicate)
-```
-
-![](limitations_files/figure-html/facet-1.png)
-
-If we had another variable that we wished to facet by, then facetting by
-this variable is possible, but with a limitation: The summary points
-will remain as the replicate summary and therefore will be the same for
-each facet. This may not be what you want.
-
-``` r
-df <- cbind(lord_jcb, other = rep(c("A", "B"), 150))
-p <- superplot(df, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)")
-p + facet_wrap(~other)
-```
-
-![](limitations_files/figure-html/facet2-1.png)
-
-**Solution:** The best way to do achieve “facetting” currently (and have
-the correct summary points) is to make a SuperPlot for each variable,
-i.e. after filtering the data frame for A and B, and then combine them
-using [patchwork](https://patchwork.data-imaginist.com) or similar
-package.
-
 ### Conditions and Replicates are categories
 
 If you have a dataset where the conditions and replicates are numeric,
@@ -64,6 +30,8 @@ your call to
 [`superplot()`](https://quantixed.github.io/SuperPlotR/reference/superplot.md).
 
 ``` r
+
+library(SuperPlotR)
 p <- superplot(lord_jcb, "Speed", "Treatment", "Replicate", stats = TRUE)
 #> Performing t-test
 #> 
@@ -104,6 +72,7 @@ paired t-test on the data. We can do this in SuperPlotR by setting
 `stats = TRUE` and `stats_test` to `"para_paired"`.
 
 ``` r
+
 p <- superplot(lord_jcb, "Speed", "Treatment", "Replicate", stats = TRUE,
                stats_test = "para_paired")
 #> Performing t-test
@@ -124,6 +93,7 @@ As a further example, we will generate some test data with four
 treatments.
 
 ``` r
+
 set.seed(123)
 example <- data.frame(meas = rep(rep(c(10, 9, 6, 6), each = 25), 4) + rnorm(400),
                       cond = rep(rep(c("ctrl", "drug 1", "drug 2", "drug 3"), each = 25), 4),

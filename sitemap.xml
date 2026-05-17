@@ -4,6 +4,7 @@
 <url><loc>https://quantixed.github.io/SuperPlotR/LICENSE.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/articles/SuperPlotR.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/articles/advanced.html</loc></url>
+<url><loc>https://quantixed.github.io/SuperPlotR/articles/facets.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/articles/flatplot.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/articles/index.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/articles/limitations.html</loc></url>
@@ -36,6 +37,7 @@
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/get_sp_shapes.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/get_sp_stats.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/get_sp_summary.html</loc></url>
+<url><loc>https://quantixed.github.io/SuperPlotR/reference/ignore_unused_imports.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/index.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/lord_jcb.html</loc></url>
 <url><loc>https://quantixed.github.io/SuperPlotR/reference/pieplot.html</loc></url>

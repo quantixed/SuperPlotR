@@ -16,6 +16,7 @@ viewer, but is not well suited to a figure which is likely to be very
 small.
 
 ``` r
+
 library(SuperPlotR)
 # the default plot
 superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)")
@@ -24,6 +25,7 @@ superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)")
 ![](advanced_files/figure-html/sizing-1.png)
 
 ``` r
+
 # the same plot but with custom sizing
 superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)",
           size = c(0.8,1.5), fsize = 9)
@@ -35,6 +37,7 @@ This does not look great in the viewer, but it will look better in a
 figure.
 
 ``` r
+
 library(ggplot2)
 # the same plot but with custom sizing
 superplot(lord_jcb, "Speed", "Treatment", "Replicate",
@@ -44,12 +47,14 @@ superplot(lord_jcb, "Speed", "Treatment", "Replicate",
 ![](advanced_files/figure-html/sizing2-1.png)
 
 ``` r
+
 ggsave("plot.pdf", width = 88, height = 50, units = "mm") # final size
 ```
 
 This is preferable to
 
 ``` r
+
 library(ggplot2)
 # the same plot but with custom sizing
 superplot(lord_jcb, "Speed", "Treatment", "Replicate",
@@ -59,6 +64,7 @@ superplot(lord_jcb, "Speed", "Treatment", "Replicate",
 ![](advanced_files/figure-html/sizing3-1.png)
 
 ``` r
+
 ggsave("plot.pdf", width = 88, height = 50, units = "mm") # final size
 ```
 
@@ -68,6 +74,7 @@ A couple of simple tweaks: an x label can be added, and the transparency
 of points can be altered like this.
 
 ``` r
+
 superplot(lord_jcb, "Speed", "Treatment", "Replicate",
           xlab = "Drug", ylab = "Speed (µm/min)", alpha = c(0.3,1))
 ```
@@ -78,6 +85,7 @@ SuperPlotR returns a ggplot object which can be customised how you like.
 For example, the theme can be overridden like this:
 
 ``` r
+
 p <- superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)")
 p + theme_minimal()
 ```
@@ -89,6 +97,7 @@ add a SuperPlot to it (within reason!). For example, you might want to
 plot something behind the SuperPlot.
 
 ``` r
+
 p <- ggplot() +
   geom_hline(yintercept = 20, linetype = "dashed", col = "grey")
 superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)", gg = p)
@@ -102,6 +111,7 @@ This is best done by reordering the levels of the factor in the input
 dataframe before calling `superplot`.
 
 ``` r
+
 df <- lord_jcb
 df$Treatment <- factor(df$Treatment, levels = c("Drug", "Control"))
 superplot(df, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)")
@@ -124,6 +134,7 @@ You can set the option `info = TRUE` when you call `superplot` to get
 more detailed information.
 
 ``` r
+
 superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)",
           info = TRUE)
 #> SuperPlot information
@@ -145,6 +156,7 @@ superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)",
 #> No statistics
 #> =====================
 #> Colours for replicates: #4477AA, #CCBB44, #EE6677
+#> Colour names for replicates: dark green blue, medium green brown, red pink
 #> Shapes for replicates: 21, 21, 21
 #> =====================
 #> Summary statistics:
@@ -175,6 +187,7 @@ you can use the `get_sp_summary` function. This will return a data frame
 with the summary data used to create the SuperPlot.
 
 ``` r
+
 summary_data <- get_sp_summary(lord_jcb, "Speed", "Treatment", "Replicate")
 head(summary_data)
 #> # A tibble: 6 × 4
@@ -203,6 +216,7 @@ for more information). It also prints the top ranked datapoint to the
 console.
 
 ``` r
+
 representative_data <- representative(lord_jcb, "Speed", "Treatment", "Replicate")
 #> # A tibble: 6 × 6
 #>   Treatment Replicate Speed rowno     diff  rank
@@ -231,6 +245,7 @@ the `label` parameter. The label could be a filename or other identifier
 to identify where the datapoint came from.
 
 ``` r
+
 # Assuming lord_jcb has a column "FileName" with the labels
 example <- lord_jcb
 example$FileName <- paste0("Image_", seq_len(nrow(example)), ".tif")

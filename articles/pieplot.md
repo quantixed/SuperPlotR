@@ -1,6 +1,7 @@
 # Making non-SuperPlots - PiePlots
 
 ``` r
+
 library(SuperPlotR)
 ```
 
@@ -14,6 +15,7 @@ chart using `ggplot2`. It can also take a second vector of values to
 create a pie chart with two layers.
 
 ``` r
+
 pieplot(x1 = c(123, 456),
         cols = c("#44aa99", "#117733"))
 ```
@@ -21,6 +23,7 @@ pieplot(x1 = c(123, 456),
 ![](pieplot_files/figure-html/pieplot1-1.png)
 
 ``` r
+
 pieplot(x1 = c(50 - 20, 20, 80, 180 - 80),
         cols = c("#bbbbbb", "#44aa99", "#117733", "#dddddd"),
         x2 = c(100, 130))
@@ -33,6 +36,7 @@ be hex codes or one of our lab’s publication colour palette. The
 function will convert the colours to a format that `ggplot2` can use.
 
 ``` r
+
 pieplot(x1 = c(50 - 20, 20, 80, 180 - 80),
         cols = c("#bbbbbb", "rl_blue", "#117733", "lavender"),
         x2 = c(10, 13), label = "Example Pie Chart")

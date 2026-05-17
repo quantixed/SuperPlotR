@@ -7,6 +7,7 @@ use this for demonstration. The data is called `lord_jcb`. A basic
 SuperPlot can be generated with the following code:
 
 ``` r
+
 library(SuperPlotR)
 superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)")
 ```
@@ -20,6 +21,7 @@ is set to “Speed”.
 An equivalent call in long form is:
 
 ``` r
+
 superplot(
   df = lord_jcb,
   meas = "Speed",
@@ -41,6 +43,7 @@ Here, we will look at major customisation options.
 The underlying data can be rendered as violins,
 
 ``` r
+
 superplot(lord_jcb, "Speed", "Treatment", "Replicate",
           ylab = "Speed (µm/min)", datadist = "violin")
 ```
@@ -52,6 +55,7 @@ on this page) uses `sina` which is a jittered scatter plot with a
 density estimate.
 
 ``` r
+
 superplot(lord_jcb, "Speed", "Treatment", "Replicate",
           ylab = "Speed (µm/min)", datadist = "jitter")
 ```
@@ -70,6 +74,7 @@ bright palette (`"tol_bright"`) but you can select from:
 - or Color Universal Design (`"cud"`)
 
 ``` r
+
 superplot(lord_jcb, "Speed", "Treatment", "Replicate",
           ylab = "Speed (µm/min)", pal = "cud")
 ```
@@ -80,6 +85,7 @@ It’s possible to supply your own palette as a vector of colours (in hex
 or description format)
 
 ``` r
+
 superplot(lord_jcb, "Speed", "Treatment", "Replicate",
           ylab = "Speed (µm/min)", pal = c("#ff0000", "blue", "green"))
 ```
@@ -92,6 +98,7 @@ The mean of each replicate is shown by default. You can show the median
 instead
 
 ``` r
+
 superplot(lord_jcb, "Speed", "Treatment", "Replicate",
           ylab = "Speed (µm/min)", rep_summary = "rep_median")
 ```
@@ -113,6 +120,7 @@ Note that these bars show the mean ± error of the *replicate means* not
 the underlying data points.
 
 ``` r
+
 # remove bars
 superplot(lord_jcb, "Speed", "Treatment", "Replicate",
           ylab = "Speed (µm/min)", bars = "")
@@ -127,6 +135,7 @@ shapes for different conditions, you can use the `shapes` argument. Set
 to `TRUE` to use different shapes for each replicate.
 
 ``` r
+
 superplot(lord_jcb, "Speed", "Treatment", "Replicate",
           ylab = "Speed (µm/min)", shapes = TRUE)
 ```
@@ -136,6 +145,7 @@ superplot(lord_jcb, "Speed", "Treatment", "Replicate",
 If you’d like to link the summary points, set `linking = TRUE`.
 
 ``` r
+
 superplot(lord_jcb, "Speed", "Treatment", "Replicate",
           ylab = "Speed (µm/min)", linking = TRUE)
 ```
@@ -146,6 +156,7 @@ Linkages can be made when there are more than two groups. To demonstrate
 this we will use some toy data:
 
 ``` r
+
 set.seed(123)
 example <- data.frame(meas = rep(rep(c(10, 9, 6, 6), each = 25), 4) + rnorm(400),
                       cond = rep(rep(c("ctrl", "drug 1", "drug 2", "drug 3"), each = 25), 4),
@@ -162,6 +173,7 @@ The SuperPlot can be saved as a PDF or PNG file using the `ggsave`
 function from the `ggplot2` package.
 
 ``` r
+
 library(ggplot2)
 p <- superplot(lord_jcb, "Speed", "Treatment", "Replicate",
                ylab = "Speed (µm/min)")
@@ -178,8 +190,9 @@ See
 ## Session Info
 
 ``` r
+
 sessionInfo()
-#> R version 4.5.3 (2026-03-11)
+#> R version 4.6.0 (2026-04-24)
 #> Platform: x86_64-pc-linux-gnu
 #> Running under: Ubuntu 24.04.4 LTS
 #> 
@@ -200,19 +213,19 @@ sessionInfo()
 #> [1] stats     graphics  grDevices utils     datasets  methods   base     
 #> 
 #> other attached packages:
-#> [1] ggplot2_4.0.2    SuperPlotR_0.1.1
+#> [1] ggplot2_4.0.3    SuperPlotR_0.1.2
 #> 
 #> loaded via a namespace (and not attached):
-#>  [1] gtable_0.3.6       jsonlite_2.0.0     dplyr_1.2.1        compiler_4.5.3    
+#>  [1] gtable_0.3.6       jsonlite_2.0.0     dplyr_1.2.1        compiler_4.6.0    
 #>  [5] tidyselect_1.2.1   jquerylib_0.1.4    systemfonts_1.3.2  scales_1.4.0      
-#>  [9] textshaping_1.0.5  yaml_2.3.12        fastmap_1.2.0      R6_2.6.1          
-#> [13] labeling_0.4.3     generics_0.1.4     knitr_1.51         MASS_7.3-65       
-#> [17] polyclip_1.10-7    tibble_3.3.1       desc_1.4.3         bslib_0.10.0      
-#> [21] pillar_1.11.1      RColorBrewer_1.1-3 rlang_1.2.0        cachem_1.1.0      
-#> [25] xfun_0.57          fs_2.0.1           sass_0.4.10        S7_0.2.1-1        
-#> [29] cli_3.6.6          withr_3.0.2        tweenr_2.0.3       pkgdown_2.2.0     
-#> [33] magrittr_2.0.5     digest_0.6.39      grid_4.5.3         ggforce_0.5.0     
-#> [37] cowplot_1.2.0      lifecycle_1.0.5    vctrs_0.7.3        evaluate_1.0.5    
-#> [41] glue_1.8.0         farver_2.1.2       ragg_1.5.2         rmarkdown_2.31    
-#> [45] tools_4.5.3        pkgconfig_2.0.3    htmltools_0.5.9
+#>  [9] textshaping_1.0.5  yaml_2.3.12        fastmap_1.2.0      ColorNameR_0.1.0  
+#> [13] R6_2.6.1           labeling_0.4.3     generics_0.1.4     knitr_1.51        
+#> [17] MASS_7.3-65        polyclip_1.10-7    tibble_3.3.1       desc_1.4.3        
+#> [21] bslib_0.11.0       pillar_1.11.1      RColorBrewer_1.1-3 rlang_1.2.0       
+#> [25] cachem_1.1.0       xfun_0.57          fs_2.1.0           sass_0.4.10       
+#> [29] S7_0.2.2           cli_3.6.6          withr_3.0.2        tweenr_2.0.3      
+#> [33] pkgdown_2.2.0      magrittr_2.0.5     digest_0.6.39      grid_4.6.0        
+#> [37] ggforce_0.5.0      cowplot_1.2.0      lifecycle_1.0.5    vctrs_0.7.3       
+#> [41] evaluate_1.0.5     glue_1.8.1         farver_2.1.2       ragg_1.5.2        
+#> [45] rmarkdown_2.31     tools_4.6.0        pkgconfig_2.0.3    htmltools_0.5.9
 ```

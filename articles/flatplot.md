@@ -12,6 +12,7 @@ They can be used to look at data from a single experiment, or when the
 replicates are the individual data points.
 
 ``` r
+
 library(SuperPlotR)
 flatplot(lord_jcb, "Speed", "Treatment", ylab = "Speed (um/min)")
 ```
@@ -23,6 +24,7 @@ Many of the arguments are the same as for
 but the `replicate` argument is not used.
 
 ``` r
+
 flatplot(lord_jcb, "Speed", "Treatment", ylab = "Speed (um/min)",
          colour = "rl_green")
 ```
@@ -33,6 +35,7 @@ The control of colour is usually by a single colour, which can be a hex
 code or one of our lab’s publication colour palette.
 
 ``` r
+
 flatplot(lord_jcb, "Speed", "Treatment", ylab = "Speed (um/min)",
          colour = "rl_red", stats = TRUE)
 #> Performing t-test
@@ -56,6 +59,7 @@ for each condition. Any extra colours are ignored, and valid inputs are
 R colors, hex codes or our lab’s colour palette.
 
 ``` r
+
 flatplot(lord_jcb, "Speed", "Treatment", ylab = "Speed (um/min)",
          colour = c("rl_red", "rl_blue", "rl_green"))
 ```
@@ -66,6 +70,7 @@ We can request statistical testing as for SuperPlots, but the p-values
 will be calculated for the whole dataset, not for each replicate.
 
 ``` r
+
 flatplot(lord_jcb, "Speed", "Treatment", ylab = "Speed (um/min)",
          colour = "rl_red", size = 4, alpha = 0.25,
          bars = "mean_ci")

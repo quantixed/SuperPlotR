@@ -11,6 +11,7 @@ get_sp_info(
   meas,
   cond,
   repl,
+  facet,
   pal,
   xlab,
   ylab,

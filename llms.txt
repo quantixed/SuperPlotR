@@ -17,6 +17,7 @@ You can install the development version of SuperPlotR from
 [GitHub](https://github.com/) with:
 
 ``` r
+
 # install.packages("devtools")
 devtools::install_github("quantixed/SuperPlotR")
 ```
@@ -26,6 +27,7 @@ devtools::install_github("quantixed/SuperPlotR")
 A simple example of how to use SuperPlotR is shown below:
 
 ``` r
+
 library(SuperPlotR)
 superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)")
 ```
@@ -85,6 +87,8 @@ Goedhart](https://github.com/JoachimGoedhart) is available
   : Get statistical test results for the plotted data
 - [`get_sp_summary()`](https://quantixed.github.io/SuperPlotR/reference/get_sp_summary.md)
   : Get summary statistics for SuperPlot data
+- [`ignore_unused_imports()`](https://quantixed.github.io/SuperPlotR/reference/ignore_unused_imports.md)
+  : Ignore unused imports
 - [`lord_jcb`](https://quantixed.github.io/SuperPlotR/reference/lord_jcb.md)
   : Example cell migration data
 - [`pieplot()`](https://quantixed.github.io/SuperPlotR/reference/pieplot.md)
@@ -104,6 +108,8 @@ Goedhart](https://github.com/JoachimGoedhart) is available
   Started](https://quantixed.github.io/SuperPlotR/articles/SuperPlotR.md):
 - [Advanced
   Usage](https://quantixed.github.io/SuperPlotR/articles/advanced.md):
+- [Faceting a
+  Superplot](https://quantixed.github.io/SuperPlotR/articles/facets.md):
 - [Limitations to
   SuperPlotR](https://quantixed.github.io/SuperPlotR/articles/limitations.md):
 - [Making non-SuperPlots -

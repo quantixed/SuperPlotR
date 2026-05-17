@@ -5,7 +5,7 @@ Verify the data frame used for SuperPlot
 ## Usage
 
 ``` r
-verify_sp_columns(df, meas, cond, repl)
+verify_sp_columns(df, meas, cond, repl, facet = NULL)
 ```
 
 ## Arguments
@@ -26,6 +26,11 @@ verify_sp_columns(df, meas, cond, repl)
 
   character name of column with replicate (e.g. unique experiment
   identifiers)
+
+- facet:
+
+  character name of column to facet by (e.g. further grouping variable,
+  default is NULL)
 
 ## Value
 

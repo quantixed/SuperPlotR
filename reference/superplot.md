@@ -10,6 +10,7 @@ superplot(
   meas,
   cond,
   repl,
+  facet = NULL,
   pal = "tol_bright",
   xlab = "",
   ylab = "Measurement",
@@ -46,6 +47,10 @@ superplot(
 
   character name of column with replicate (e.g. unique experiment
   identifiers)
+
+- facet:
+
+  character name of column to facet by (default is NULL)
 
 - pal:
 

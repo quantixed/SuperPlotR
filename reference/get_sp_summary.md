@@ -6,7 +6,7 @@ combination of condition and replicate in a SuperPlot dataset.
 ## Usage
 
 ``` r
-get_sp_summary(df, meas, cond, repl, ...)
+get_sp_summary(df, meas, cond, repl, facet = NULL, ...)
 ```
 
 ## Arguments
@@ -29,6 +29,11 @@ get_sp_summary(df, meas, cond, repl, ...)
 
   Character string specifying the name of the column containing the
   replicate identifiers (e.g., "Replicate", "Experiment")
+
+- facet:
+
+  Character string specifying the name of the column to facet by (e.g.
+  further grouping variable, default is NULL)
 
 - ...:
 
