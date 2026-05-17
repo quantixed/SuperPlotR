@@ -4,7 +4,7 @@
 \alias{verify_sp_columns}
 \title{Verify the data frame used for SuperPlot}
 \usage{
-verify_sp_columns(df, meas, cond, repl)
+verify_sp_columns(df, meas, cond, repl, facet = NULL)
 }
 \arguments{
 \item{df}{data frame with at least three columns: meas, cond, repl}
@@ -15,6 +15,9 @@ verify_sp_columns(df, meas, cond, repl)
 
 \item{repl}{character name of column with replicate (e.g. unique experiment
 identifiers)}
+
+\item{facet}{character name of column to facet by (e.g. further grouping
+variable, default is NULL)}
 }
 \value{
 logical to allow plot to go ahead

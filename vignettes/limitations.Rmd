@@ -21,34 +21,6 @@ knitr::opts_chunk$set(
 There are some limitations to SuperPlotR. This vignette covers them and offers
 solutions where possible.
 
-## Facetting
-
-Facetting is _partially supported_. In the simple scenario of facetting by
-replicate, you can do this:
-
-```{r facet}
-library(SuperPlotR)
-library(ggplot2)
-p <- superplot(lord_jcb, "Speed", "Treatment", "Replicate",
-               ylab = "Speed (µm/min)")
-p + facet_wrap(~Replicate)
-```
-
-If we had another variable that we wished to facet by, then facetting by this
-variable is possible, but with a limitation: The summary points will remain as
-the replicate summary and therefore will be the same for each facet.
-This may not be what you want.
-
-```{r facet2}
-df <- cbind(lord_jcb, other = rep(c("A", "B"), 150))
-p <- superplot(df, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)")
-p + facet_wrap(~other)
-```
-
-**Solution:** The best way to do achieve "facetting" currently (and have the correct summary
-points) is to make a SuperPlot for each variable, i.e. after filtering the data frame for A and B,
-and then combine them using `{patchwork}` or similar package.
-
 ## Conditions and Replicates are categories
 
 If you have a dataset where the conditions and replicates are numeric,
@@ -72,6 +44,7 @@ off by default. You can turn it on by setting `stats = TRUE` in your call to
 `superplot()`.
 
 ```{r stats}
+library(SuperPlotR)
 p <- superplot(lord_jcb, "Speed", "Treatment", "Replicate", stats = TRUE)
 ```
 

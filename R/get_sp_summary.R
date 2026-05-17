@@ -9,12 +9,14 @@
 #' get the correct data frame to work with.
 #'
 #' @param df A data frame containing the experimental data
-#' @param meas Character string specifying the name of the column containing
-#'   the measurements/values to summarize (e.g., "intensity", "speed")
-#' @param cond Character string specifying the name of the column containing
-#'   the experimental conditions (e.g., "Treatment", "Genotype")
-#' @param repl Character string specifying the name of the column containing
-#'   the replicate identifiers (e.g., "Replicate", "Experiment")
+#' @param meas Character string specifying the name of the column containing the
+#'   measurements/values to summarize (e.g., "intensity", "speed")
+#' @param cond Character string specifying the name of the column containing the
+#'   experimental conditions (e.g., "Treatment", "Genotype")
+#' @param repl Character string specifying the name of the column containing the
+#'   replicate identifiers (e.g., "Replicate", "Experiment")
+#' @param facet Character string specifying the name of the column to facet by
+#'   (e.g. further grouping variable, default is NULL)
 #' @param ... Additional arguments (ignored)
 #'
 #' @return A data frame with columns for condition, replicate, rep_mean
@@ -29,7 +31,7 @@
 #' # Using the built-in dataset
 #' get_sp_summary(lord_jcb, "Speed", "Treatment", "Replicate")
 #'
-get_sp_summary <- function(df, meas, cond, repl, ...) {
+get_sp_summary <- function(df, meas, cond, repl, facet = NULL, ...) {
   # Validate inputs
   if (!is.data.frame(df)) {
     stop("df must be a data frame")
@@ -47,14 +49,28 @@ get_sp_summary <- function(df, meas, cond, repl, ...) {
     stop("repl column '", repl, "' not found in data frame")
   }
 
+  if (!is.null(facet) && !facet %in% names(df)) {
+    stop("facet column '", facet, "' not found in data frame")
+  }
+
   # Calculate summary statistics grouped by condition and replicate
+  if (is.null(facet)) {
+    sdf <- df %>%
+      group_by(!!sym(cond), !!sym(repl)) %>%
+      summarise(
+        rep_mean = mean(!!sym(meas), na.rm = TRUE),
+        rep_median = median(!!sym(meas), na.rm = TRUE),
+        .groups = "drop"
+      )
+  } else {
   sdf <- df %>%
-    group_by(!!sym(cond), !!sym(repl)) %>%
+    group_by(!!sym(cond), !!sym(repl), !!sym(facet)) %>%
     summarise(
       rep_mean = mean(!!sym(meas), na.rm = TRUE),
       rep_median = median(!!sym(meas), na.rm = TRUE),
       .groups = "drop"
     )
+  }
 
   return(sdf)
 }

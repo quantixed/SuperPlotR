@@ -27,18 +27,20 @@
 #' @import dplyr
 #' @importFrom stats sd median
 #' @importFrom rlang :=
+#' @importFrom ColorNameR name
+#' @importFrom grDevices col2rgb
 #'
 #' @returns none
 #' @keywords internal
 
 # this function will take all the arguments sent from superplot
 get_sp_info <- function(df,
-                      meas, cond, repl,
+                      meas, cond, repl, facet,
                       pal, xlab, ylab, datadist, size, alpha, bars,
                       linking, rep_summary, shapes, fsize, gg,
                       stats, stats_test,
                       ...) {
-  ncond <- nrepl <- NULL
+  ncond <- nrepl <- nfacet <- NULL
   rep_mean <- rep_median <- NULL
 
   # args are already validated
@@ -52,13 +54,21 @@ get_sp_info <- function(df,
     pull(!!sym(repl)) %>%
     unique() %>%
     length()
+  if (!is.null(facet)) {
+    nfacet <- df %>%
+      pull(!!sym(facet)) %>%
+      unique() %>%
+      length()
+  }
 
   # calculate summary statistics
   summary_df <- get_sp_summary(df = df,
-                             meas = meas, cond = cond, repl = repl)
+                             meas = meas, cond = cond, repl = repl, facet = facet)
 
   # get colour values for the repl column
   sp_colours <- get_sp_colours(nrepl, pal)
+  sp_colours_words <- ColorNameR::name(t(col2rgb(sp_colours)) / 255,
+                                       colorspace = "sRGB")
   sp_shapes <- get_sp_shapes(nrepl, shapes)
 
   # add repl from summary_df to sp_colour and sp_shapes
@@ -84,6 +94,9 @@ get_sp_info <- function(df,
   message("Number of replicates: ", nrepl)
   message("Number of data points: ", nrow(df))
   message("Number of summary points: ", nrow(summary_df))
+  if( !is.null(facet)) {
+    message("Number of facets: ", nfacet)
+  }
   message("=====================")
   message("Colour palette: ", pal)
   message("Data distribution: ", datadist)
@@ -112,8 +125,12 @@ get_sp_info <- function(df,
     message("No statistics")
   }
   message("=====================")
-  message("Colours for replicates: ", paste(sp_colours, collapse = ", "))
-  message("Shapes for replicates: ", paste(sp_shapes, collapse = ", "))
+  message("Colours for replicates: ",
+          paste(sp_colours, collapse = ", "))
+  message("Colour names for replicates: ",
+          paste(sp_colours_words, collapse = ", "))
+  message("Shapes for replicates: ",
+          paste(sp_shapes, collapse = ", "))
 
   if (nrow(summary_df) != ncond * nrepl) {
     s_summary_df <- summary_df %>%

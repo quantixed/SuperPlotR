@@ -1,5 +1,10 @@
 # SuperPlotR
 
+## SuperPlotR 0.1.2
+* Ability to facet superplots
+* Added text description of colours used in information output
+* Documentation improvements
+
 ## SuperPlotR 0.1.1
 
 * Use of mean ± sd bars is now the default

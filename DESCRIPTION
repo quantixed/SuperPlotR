@@ -1,6 +1,6 @@
 Package: SuperPlotR
 Title: Making SuperPlots in R
-Version: 0.1.1
+Version: 0.1.2
 Authors@R:
     person(given = "Stephen J",
            family = "Royle",
@@ -22,10 +22,12 @@ Depends:
 Config/rcmdcheck/ignore-inconsequential-notes: true
 LazyData: true
 Imports:
-    ggplot2,
+    ColorNameR,
+    cowplot,
     dplyr,
     ggforce,
-    cowplot,
+    ggplot2,
+    patchwork,
     rlang
 URL: https://github.com/quantixed/SuperPlotR, https://quantixed.github.io/SuperPlotR/
 BugReports: https://github.com/quantixed/SuperPlotR/issues

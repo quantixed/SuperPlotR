@@ -8,6 +8,7 @@
 #' @param cond character name of column with condition (e.g. Control, WT)
 #' @param repl character name of column with replicate (e.g. unique experiment
 #'   identifiers)
+#' @param facet character name of column to facet by (default is NULL)
 #' @param pal name of colour palette to use (default is "tol_bright")
 #' @param xlab string for x label (default is empty)
 #' @param ylab string for y label (default is "Measurement")
@@ -38,7 +39,7 @@
 #' @import dplyr
 #' @import ggforce
 #' @import cowplot
-#' @importFrom stats sd median
+#' @importFrom stats sd median as.formula
 #'
 #' @export
 #'
@@ -49,6 +50,7 @@
 #'
 superplot <- function(df,
                       meas, cond, repl,
+                      facet = NULL,
                       pal = "tol_bright",
                       xlab = "", ylab = "Measurement",
                       datadist = "sina",
@@ -73,7 +75,7 @@ superplot <- function(df,
                 gg = gg, stats = stats, stats_test = stats_test, info = info)
 
   # verify that the data frame to make sure that it is suitable for SuperPlot
-  if (verify_sp_columns(df, meas, cond, repl) == FALSE) {
+  if (verify_sp_columns(df, meas, cond, repl, facet) == FALSE) {
     return(NULL)
   }
 
@@ -89,6 +91,13 @@ superplot <- function(df,
     df[[repl]] <- as.character(df[[repl]])
   }
 
+  # if facet is not NULL, check that it is character and convert to factor if not already
+  if (!is.null(facet)) {
+    if (!is.character(df[[facet]]) && !is.factor(df[[facet]])) {
+      df[[facet]] <- as.character(df[[facet]])
+    }
+  }
+
   # how many unique values in cond and repl?
   ncond <- df %>%
     pull(!!sym(cond)) %>%
@@ -98,17 +107,32 @@ superplot <- function(df,
     pull(!!sym(repl)) %>%
     unique() %>%
     length()
+  if (!is.null(facet)) {
+    nfacet <- df %>%
+      pull(!!sym(facet)) %>%
+      unique() %>%
+      length()
+  }
 
   # calculate summary statistics
   summary_df <- get_sp_summary(df = df,
-                               meas = meas, cond = cond, repl = repl)
+                               meas = meas, cond = cond, repl = repl,
+                               facet = facet)
 
   # generate a warning if NROW of summary_df doesn't equal the product of
   # unique values in cond and repl
-  if (nrow(summary_df) != ncond * nrepl && info == FALSE) {
-    warning("Summary statistics were not calculated for all combinations of
+  if (!is.null(facet)) {
+    if (nrow(summary_df) != ncond * nrepl * nfacet & info == FALSE) {
+      warning("Summary statistics were not calculated for all combinations of
+              condition, replicate, and facet.\nCheck for missing data.\n
+              Call again with `info = TRUE` to see more details.")
+    }
+  } else {
+    if (nrow(summary_df) != ncond * nrepl & info == FALSE) {
+      warning("Summary statistics were not calculated for all combinations of
             condition and replicate.\nCheck for missing data.\n
             Call again with `info = TRUE` to see more details.")
+    }
   }
   # get colour values for the repl column
   sp_colours <- get_sp_colours(nrepl, pal)
@@ -117,7 +141,7 @@ superplot <- function(df,
   # if info is TRUE, print information about the plot
   if (info == TRUE) {
     get_sp_info(df = df,
-                meas = meas, cond = cond, repl = repl,
+                meas = meas, cond = cond, repl = repl, facet = facet,
                 pal = pal, xlab = xlab, ylab = ylab,
                 datadist = datadist, size = size, alpha = alpha,
                 bars = bars, linking = linking,
@@ -193,6 +217,10 @@ superplot <- function(df,
   } else {
     # plot is scaled automatically
   }
+  # facet if requested
+  if (!is.null(facet)) {
+    p <- p + facet_wrap(as.formula(paste("~", facet)))
+  }
   # theme
   p <- p + theme_cowplot(fsize)
   # info is FALSE hide legend
@@ -203,7 +231,11 @@ superplot <- function(df,
 
   # add stats if requested
   if (stats == TRUE) {
-    get_sp_stats(as.data.frame(summary_df), rep_summary, cond, repl, ncond, nrepl, stats_test)
+    if (!is.null(facet)) {
+      warning("Statistical tests are not currently implemented for faceted SuperPlots.")
+    } else {
+      get_sp_stats(as.data.frame(summary_df), rep_summary, cond, repl, ncond, nrepl, stats_test)
+    }
   }
 
   return(p)

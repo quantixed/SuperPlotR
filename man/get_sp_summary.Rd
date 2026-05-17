@@ -4,19 +4,22 @@
 \alias{get_sp_summary}
 \title{Get summary statistics for SuperPlot data}
 \usage{
-get_sp_summary(df, meas, cond, repl, ...)
+get_sp_summary(df, meas, cond, repl, facet = NULL, ...)
 }
 \arguments{
 \item{df}{A data frame containing the experimental data}
 
-\item{meas}{Character string specifying the name of the column containing
-the measurements/values to summarize (e.g., "intensity", "speed")}
+\item{meas}{Character string specifying the name of the column containing the
+measurements/values to summarize (e.g., "intensity", "speed")}
 
-\item{cond}{Character string specifying the name of the column containing
-the experimental conditions (e.g., "Treatment", "Genotype")}
+\item{cond}{Character string specifying the name of the column containing the
+experimental conditions (e.g., "Treatment", "Genotype")}
 
-\item{repl}{Character string specifying the name of the column containing
-the replicate identifiers (e.g., "Replicate", "Experiment")}
+\item{repl}{Character string specifying the name of the column containing the
+replicate identifiers (e.g., "Replicate", "Experiment")}
+
+\item{facet}{Character string specifying the name of the column to facet by
+(e.g. further grouping variable, default is NULL)}
 
 \item{...}{Additional arguments (ignored)}
 }

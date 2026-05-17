@@ -9,6 +9,7 @@ superplot(
   meas,
   cond,
   repl,
+  facet = NULL,
   pal = "tol_bright",
   xlab = "",
   ylab = "Measurement",
@@ -35,6 +36,8 @@ superplot(
 
 \item{repl}{character name of column with replicate (e.g. unique experiment
 identifiers)}
+
+\item{facet}{character name of column to facet by (default is NULL)}
 
 \item{pal}{name of colour palette to use (default is "tol_bright")}
 

@@ -10,6 +10,7 @@ articles:
   contents:
   - SuperPlotR
   - advanced
+  - facets
   - limitations
   - flatplot
   - pieplot
