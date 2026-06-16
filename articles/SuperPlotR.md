@@ -222,10 +222,11 @@ sessionInfo()
 #> [13] R6_2.6.1           labeling_0.4.3     generics_0.1.4     knitr_1.51        
 #> [17] MASS_7.3-65        polyclip_1.10-7    tibble_3.3.1       desc_1.4.3        
 #> [21] bslib_0.11.0       pillar_1.11.1      RColorBrewer_1.1-3 rlang_1.2.0       
-#> [25] cachem_1.1.0       xfun_0.57          fs_2.1.0           sass_0.4.10       
-#> [29] S7_0.2.2           cli_3.6.6          withr_3.0.2        tweenr_2.0.3      
-#> [33] pkgdown_2.2.0      magrittr_2.0.5     digest_0.6.39      grid_4.6.0        
-#> [37] ggforce_0.5.0      cowplot_1.2.0      lifecycle_1.0.5    vctrs_0.7.3       
-#> [41] evaluate_1.0.5     glue_1.8.1         farver_2.1.2       ragg_1.5.2        
-#> [45] rmarkdown_2.31     tools_4.6.0        pkgconfig_2.0.3    htmltools_0.5.9
+#> [25] cachem_1.1.0       xfun_0.58          fs_2.1.0           sass_0.4.10       
+#> [29] S7_0.2.2           otel_0.2.0         cli_3.6.6          withr_3.0.2       
+#> [33] tweenr_2.0.3       pkgdown_2.2.0      magrittr_2.0.5     digest_0.6.39     
+#> [37] grid_4.6.0         ggforce_0.5.0      cowplot_1.2.0      lifecycle_1.0.5   
+#> [41] vctrs_0.7.3        evaluate_1.0.5     glue_1.8.1         farver_2.1.2      
+#> [45] ragg_1.5.2         rmarkdown_2.31     tools_4.6.0        pkgconfig_2.0.3   
+#> [49] htmltools_0.5.9
 ```
