@@ -1,4 +1,12 @@
+# SuperPlotR 0.2.0
+
+* SuperPlotting is now done using `superplot_spec()` behind the scenes, which 
+  allows for greater flexibility in the future.
+* Better handling of colour and shape aesthetics, including the ability to specify
+  them in the `superplot()` function.
+
 # SuperPlotR 0.1.2
+
 * Ability to facet superplots
 * Added text description of colours used in information output
 * Documentation improvements

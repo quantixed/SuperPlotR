@@ -4,7 +4,15 @@
 \alias{add_sp_bars}
 \title{Add Mean ± Error Bars to a SuperPlot}
 \usage{
-add_sp_bars(p, bars, df, cond, rep_summary)
+add_sp_bars(
+  p,
+  bars,
+  df,
+  cond,
+  rep_summary,
+  bar_params = list(),
+  crossbar_params = list()
+)
 }
 \arguments{
 \item{p}{ggplot object}
@@ -16,6 +24,12 @@ add_sp_bars(p, bars, df, cond, rep_summary)
 \item{cond}{character string of the condition column}
 
 \item{rep_summary}{character string of the replicate summary column}
+
+\item{bar_params}{named list of additional parameters passed to the
+errorbar \code{stat_summary} layer}
+
+\item{crossbar_params}{named list of additional parameters passed to the
+crossbar \code{stat_summary} layer}
 }
 \value{
 ggplot object

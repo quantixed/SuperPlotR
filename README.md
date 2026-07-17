@@ -26,8 +26,8 @@ You can install the development version of SuperPlotR from
 [GitHub](https://github.com/) with:
 
 ``` r
-# install.packages("devtools")
-devtools::install_github("quantixed/SuperPlotR")
+# install.packages("pak")
+pak::pak("quantixed/SuperPlotR")
 ```
 
 ## Example
@@ -39,7 +39,7 @@ library(SuperPlotR)
 superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)")
 ```
 
-<img src="man/figures/README-example-1.png" width="100%" />
+<img src="man/figures/README-example-1.png" alt="" width="100%" />
 
 The data used in this example is included in the package and is from the
 original paper.

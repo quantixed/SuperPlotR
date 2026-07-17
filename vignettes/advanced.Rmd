@@ -87,6 +87,94 @@ p <- ggplot() +
 superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)", gg = p)
 ```
 
+## Specification workflow for advanced customization
+
+The wrapper approach remains the easiest way to make a SuperPlot quickly.
+For more control, SuperPlotR now also supports a specification workflow:
+
+1. Create a plot specification with `superplot_spec()`
+2. Modify advanced options with `sp_modify()`
+3. Render with `autoplot()`
+
+```{r spec_workflow}
+spec <- superplot_spec(
+  lord_jcb,
+  meas = "Speed",
+  cond = "Treatment",
+  repl = "Replicate",
+  ylab = "Speed (µm/min)"
+)
+
+p <- autoplot(spec)
+p
+```
+
+This is useful when you want to tune individual layers without adding many
+top-level arguments to `superplot()`.
+
+```{r spec_modify}
+spec2 <- sp_modify(
+  spec,
+  summary_params = list(size = 4, alpha = 1),
+  raw_params = list(alpha = 0.35),
+  bar_params = list(linewidth = 0.4),
+  crossbar_params = list(width = 0.5),
+  legend_position = "right",
+  y_limits_from_zero = FALSE,
+  theme = theme_minimal(base_size = 10)
+)
+
+autoplot(spec2)
+```
+
+You can pass the same options directly from `superplot()` using the
+`options` argument:
+
+```{r options_in_wrapper}
+superplot(
+  lord_jcb,
+  "Speed",
+  "Treatment",
+  "Replicate",
+  ylab = "Speed (µm/min)",
+  options = list(
+    legend_position = "right",
+    summary_params = list(size = 4)
+  )
+)
+```
+
+The supported advanced option names are:
+
+- `raw_params`
+- `summary_params`
+- `link_params`
+- `bar_params`
+- `crossbar_params`
+- `theme`
+- `legend_position`
+- `y_limits_from_zero`
+
+Here's a final example of tweaking parameters for the crossbar, legend, raw points and summary points.
+
+```{r options_in_wrapper2}
+superplot(
+  lord_jcb,
+  meas = "Speed",
+  cond = "Treatment",
+  repl = "Replicate",
+  ylab = "Speed (um/min)",
+  shapes = FALSE,
+  options = list(
+    crossbar_params = list(width = 0.5),  # wider/narrower crossbar
+    legend_position = "right",            # show legend on the right
+    raw_params = list(shape = 15),        # square raw points
+    summary_params = list(shape = 22)     # square summary points
+  )
+)
+```
+
+
 ## Ordering the x-axis
 
 This is best done by reordering the levels of the factor in the input dataframe

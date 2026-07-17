@@ -36,8 +36,8 @@ _J. Cell Biol._ 219(6):e202001064
 You can install the development version of SuperPlotR from [GitHub](https://github.com/) with:
 
 ``` {r install, eval = FALSE}
-# install.packages("devtools")
-devtools::install_github("quantixed/SuperPlotR")
+# install.packages("pak")
+pak::pak("quantixed/SuperPlotR")
 ```
 
 ## Example

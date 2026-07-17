@@ -5,35 +5,53 @@
 #' @param df data frame of summary data (supplied by superplot())
 #' @param cond character string of the condition column
 #' @param rep_summary character string of the replicate summary column
+#' @param bar_params named list of additional parameters passed to the
+#'   errorbar `stat_summary` layer
+#' @param crossbar_params named list of additional parameters passed to the
+#'   crossbar `stat_summary` layer
 #'
 #' @return ggplot object
 #' @export
-add_sp_bars <- function(p, bars, df, cond, rep_summary) {
-  if (bars == "mean_sd") {
-    p <- p + stat_summary(
-      data = df,
-      aes(x = !!sym(cond), y = !!sym(rep_summary)),
-      fun.data = trio_sd,
-      geom = "errorbar", linewidth = 0.2, width = 0)
-  } else if (bars == "mean_sem") {
-    p <- p + stat_summary(
-      data = df,
-      aes(x = !!sym(cond), y = !!sym(rep_summary)),
-      fun.data = trio_sem,
-      geom = "errorbar", linewidth = 0.2, width = 0)
-  } else if (bars == "mean_ci") {
-    p <- p + stat_summary(
-      data = df,
-      aes(x = !!sym(cond), y = !!sym(rep_summary)),
-      fun.data = trio_ci,
-      geom = "errorbar", linewidth = 0.2, width = 0)
-  }
-  # whatever the user enters, we also want to show the crossbars
-  p <- p + stat_summary(
+add_sp_bars <- function(p, bars, df, cond, rep_summary,
+                        bar_params = list(),
+                        crossbar_params = list()) {
+  base_bar <- list(
     data = df,
-    aes(x = !!sym(cond), y = !!sym(rep_summary)),
-    fun.data = trio_mean,
-    geom = "crossbar", linewidth = 0.4, width = 0.8)
+    mapping = aes(x = !!sym(cond), y = !!sym(rep_summary)),
+    geom = "errorbar",
+    linewidth = 0.2,
+    width = 0
+  )
+
+  if (bars == "mean_sd") {
+    p <- p + do.call(stat_summary, utils::modifyList(
+      c(base_bar, list(fun.data = trio_sd)),
+      bar_params
+    ))
+  } else if (bars == "mean_sem") {
+    p <- p + do.call(stat_summary, utils::modifyList(
+      c(base_bar, list(fun.data = trio_sem)),
+      bar_params
+    ))
+  } else if (bars == "mean_ci") {
+    p <- p + do.call(stat_summary, utils::modifyList(
+      c(base_bar, list(fun.data = trio_ci)),
+      bar_params
+    ))
+  }
+
+  # whatever the user enters, we also want to show the crossbars
+  p <- p + do.call(stat_summary, utils::modifyList(
+    list(
+      data = df,
+      mapping = aes(x = !!sym(cond), y = !!sym(rep_summary)),
+      fun.data = trio_mean,
+      geom = "crossbar",
+      linewidth = 0.4,
+      width = 0.8
+    ),
+    crossbar_params
+  ))
 
   return(p)
 }
