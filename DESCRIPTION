@@ -1,6 +1,6 @@
 Package: SuperPlotR
 Title: Making SuperPlots in R
-Version: 0.1.2
+Version: 0.2.0
 Authors@R:
     person(given = "Stephen J",
            family = "Royle",
