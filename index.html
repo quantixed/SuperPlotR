@@ -79,8 +79,8 @@
 </h2>
 <p>You can install the development version of SuperPlotR from <a href="https://github.com/" class="external-link">GitHub</a> with:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># install.packages("devtools")</span></span>
-<span><span class="fu">devtools</span><span class="fu">::</span><span class="fu">install_github</span><span class="op">(</span><span class="st">"quantixed/SuperPlotR"</span><span class="op">)</span></span></code></pre></div>
+<code class="sourceCode R"><span><span class="co"># install.packages("pak")</span></span>
+<span><span class="fu">pak</span><span class="fu">::</span><span class="fu"><a href="https://pak.r-lib.org/reference/pak.html" class="external-link">pak</a></span><span class="op">(</span><span class="st">"quantixed/SuperPlotR"</span><span class="op">)</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
@@ -89,7 +89,7 @@
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/quantixed/SuperPlotR" class="external-link">SuperPlotR</a></span><span class="op">)</span></span>
 <span><span class="fu"><a href="reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>, ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="reference/figures/README-example-1.png" width="100%"></p>
+<p><img src="reference/figures/README-example-1.png" alt="" width="100%"></p>
 <p>The data used in this example is included in the package and is from the original paper.</p>
 <p>To generate a SuperPlot, you need a data frame that has at least three columns. These columns are:</p>
 <ol style="list-style-type: decimal">

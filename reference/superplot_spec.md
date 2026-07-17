@@ -1,11 +1,13 @@
-# Make a SuperPlot
+# Create a SuperPlot Specification
 
-The function `superplot()` creates a SuperPlot using `ggplot2`.
+Build and validate a SuperPlot specification object. This separates data
+preparation from rendering and enables advanced customization before
+plotting.
 
 ## Usage
 
 ``` r
-superplot(
+superplot_spec(
   df,
   meas,
   cond,
@@ -124,21 +126,11 @@ superplot(
 
 - options:
 
-  optional named list for advanced layer customization. See
-  [`superplot_spec()`](https://quantixed.github.io/SuperPlotR/reference/superplot_spec.md)
-  and
-  [`sp_modify()`](https://quantixed.github.io/SuperPlotR/reference/sp_modify.md)
-  for available options.
+  optional named list used for advanced customization. Supported names
+  are: `raw_params`, `summary_params`, `link_params`, `bar_params`,
+  `crossbar_params`, `theme`, `legend_position`, and
+  `y_limits_from_zero`.
 
 ## Value
 
-ggplot object
-
-## Examples
-
-``` r
-superplot(lord_jcb,
-  "Speed", "Treatment", "Replicate",
-  ylab = "Speed (um/min)")
-
-```
+object of class superplot_spec

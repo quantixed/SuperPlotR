@@ -5,7 +5,15 @@ Add Mean ± Error Bars to a SuperPlot
 ## Usage
 
 ``` r
-add_sp_bars(p, bars, df, cond, rep_summary)
+add_sp_bars(
+  p,
+  bars,
+  df,
+  cond,
+  rep_summary,
+  bar_params = list(),
+  crossbar_params = list()
+)
 ```
 
 ## Arguments
@@ -29,6 +37,16 @@ add_sp_bars(p, bars, df, cond, rep_summary)
 - rep_summary:
 
   character string of the replicate summary column
+
+- bar_params:
+
+  named list of additional parameters passed to the errorbar
+  `stat_summary` layer
+
+- crossbar_params:
+
+  named list of additional parameters passed to the crossbar
+  `stat_summary` layer
 
 ## Value
 

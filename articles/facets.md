@@ -14,6 +14,9 @@ call.
 library(SuperPlotR)
 # add a variable to facet by to the data frame
 df <- cbind(lord_jcb, other = rep(c("A", "B"), 150))
+# we'll add 10 to the speed to better demonstrate the faceting
+df$Speed[df$other == "B"] <- df$Speed[df$other == "B"] + 10
+# facet by the "other" variable
 superplot(df, "Speed", "Treatment", "Replicate", facet = "other",
                ylab = "Speed (µm/min)")
 ```
@@ -22,9 +25,9 @@ superplot(df, "Speed", "Treatment", "Replicate", facet = "other",
 
 If we fail to supply the variable for faceting in the
 [`superplot()`](https://quantixed.github.io/SuperPlotR/reference/superplot.md)
-call, then when the facet function is called, the summary points and
-bars will be incorrect because they are calculated without the facet
-variable.
+call, then when the facet function is called subsequently, the summary
+points and bars will be incorrect because they are calculated without
+the facet variable.
 
 ``` r
 
@@ -38,7 +41,9 @@ p + facet_wrap(~ other)
 
 **Note:** currently
 [`facet_wrap()`](https://ggplot2.tidyverse.org/reference/facet_wrap.html)
-is used, for further enhancement requests, raise an issue.
+is used as the option in
+[`superplot()`](https://quantixed.github.io/SuperPlotR/reference/superplot.md),
+for further enhancement requests, raise an issue.
 
 For FlatPlots (see
 [`vignette("flatplot")`](https://quantixed.github.io/SuperPlotR/articles/flatplot.md)),

@@ -4,6 +4,8 @@
 
 - [`add_sp_bars()`](https://quantixed.github.io/SuperPlotR/reference/add_sp_bars.md)
   : Add Mean ± Error Bars to a SuperPlot
+- [`autoplot(`*`<superplot_spec>`*`)`](https://quantixed.github.io/SuperPlotR/reference/autoplot.superplot_spec.md)
+  : Plot a SuperPlot Specification
 - [`flatplot()`](https://quantixed.github.io/SuperPlotR/reference/flatplot.md)
   : Make a FlatPlot
 - [`get_fp_colour()`](https://quantixed.github.io/SuperPlotR/reference/get_fp_colour.md)
@@ -31,5 +33,9 @@
   : Report the representative datapoints in a SuperPlot
 - [`setup_rproj()`](https://quantixed.github.io/SuperPlotR/reference/setup_rproj.md)
   : Ensure working directory setup
+- [`sp_modify()`](https://quantixed.github.io/SuperPlotR/reference/sp_modify.md)
+  : Modify Advanced SuperPlot Options
 - [`superplot()`](https://quantixed.github.io/SuperPlotR/reference/superplot.md)
   : Make a SuperPlot
+- [`superplot_spec()`](https://quantixed.github.io/SuperPlotR/reference/superplot_spec.md)
+  : Create a SuperPlot Specification

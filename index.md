@@ -18,8 +18,8 @@ You can install the development version of SuperPlotR from
 
 ``` r
 
-# install.packages("devtools")
-devtools::install_github("quantixed/SuperPlotR")
+# install.packages("pak")
+pak::pak("quantixed/SuperPlotR")
 ```
 
 ## Example

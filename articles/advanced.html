@@ -143,11 +143,98 @@ you might want to plot something behind the SuperPlot.</p>
 <p><img src="advanced_files/figure-html/ggplot-1.png" class="r-plt" alt="" width="576"></p>
 </div>
 <div class="section level3">
+<h3 id="specification-workflow-for-advanced-customization">Specification workflow for advanced customization<a class="anchor" aria-label="anchor" href="#specification-workflow-for-advanced-customization"></a>
+</h3>
+<p>The wrapper approach remains the easiest way to make a SuperPlot
+quickly. For more control, SuperPlotR now also supports a specification
+workflow:</p>
+<ol style="list-style-type: decimal">
+<li>Create a plot specification with <code><a href="../reference/superplot_spec.html">superplot_spec()</a></code>
+</li>
+<li>Modify advanced options with <code><a href="../reference/sp_modify.html">sp_modify()</a></code>
+</li>
+<li>Render with <code><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot()</a></code>
+</li>
+</ol>
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">spec</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/superplot_spec.html">superplot_spec</a></span><span class="op">(</span></span>
+<span>  <span class="va">lord_jcb</span>,</span>
+<span>  meas <span class="op">=</span> <span class="st">"Speed"</span>,</span>
+<span>  cond <span class="op">=</span> <span class="st">"Treatment"</span>,</span>
+<span>  repl <span class="op">=</span> <span class="st">"Replicate"</span>,</span>
+<span>  ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">spec</span><span class="op">)</span></span>
+<span><span class="va">p</span></span></code></pre></div>
+<p><img src="advanced_files/figure-html/spec_workflow-1.png" class="r-plt" alt="" width="576"></p>
+<p>This is useful when you want to tune individual layers without adding
+many top-level arguments to <code><a href="../reference/superplot.html">superplot()</a></code>.</p>
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="va">spec2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sp_modify.html">sp_modify</a></span><span class="op">(</span></span>
+<span>  <span class="va">spec</span>,</span>
+<span>  summary_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">4</span>, alpha <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span>
+<span>  raw_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>alpha <span class="op">=</span> <span class="fl">0.35</span><span class="op">)</span>,</span>
+<span>  bar_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>linewidth <span class="op">=</span> <span class="fl">0.4</span><span class="op">)</span>,</span>
+<span>  crossbar_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,</span>
+<span>  legend_position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>  y_limits_from_zero <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  theme <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span>base_size <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot</a></span><span class="op">(</span><span class="va">spec2</span><span class="op">)</span></span></code></pre></div>
+<p><img src="advanced_files/figure-html/spec_modify-1.png" class="r-plt" alt="" width="576"></p>
+<p>You can pass the same options directly from <code><a href="../reference/superplot.html">superplot()</a></code>
+using the <code>options</code> argument:</p>
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span></span>
+<span>  <span class="va">lord_jcb</span>,</span>
+<span>  <span class="st">"Speed"</span>,</span>
+<span>  <span class="st">"Treatment"</span>,</span>
+<span>  <span class="st">"Replicate"</span>,</span>
+<span>  ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span>,</span>
+<span>  options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    legend_position <span class="op">=</span> <span class="st">"right"</span>,</span>
+<span>    summary_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">4</span><span class="op">)</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p><img src="advanced_files/figure-html/options_in_wrapper-1.png" class="r-plt" alt="" width="576"></p>
+<p>The supported advanced option names are:</p>
+<ul>
+<li><code>raw_params</code></li>
+<li><code>summary_params</code></li>
+<li><code>link_params</code></li>
+<li><code>bar_params</code></li>
+<li><code>crossbar_params</code></li>
+<li><code>theme</code></li>
+<li><code>legend_position</code></li>
+<li><code>y_limits_from_zero</code></li>
+</ul>
+<p>Here’s a final example of tweaking parameters for the crossbar,
+legend, raw points and summary points.</p>
+<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span></span>
+<span>  <span class="va">lord_jcb</span>,</span>
+<span>  meas <span class="op">=</span> <span class="st">"Speed"</span>,</span>
+<span>  cond <span class="op">=</span> <span class="st">"Treatment"</span>,</span>
+<span>  repl <span class="op">=</span> <span class="st">"Replicate"</span>,</span>
+<span>  ylab <span class="op">=</span> <span class="st">"Speed (um/min)"</span>,</span>
+<span>  shapes <span class="op">=</span> <span class="cn">FALSE</span>,</span>
+<span>  options <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span></span>
+<span>    crossbar_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>width <span class="op">=</span> <span class="fl">0.5</span><span class="op">)</span>,  <span class="co"># wider/narrower crossbar</span></span>
+<span>    legend_position <span class="op">=</span> <span class="st">"right"</span>,            <span class="co"># show legend on the right</span></span>
+<span>    raw_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">15</span><span class="op">)</span>,        <span class="co"># square raw points</span></span>
+<span>    summary_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>shape <span class="op">=</span> <span class="fl">22</span><span class="op">)</span>     <span class="co"># square summary points</span></span>
+<span>  <span class="op">)</span></span>
+<span><span class="op">)</span></span></code></pre></div>
+<p><img src="advanced_files/figure-html/options_in_wrapper2-1.png" class="r-plt" alt="" width="576"></p>
+</div>
+<div class="section level3">
 <h3 id="ordering-the-x-axis">Ordering the x-axis<a class="anchor" aria-label="anchor" href="#ordering-the-x-axis"></a>
 </h3>
 <p>This is best done by reordering the levels of the factor in the input
 dataframe before calling <code>superplot</code>.</p>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">lord_jcb</span></span>
 <span><span class="va">df</span><span class="op">$</span><span class="va">Treatment</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">Treatment</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Drug"</span>, <span class="st">"Control"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>, ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span><span class="op">)</span></span></code></pre></div>
@@ -167,7 +254,7 @@ you received a warning that some replicates are missing some
 conditions.</p>
 <p>You can set the option <code>info = TRUE</code> when you call
 <code>superplot</code> to get more detailed information.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>, ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span>,</span>
 <span>          info <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; SuperPlot information</span></span>
@@ -216,7 +303,7 @@ plot. However, if you want to see the legend, you can either set
 SuperPlot, you can use the <code>get_sp_summary</code> function. This
 will return a data frame with the summary data used to create the
 SuperPlot.</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">summary_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_sp_summary.html">get_sp_summary</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">summary_data</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 4</span></span></span>
@@ -240,7 +327,7 @@ representative image in the figure.</p>
 closeness to the summary of each replicate or condition (see
 <code><a href="../reference/representative.html">?representative</a></code> for more information). It also prints the
 top ranked datapoint to the console.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">representative_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/representative.html">representative</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 6</span></span></span>
 <span><span class="co">#&gt;   Treatment Replicate Speed rowno     diff  rank</span></span>
@@ -265,7 +352,7 @@ top ranked datapoint to the console.</p>
 is used as the label. If you have a label column, you can specify it
 using the <code>label</code> parameter. The label could be a filename or
 other identifier to identify where the datapoint came from.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Assuming lord_jcb has a column "FileName" with the labels</span></span>
 <span><span class="va">example</span> <span class="op">&lt;-</span> <span class="va">lord_jcb</span></span>
 <span><span class="va">example</span><span class="op">$</span><span class="va">FileName</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"Image_"</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">example</span><span class="op">)</span><span class="op">)</span>, <span class="st">".tif"</span><span class="op">)</span></span>

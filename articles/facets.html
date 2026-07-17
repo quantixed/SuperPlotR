@@ -83,21 +83,25 @@ must be supplied in the <code><a href="../reference/superplot.html">superplot()<
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/quantixed/SuperPlotR" class="external-link">SuperPlotR</a></span><span class="op">)</span></span>
 <span><span class="co"># add a variable to facet by to the data frame</span></span>
 <span><span class="va">df</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">cbind</a></span><span class="op">(</span><span class="va">lord_jcb</span>, other <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/rep.html" class="external-link">rep</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"A"</span>, <span class="st">"B"</span><span class="op">)</span>, <span class="fl">150</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="co"># we'll add 10 to the speed to better demonstrate the faceting</span></span>
+<span><span class="va">df</span><span class="op">$</span><span class="va">Speed</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">other</span> <span class="op">==</span> <span class="st">"B"</span><span class="op">]</span> <span class="op">&lt;-</span> <span class="va">df</span><span class="op">$</span><span class="va">Speed</span><span class="op">[</span><span class="va">df</span><span class="op">$</span><span class="va">other</span> <span class="op">==</span> <span class="st">"B"</span><span class="op">]</span> <span class="op">+</span> <span class="fl">10</span></span>
+<span><span class="co"># facet by the "other" variable</span></span>
 <span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>, facet <span class="op">=</span> <span class="st">"other"</span>,</span>
 <span>               ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="facets_files/figure-html/facet-1.png" class="r-plt" alt="" width="700"></p>
 <p>If we fail to supply the variable for faceting in the
-<code><a href="../reference/superplot.html">superplot()</a></code> call, then when the facet function is called,
-the summary points and bars will be incorrect because they are
-calculated without the facet variable.</p>
+<code><a href="../reference/superplot.html">superplot()</a></code> call, then when the facet function is called
+subsequently, the summary points and bars will be incorrect because they
+are calculated without the facet variable.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
 <span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>, ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span><span class="op">)</span></span>
 <span><span class="co"># incorrect output</span></span>
 <span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap</a></span><span class="op">(</span><span class="op">~</span> <span class="va">other</span><span class="op">)</span></span></code></pre></div>
 <p><img src="facets_files/figure-html/facet2-1.png" class="r-plt" alt="" width="700"></p>
-<p><strong>Note:</strong> currently <code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap()</a></code> is used,
-for further enhancement requests, raise an issue.</p>
+<p><strong>Note:</strong> currently <code><a href="https://ggplot2.tidyverse.org/reference/facet_wrap.html" class="external-link">facet_wrap()</a></code> is used as
+the option in <code><a href="../reference/superplot.html">superplot()</a></code>, for further enhancement
+requests, raise an issue.</p>
 <p>For FlatPlots (see <code><a href="../articles/flatplot.html">vignette("flatplot")</a></code>), faceting works
 without additional arguments.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">

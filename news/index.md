@@ -1,5 +1,15 @@
 # Changelog
 
+## SuperPlotR 0.2.0
+
+- SuperPlotting is now done using
+  [`superplot_spec()`](https://quantixed.github.io/SuperPlotR/reference/superplot_spec.md)
+  behind the scenes, which allows for greater flexibility in the future.
+- Better handling of colour and shape aesthetics, including the ability
+  to specify them in the
+  [`superplot()`](https://quantixed.github.io/SuperPlotR/reference/superplot.md)
+  function.
+
 ## SuperPlotR 0.1.2
 
 - Ability to facet superplots

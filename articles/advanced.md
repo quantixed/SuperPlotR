@@ -105,6 +105,112 @@ superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)",
 
 ![](advanced_files/figure-html/ggplot-1.png)
 
+### Specification workflow for advanced customization
+
+The wrapper approach remains the easiest way to make a SuperPlot
+quickly. For more control, SuperPlotR now also supports a specification
+workflow:
+
+1.  Create a plot specification with
+    [`superplot_spec()`](https://quantixed.github.io/SuperPlotR/reference/superplot_spec.md)
+2.  Modify advanced options with
+    [`sp_modify()`](https://quantixed.github.io/SuperPlotR/reference/sp_modify.md)
+3.  Render with
+    [`autoplot()`](https://ggplot2.tidyverse.org/reference/autoplot.html)
+
+``` r
+
+spec <- superplot_spec(
+  lord_jcb,
+  meas = "Speed",
+  cond = "Treatment",
+  repl = "Replicate",
+  ylab = "Speed (µm/min)"
+)
+
+p <- autoplot(spec)
+p
+```
+
+![](advanced_files/figure-html/spec_workflow-1.png)
+
+This is useful when you want to tune individual layers without adding
+many top-level arguments to
+[`superplot()`](https://quantixed.github.io/SuperPlotR/reference/superplot.md).
+
+``` r
+
+spec2 <- sp_modify(
+  spec,
+  summary_params = list(size = 4, alpha = 1),
+  raw_params = list(alpha = 0.35),
+  bar_params = list(linewidth = 0.4),
+  crossbar_params = list(width = 0.5),
+  legend_position = "right",
+  y_limits_from_zero = FALSE,
+  theme = theme_minimal(base_size = 10)
+)
+
+autoplot(spec2)
+```
+
+![](advanced_files/figure-html/spec_modify-1.png)
+
+You can pass the same options directly from
+[`superplot()`](https://quantixed.github.io/SuperPlotR/reference/superplot.md)
+using the `options` argument:
+
+``` r
+
+superplot(
+  lord_jcb,
+  "Speed",
+  "Treatment",
+  "Replicate",
+  ylab = "Speed (µm/min)",
+  options = list(
+    legend_position = "right",
+    summary_params = list(size = 4)
+  )
+)
+```
+
+![](advanced_files/figure-html/options_in_wrapper-1.png)
+
+The supported advanced option names are:
+
+- `raw_params`
+- `summary_params`
+- `link_params`
+- `bar_params`
+- `crossbar_params`
+- `theme`
+- `legend_position`
+- `y_limits_from_zero`
+
+Here’s a final example of tweaking parameters for the crossbar, legend,
+raw points and summary points.
+
+``` r
+
+superplot(
+  lord_jcb,
+  meas = "Speed",
+  cond = "Treatment",
+  repl = "Replicate",
+  ylab = "Speed (um/min)",
+  shapes = FALSE,
+  options = list(
+    crossbar_params = list(width = 0.5),  # wider/narrower crossbar
+    legend_position = "right",            # show legend on the right
+    raw_params = list(shape = 15),        # square raw points
+    summary_params = list(shape = 22)     # square summary points
+  )
+)
+```
+
+![](advanced_files/figure-html/options_in_wrapper2-1.png)
+
 ### Ordering the x-axis
 
 This is best done by reordering the levels of the factor in the input
