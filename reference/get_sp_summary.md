@@ -46,10 +46,11 @@ measurements), and rep_median (median of measurements)
 
 ## Details
 
-It is useful to get teh summary data and computing further stats or
-making plots. The function only needs 4 parameters, anything else is
-ignored. This means you can simply exchange get_sp_summary() for your
-superplot() call and get the correct data frame to work with.
+It is useful to get the summary data and compute further stats or make
+plots. The function only needs 4 parameters from the superplot() call,
+anything else is ignored. This means you can simply exchange
+get_sp_summary() for your superplot() call and get the correct data
+frame to work with.
 
 ## Examples
 
