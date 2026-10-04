@@ -81,7 +81,9 @@ flatplot <- function(df,
 
   # if the cond column is not character, convert it
   # but only if it is not already a factor
-  if (!is.factor(df[[cond]]) && !is.character(df[[cond]])) {
+  if (is.numeric(df[[cond]])) {
+    df[[cond]] <- factor(df[[cond]], levels = sort(unique(df[[cond]])))
+  } else if (!is.factor(df[[cond]]) && !is.character(df[[cond]])) {
     df[[cond]] <- as.character(df[[cond]])
   }
 

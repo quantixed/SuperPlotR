@@ -108,8 +108,8 @@ check_colour <- function(arg) {
 #' @keywords internal
 check_xlab <- function(arg) {
   # xlab should be a character
-  if (!is.character(arg)) {
-    stop("'xlab' must be a character", call. = FALSE)
+  if (!(is.character(arg) | is.language(arg))) {
+    stop("'xlab' must be a character or language", call. = FALSE)
   }
 }
 
@@ -119,9 +119,9 @@ check_xlab <- function(arg) {
 #' @returns none
 #' @keywords internal
 check_ylab <- function(arg) {
-  # ylab should be a character
-  if (!is.character(arg)) {
-    stop("'ylab' must be a character", call. = FALSE)
+  # ylab should be a character or language object
+  if (!(is.character(arg) | is.language(arg))) {
+    stop("'ylab' must be a character or language", call. = FALSE)
   }
 }
 

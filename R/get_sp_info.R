@@ -95,7 +95,7 @@ get_sp_info <- function(df,
   message("Number of data points: ", nrow(df))
   message("Number of summary points: ", nrow(summary_df))
   if( !is.null(facet)) {
-    message("Number of facets: ", nfacet)
+    message("Number of facets: ", nfacet, " - note the data below is not split by facet")
   }
   message("=====================")
   message("Colour palette: ", pal)

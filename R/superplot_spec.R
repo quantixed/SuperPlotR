@@ -336,7 +336,9 @@ autoplot.superplot_spec <- function(object, ...) {
 }
 
 .sp_prepare_df <- function(df, cond, repl, facet) {
-  if (!is.factor(df[[cond]]) && !is.character(df[[cond]])) {
+  if (is.numeric(df[[cond]])) {
+    df[[cond]] <- factor(df[[cond]], levels = sort(unique(df[[cond]])))
+  } else if (!is.factor(df[[cond]]) && !is.character(df[[cond]])) {
     df[[cond]] <- as.character(df[[cond]])
   }
 
