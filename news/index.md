@@ -2,6 +2,13 @@
 
 ## SuperPlotR 0.2.0
 
+- Handling of [`expression()`](https://rdrr.io/r/base/expression.html)
+  for axis labels
+- Better handling of numeric data for x-axis. Now factored in numeric
+  order rather than alphabetically.
+
+## SuperPlotR 0.2.0
+
 - SuperPlotting is now done using
   [`superplot_spec()`](https://quantixed.github.io/SuperPlotR/reference/superplot_spec.md)
   behind the scenes, which allows for greater flexibility in the future.
