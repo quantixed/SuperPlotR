@@ -10,6 +10,9 @@
 #'   identifiers)
 #' @param facet character name of column to facet by (default is NULL)
 #' @param pal name of colour palette to use (default is "tol_bright")
+#' @param pal_order optional order of the palette colours: NULL (default),
+#'   "reverse", "random" (the order used is printed so it can be reused), or an
+#'   integer vector containing each of 1 to the number of replicates once
 #' @param xlab string for x label (default is empty)
 #' @param ylab string for y label (default is "Measurement")
 #' @param datadist string for data distribution to use, select ("sina" default,
@@ -54,6 +57,7 @@ superplot <- function(df,
                       meas, cond, repl,
                       facet = NULL,
                       pal = "tol_bright",
+                      pal_order = NULL,
                       xlab = "", ylab = "Measurement",
                       datadist = "sina",
                       size = c(2, 3),
@@ -75,6 +79,7 @@ superplot <- function(df,
     repl = repl,
     facet = facet,
     pal = pal,
+    pal_order = pal_order,
     xlab = xlab,
     ylab = ylab,
     datadist = datadist,

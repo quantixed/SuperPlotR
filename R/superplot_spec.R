@@ -12,6 +12,9 @@
 #'   identifiers)
 #' @param facet character name of column to facet by (default is NULL)
 #' @param pal name of colour palette to use (default is "tol_bright")
+#' @param pal_order optional order of the palette colours: NULL (default),
+#'   "reverse", "random" (the order used is printed so it can be reused), or an
+#'   integer vector containing each of 1 to the number of replicates once
 #' @param xlab string for x label (default is empty)
 #' @param ylab string for y label (default is "Measurement")
 #' @param datadist string for data distribution to use, select ("sina" default,
@@ -46,6 +49,7 @@ superplot_spec <- function(df,
                            meas, cond, repl,
                            facet = NULL,
                            pal = "tol_bright",
+                           pal_order = NULL,
                            xlab = "", ylab = "Measurement",
                            datadist = "sina",
                            size = c(2, 3),
@@ -101,13 +105,16 @@ superplot_spec <- function(df,
                             info = info,
                             facet = facet)
 
-  sp_colours <- get_sp_colours(nrepl, pal)
+  # resolve once so a random order is only drawn (and printed) once
+  pal_order <- resolve_pal_order(pal_order, nrepl)
+  sp_colours <- get_sp_colours(nrepl, pal, pal_order)
   sp_shapes <- get_sp_shapes(nrepl, shapes)
 
   if (info == TRUE) {
     get_sp_info(df = df,
                 meas = meas, cond = cond, repl = repl, facet = facet,
-                pal = pal, xlab = xlab, ylab = ylab,
+                pal = pal, pal_order = pal_order,
+                xlab = xlab, ylab = ylab,
                 datadist = datadist, size = size, alpha = alpha,
                 bars = bars, linking = linking,
                 rep_summary = rep_summary, shapes = shapes,
@@ -121,6 +128,7 @@ superplot_spec <- function(df,
     mapping = list(meas = meas, cond = cond, repl = repl, facet = facet),
     params = list(
       pal = pal,
+      pal_order = pal_order,
       xlab = xlab,
       ylab = ylab,
       datadist = datadist,

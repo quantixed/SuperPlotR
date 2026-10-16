@@ -9,6 +9,7 @@
 #' @param repl character name of column with replicate (e.g. unique experiment
 #' identifiers)
 #' @param pal argument passed to pal
+#' @param pal_order argument passed to pal_order
 #' @param xlab argument passed to xlab
 #' @param ylab argument passed to ylab
 #' @param datadist argument passed to datadist
@@ -36,7 +37,7 @@
 # this function will take all the arguments sent from superplot
 get_sp_info <- function(df,
                       meas, cond, repl, facet,
-                      pal, xlab, ylab, datadist, size, alpha, bars,
+                      pal, pal_order, xlab, ylab, datadist, size, alpha, bars,
                       linking, rep_summary, shapes, fsize, gg,
                       stats, stats_test,
                       ...) {
@@ -66,7 +67,7 @@ get_sp_info <- function(df,
                              meas = meas, cond = cond, repl = repl, facet = facet)
 
   # get colour values for the repl column
-  sp_colours <- get_sp_colours(nrepl, pal)
+  sp_colours <- get_sp_colours(nrepl, pal, pal_order)
   sp_colours_words <- ColorNameR::name(t(col2rgb(sp_colours)) / 255,
                                        colorspace = "sRGB")
   sp_shapes <- get_sp_shapes(nrepl, shapes)
@@ -99,6 +100,9 @@ get_sp_info <- function(df,
   }
   message("=====================")
   message("Colour palette: ", pal)
+  if (!is.null(pal_order)) {
+    message("Colour order: ", paste(pal_order, collapse = ", "))
+  }
   message("Data distribution: ", datadist)
   message("Summary statistic: ", rep_summary)
   if( bars != "") {

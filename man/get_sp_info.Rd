@@ -11,6 +11,7 @@ get_sp_info(
   repl,
   facet,
   pal,
+  pal_order,
   xlab,
   ylab,
   datadist,
@@ -38,6 +39,8 @@ get_sp_info(
 identifiers)}
 
 \item{pal}{argument passed to pal}
+
+\item{pal_order}{argument passed to pal_order}
 
 \item{xlab}{argument passed to xlab}
 

@@ -74,6 +74,7 @@ palette (`"tol_bright"`) but you can select from:
 - `"tol_vibrant"`
 - `"tol_muted"`
 - `"tol_light"`
+- `"tol_rainbow"`
 - or Color Universal Design (`"cud"`)
 
 ```{r colours}
@@ -81,7 +82,27 @@ superplot(lord_jcb, "Speed", "Treatment", "Replicate",
           ylab = "Speed (µm/min)", pal = "cud")
 ```
 
-It's possible to supply your own palette as a vector of colours (in hex or
+If you have more than 8-10 conditions, the `"tol_rainbow"` palette is a good choice as it has 27 colours.
+The other palettes have fewer colours and will repeat if you have more conditions than colours.
+
+If you like the palette, but don't like the order of the colours, you can change the order with the `pal_order` argument. For example, to reverse the order of the colours:
+
+```{r pal_order}
+superplot(lord_jcb, "Speed", "Treatment", "Replicate",
+          ylab = "Speed (µm/min)", pal = "tol_bright", pal_order = "reverse")
+```
+
+or you can randomise the order of the colours:
+
+```{r pal_order_random}
+superplot(lord_jcb, "Speed", "Treatment", "Replicate",
+          ylab = "Speed (µm/min)", pal = "tol_bright", pal_order = "random")
+```
+
+or you can specify a custom order of the colours by providing a vector of integers corresponding to the order of the conditions.
+Note that previous versions of SuperPlot used `tol_bright` in the following order: `list(c(1), c(1, 2), c(1, 4, 2), c(1, 3, 4, 2), c(1, 5, 3, 4, 2), c(1, 5, 3, 4, 2, 6))`
+
+It's also possible to supply your own palette as a vector of colours (in hex or
 description format)
 
 ```{r custom_palette}

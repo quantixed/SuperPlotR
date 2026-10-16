@@ -1,4 +1,8 @@
-# SuperPlotR 0.2.0
+# SuperPlotR 0.2.2
+
+* Better handling of colours and colour palettes when large numbers of replicates are to be plotted.
+
+# SuperPlotR 0.2.1
 
 * Handling of `expression()` for axis labels
 * Better handling of numeric data for x-axis. Now factored in numeric order rather than alphabetically.
