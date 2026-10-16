@@ -8,15 +8,15 @@
 ## Citation
 
 Source:
-[`DESCRIPTION`](https://github.com/quantixed/SuperPlotR/blob/v0.2.1/DESCRIPTION)
+[`DESCRIPTION`](https://github.com/quantixed/SuperPlotR/blob/master/DESCRIPTION)
 
 Royle S (2026). *SuperPlotR: Making SuperPlots in R*. R package version
-0.2.1, <https://github.com/quantixed/SuperPlotR>.
+0.2.2, <https://github.com/quantixed/SuperPlotR>.
 
     @Manual{,
       title = {SuperPlotR: Making SuperPlots in R},
       author = {Stephen J Royle},
       year = {2026},
-      note = {R package version 0.2.1},
+      note = {R package version 0.2.2},
       url = {https://github.com/quantixed/SuperPlotR},
     }

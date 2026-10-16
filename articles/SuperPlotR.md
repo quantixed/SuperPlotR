@@ -71,6 +71,7 @@ bright palette (`"tol_bright"`) but you can select from:
 - `"tol_vibrant"`
 - `"tol_muted"`
 - `"tol_light"`
+- `"tol_rainbow"`
 - or Color Universal Design (`"cud"`)
 
 ``` r
@@ -81,8 +82,40 @@ superplot(lord_jcb, "Speed", "Treatment", "Replicate",
 
 ![](SuperPlotR_files/figure-html/colours-1.png)
 
-It’s possible to supply your own palette as a vector of colours (in hex
-or description format)
+If you have more than 8-10 conditions, the `"tol_rainbow"` palette is a
+good choice as it has 27 colours. The other palettes have fewer colours
+and will repeat if you have more conditions than colours.
+
+If you like the palette, but don’t like the order of the colours, you
+can change the order with the `pal_order` argument. For example, to
+reverse the order of the colours:
+
+``` r
+
+superplot(lord_jcb, "Speed", "Treatment", "Replicate",
+          ylab = "Speed (µm/min)", pal = "tol_bright", pal_order = "reverse")
+```
+
+![](SuperPlotR_files/figure-html/pal_order-1.png)
+
+or you can randomise the order of the colours:
+
+``` r
+
+superplot(lord_jcb, "Speed", "Treatment", "Replicate",
+          ylab = "Speed (µm/min)", pal = "tol_bright", pal_order = "random")
+#> Random colour order: c(3, 1, 2) - use this as pal_order to reuse it
+```
+
+![](SuperPlotR_files/figure-html/pal_order_random-1.png)
+
+or you can specify a custom order of the colours by providing a vector
+of integers corresponding to the order of the conditions. Note that
+previous versions of SuperPlot used `tol_bright` in the following order:
+`list(c(1), c(1, 2), c(1, 4, 2), c(1, 3, 4, 2), c(1, 5, 3, 4, 2), c(1, 5, 3, 4, 2, 6))`
+
+It’s also possible to supply your own palette as a vector of colours (in
+hex or description format)
 
 ``` r
 
@@ -213,7 +246,7 @@ sessionInfo()
 #> [1] stats     graphics  grDevices utils     datasets  methods   base     
 #> 
 #> other attached packages:
-#> [1] ggplot2_4.0.3    SuperPlotR_0.2.1
+#> [1] ggplot2_4.0.3    SuperPlotR_0.2.2
 #> 
 #> loaded via a namespace (and not attached):
 #>  [1] gtable_0.3.6       jsonlite_2.0.0     dplyr_1.2.1        compiler_4.6.1    

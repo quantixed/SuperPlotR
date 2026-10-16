@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">SuperPlotR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.2</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -37,7 +37,7 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Make a SuperPlot</h1>
-      <small class="dont-index">Source: <a href="https://github.com/quantixed/SuperPlotR/blob/v0.2.1/R/superplot.R" class="external-link"><code>R/superplot.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/quantixed/SuperPlotR/blob/master/R/superplot.R" class="external-link"><code>R/superplot.R</code></a></small>
       <div class="d-none name"><code>superplot.Rd</code></div>
     </div>
 
@@ -54,6 +54,7 @@
 <span>  <span class="va">repl</span>,</span>
 <span>  facet <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  pal <span class="op">=</span> <span class="st">"tol_bright"</span>,</span>
+<span>  pal_order <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  xlab <span class="op">=</span> <span class="st">""</span>,</span>
 <span>  ylab <span class="op">=</span> <span class="st">"Measurement"</span>,</span>
 <span>  datadist <span class="op">=</span> <span class="st">"sina"</span>,</span>
@@ -99,6 +100,12 @@ identifiers)</p></dd>
 
 <dt id="arg-pal">pal<a class="anchor" aria-label="anchor" href="#arg-pal"></a></dt>
 <dd><p>name of colour palette to use (default is "tol_bright")</p></dd>
+
+
+<dt id="arg-pal-order">pal_order<a class="anchor" aria-label="anchor" href="#arg-pal-order"></a></dt>
+<dd><p>optional order of the palette colours: NULL (default),
+"reverse", "random" (the order used is printed so it can be reused), or an
+integer vector containing each of 1 to the number of replicates once</p></dd>
 
 
 <dt id="arg-xlab">xlab<a class="anchor" aria-label="anchor" href="#arg-xlab"></a></dt>

@@ -261,8 +261,8 @@ superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)",
 #> Font size: 12
 #> No statistics
 #> =====================
-#> Colours for replicates: #4477AA, #CCBB44, #EE6677
-#> Colour names for replicates: dark green blue, medium green brown, red pink
+#> Colours for replicates: #4477AA, #EE6677, #228833
+#> Colour names for replicates: dark green blue, red pink, medium green
 #> Shapes for replicates: 21, 21, 21
 #> =====================
 #> Summary statistics:
@@ -270,11 +270,11 @@ superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)",
 #>   Treatment Replicate rep_mean rep_median sp_colour sp_shape
 #>   <chr>     <fct>        <dbl>      <dbl> <fct>     <fct>   
 #> 1 Control   1             41.5       41.7 #4477AA   21      
-#> 2 Control   2             32.6       34.4 #CCBB44   21      
-#> 3 Control   3             20.6       20.3 #EE6677   21      
+#> 2 Control   2             32.6       34.4 #EE6677   21      
+#> 3 Control   3             20.6       20.3 #228833   21      
 #> 4 Drug      1             29.6       30.1 #4477AA   21      
-#> 5 Drug      2             22.3       21.9 #CCBB44   21      
-#> 6 Drug      3             12.9       12.6 #EE6677   21
+#> 5 Drug      2             22.3       21.9 #EE6677   21      
+#> 6 Drug      3             12.9       12.6 #228833   21
 ```
 
 ![](advanced_files/figure-html/info-1.png)

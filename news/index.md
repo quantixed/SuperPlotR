@@ -1,6 +1,11 @@
 # Changelog
 
-## SuperPlotR 0.2.0
+## SuperPlotR 0.2.2
+
+- Better handling of colours and colour palettes when large numbers of
+  replicates are to be plotted.
+
+## SuperPlotR 0.2.1
 
 - Handling of [`expression()`](https://rdrr.io/r/base/expression.html)
   for axis labels
