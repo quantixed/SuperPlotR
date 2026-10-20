@@ -48,18 +48,18 @@ validate_args <- function(pal = NULL, colour = NULL, xlab = NULL, ylab = NULL,
 #' @keywords internal
 check_pal <- function(arg) {
   # pal should be a list of colours, or one of the following:
-  # tol_bright, tol_vibrant, tol_muted, tol_light, cud
+  # tol_bright, tol_vibrant, tol_muted, tol_light, tol_rainbow, cud
   # first test if it is a character vector of length 1
   if (length(arg) == 1) {
     if (!arg %in% c("tol_bright", "tol_vibrant", "tol_muted",
-                                      "tol_light", "cud")) {
+                                      "tol_light", "tol_rainbow", "cud")) {
       stop("'pal' must be a vector of colours or one of tol_bright, tol_vibrant,
-             tol_muted, tol_light, cud", call. = FALSE)
+             tol_muted, tol_light, tol_rainbow, cud", call. = FALSE)
     }
   if (is.vector(arg) && length(arg) > 1) {
       if (!all(sapply(arg, function(x) is.character(x)))) {
         stop("'pal' must be a vector of colours or one of tol_bright, tol_vibrant,
-             tol_muted, tol_light, cud", call. = FALSE)
+             tol_muted, tol_light, tol_rainbow, cud", call. = FALSE)
       }
     }
   }
