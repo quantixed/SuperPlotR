@@ -29,7 +29,7 @@ superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)")
 
 This will generate a SuperPlot of the `Speed` data, with `Treatment` on the
 x-axis and `Replicate` is used to group the data. The y-axis label is set to
-"Speed".
+"Speed (µm/min)".
 
 An equivalent call in long form is:
 
@@ -43,10 +43,14 @@ superplot(
 )
 ```
 
+To generate your own SuperPlot, you need a data frame with at least three
+columns (the measurement, the experimental condition,
+the experimental replicate).
+
 # Customising the SuperPlot
 
-A separate vignette describes how to customise the sizing of the plot. Here, we
-will look at major customisation options.
+The major customisation options are shown here.
+See the other guides for other customisation options.
 
 ## Data distribution
 
@@ -63,51 +67,6 @@ page) uses `sina` which is a jittered scatter plot with a density estimate.
 ```{r jitter}
 superplot(lord_jcb, "Speed", "Treatment", "Replicate",
           ylab = "Speed (µm/min)", datadist = "jitter")
-```
-
-## Colours
-
-The colours of the points can be changed. The default is Paul Tol's bright
-palette (`"tol_bright"`) but you can select from:
-
-- `"tol_bright"`
-- `"tol_vibrant"`
-- `"tol_muted"`
-- `"tol_light"`
-- `"tol_rainbow"`
-- or Color Universal Design (`"cud"`)
-
-```{r colours}
-superplot(lord_jcb, "Speed", "Treatment", "Replicate",
-          ylab = "Speed (µm/min)", pal = "cud")
-```
-
-If you have more than 8-10 conditions, the `"tol_rainbow"` palette is a good choice as it has 27 colours.
-The other palettes have fewer colours and will repeat if you have more conditions than colours.
-
-If you like the palette, but don't like the order of the colours, you can change the order with the `pal_order` argument. For example, to reverse the order of the colours:
-
-```{r pal_order}
-superplot(lord_jcb, "Speed", "Treatment", "Replicate",
-          ylab = "Speed (µm/min)", pal = "tol_bright", pal_order = "reverse")
-```
-
-or you can randomise the order of the colours:
-
-```{r pal_order_random}
-superplot(lord_jcb, "Speed", "Treatment", "Replicate",
-          ylab = "Speed (µm/min)", pal = "tol_bright", pal_order = "random")
-```
-
-or you can specify a custom order of the colours by providing a vector of integers corresponding to the order of the conditions.
-Note that previous versions of SuperPlot used `tol_bright` in the following order: `list(c(1), c(1, 2), c(1, 4, 2), c(1, 3, 4, 2), c(1, 5, 3, 4, 2), c(1, 5, 3, 4, 2, 6))`
-
-It's also possible to supply your own palette as a vector of colours (in hex or
-description format)
-
-```{r custom_palette}
-superplot(lord_jcb, "Speed", "Treatment", "Replicate",
-          ylab = "Speed (µm/min)", pal = c("#ff0000", "blue", "green"))
 ```
 
 ## Summary points
@@ -183,8 +142,8 @@ ggsave("superplot.pdf", p)
 
 # More customisation
 
-A separate vignette describes how to customise the SuperPlot further.
-See `vignette("advanced")`.
+There are more options for customising SuperPlots. Look at the guides under the
+Articles tab.
 
 # Session Info
 

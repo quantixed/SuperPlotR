@@ -39,6 +39,7 @@ validate_args <- function(pal = NULL, colour = NULL, xlab = NULL, ylab = NULL,
   if (!is.null(stats)) check_stats(stats)
   if (!is.null(stats_test)) check_stats_test(stats_test)
   if (!is.null(info)) check_info(info)
+  # pal_order is validated below once the number of replicates is known.
 }
 
 #' Check pal argument
@@ -272,4 +273,56 @@ check_info <- function(arg) {
   if (!is.logical(arg)) {
     stop("'info' must be a logical", call. = FALSE)
   }
+}
+
+#' Resolve the palette order argument
+#'
+#' @param order NULL, "reverse", "random" or an integer vector
+#' @param n number of colours
+#' @returns NULL or an integer vector of length n (prints it if random)
+#' @keywords internal
+resolve_pal_order <- function(order, n) {
+  if (is.null(order)) {
+    return(NULL)
+  }
+  if (is.character(order) && length(order) == 1L && !is.na(order)) {
+    if (identical(order, "reverse")) {
+      return(rev(seq_len(n)))
+    }
+
+    if (identical(order, "random")) {
+      order <- sample.int(n)
+      message(
+        "Random colour order: c(", paste(order, collapse = ", "),
+        ") - use this as pal_order to reuse it"
+      )
+      return(order)
+    }
+  }
+
+  if (!is.numeric(order) || anyNA(order) || any(order != round(order))) {
+    stop(
+      "'pal_order' must be \"random\", \"reverse\", or a vector of integers",
+      call. = FALSE
+    )
+  }
+
+  if (length(order) != n) {
+    stop(
+      "'pal_order' must have length ", n,
+      " (the number of replicates), not ", length(order),
+      call. = FALSE
+    )
+  }
+
+  order <- as.integer(order)
+
+  if (!identical(sort(order), seq_len(n))) {
+    stop(
+      "'pal_order' must contain each integer from 1 to ", n, " once",
+      call. = FALSE
+    )
+  }
+
+  order
 }

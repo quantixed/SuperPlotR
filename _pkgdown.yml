@@ -9,7 +9,9 @@ articles:
   navbar: ~
   contents:
   - SuperPlotR
+  - colours
   - advanced
+  - stats
   - facets
   - limitations
   - flatplot

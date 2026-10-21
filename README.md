@@ -52,10 +52,38 @@ columns. These columns are:
 3.  the experimental repeat that the measurement comes from.
 
 The `superplot()` function takes the data frame, the names of these
-three columns, and is further customisable with additional arguments.
+three columns, and can be customised further with additional arguments.
 
-See `vignette("SuperPlotR")` for more examples, or
-`vignette("advanced")` for more advanced usage.
+## Learn more
+
+SuperPlotR can do a lot more. Check out the guides below to help make
+your plots shine!
+
+- [Getting
+  Started](https://quantixed.github.io/SuperPlotR/articles/SuperPlotR.html)
+- [Changing the
+  colours](https://quantixed.github.io/SuperPlotR/articles/colours.html)
+- [Getting the sizing
+  right](https://quantixed.github.io/SuperPlotR/articles/sizing.html)
+- [Advanced
+  Usage](https://quantixed.github.io/SuperPlotR/articles/advanced.html)
+- [Statistical
+  Testing](https://quantixed.github.io/SuperPlotR/articles/stats.html)
+- [Faceting a
+  SuperPlot](https://quantixed.github.io/SuperPlotR/articles/facets.html)
+
+There are some things that SuperPlotR can’t do and these limitations are
+here:
+
+- [Limitations to
+  SuperPlotR](https://quantixed.github.io/SuperPlotR/articles/limitations.html)
+
+Bonus tracks:
+
+SuperPlotR can generate a couple of other plot types
+
+- [FlatPlots](https://quantixed.github.io/SuperPlotR/articles/flatplot.html)
+- [PiePlots](https://quantixed.github.io/SuperPlotR/articles/pieplot.html)
 
 ## More information
 

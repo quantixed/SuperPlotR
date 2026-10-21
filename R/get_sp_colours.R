@@ -31,40 +31,10 @@ get_sp_colours <- function(n, scheme, order = NULL) {
   colours <- .sp_base_colours(n, scheme)
   order <- resolve_pal_order(order, n)
   if (!is.null(order)) colours <- colours[order]
+
   colours
 }
 
-#' Resolve the palette order argument
-#'
-#' @param order NULL, "reverse", "random" or an integer vector
-#' @param n number of colours
-#' @returns NULL or an integer vector of length n (prints it if random)
-#' @keywords internal
-resolve_pal_order <- function(order, n) {
-  if (is.null(order)) return(NULL)
-  if (is.character(order) && length(order) == 1) {
-    if (order == "reverse") return(rev(seq_len(n)))
-    if (order == "random") {
-      order <- sample(seq_len(n))
-      message("Random colour order: c(", paste(order, collapse = ", "),
-              ") - use this as pal_order to reuse it")
-      return(order)
-    }
-  }
-  if (!is.numeric(order) || anyNA(order) || any(order != round(order))) {
-    stop("'pal_order' must be \"random\", \"reverse\" or a vector of integers",
-         call. = FALSE)
-  }
-  if (length(order) != n) {
-    stop("'pal_order' must have length ", n,
-         " (the number of replicates), not ", length(order), call. = FALSE)
-  }
-  if (!identical(as.integer(sort(order)), seq_len(n))) {
-    stop("'pal_order' must contain each integer from 1 to ", n, " once",
-         call. = FALSE)
-  }
-  as.integer(order)
-}
 
 .sp_base_colours <- function(n, scheme) {
   colours <- NULL
@@ -116,27 +86,35 @@ resolve_pal_order <- function(order, n) {
     x <- rep_len(1:9, n)
     colours <- tol_light[x]
   } else if (scheme == "tol_rainbow") {
-    selection <-  list(c(9), c(9, 25), c(9, 17, 25), c(9, 14, 17, 25), c(9, 13, 14, 17,
-                25), c(9, 13, 14, 16, 17, 25), c(8, 9, 13, 14, 16, 17, 25), c(8,
-                9, 13, 14, 16, 17, 22, 25), c(8, 9, 13, 14, 16, 17, 22, 25, 27),
-                c(8, 9, 13, 14, 16, 17, 20, 23, 25, 27), c(8, 9, 11, 13, 14, 16,
-                17, 20, 23, 25, 27), c(2, 5, 8, 9, 11, 13, 14, 16, 17, 20, 23,
-                25), c(2, 5, 8, 9, 11, 13, 14, 15, 16, 17, 20, 23, 25), c(2, 5,
-                8, 9, 11, 13, 14, 15, 16, 17, 19, 21, 23, 25), c(2, 5, 8, 9, 11,
-                13, 14, 15, 16, 17, 19, 21, 23, 25, 27), c(2, 4, 6, 8, 9, 11,
-                13, 14, 15, 16, 17, 19, 21, 23, 25, 27), c(2, 4, 6, 7, 8, 9, 11,
-                13, 14, 15, 16, 17, 19, 21, 23, 25, 27), c(2, 4, 6, 7, 8, 9, 11,
-                13, 14, 15, 16, 17, 19, 21, 23, 25, 26, 27), c(1, 3, 4, 6, 7, 8,
-                9, 11, 13, 14, 15, 16, 17, 19, 21, 23, 25, 26, 27), c(1, 3, 4,
-                6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17, 19, 21, 23, 25, 26,
-                27), c(1, 3, 4, 6, 7, 8, 9, 10, 12, 13, 14, 15, 16, 17, 18, 20,
-                22, 24, 25, 26, 27), c(1, 3, 4, 6, 7, 8, 9, 10, 12, 13, 14, 15,
-                16, 17, 18, 20, 22, 24, 25, 26, 27, 28), c(0, 1, 3, 4, 6, 7, 8,
-                9, 10, 12, 13, 14, 15, 16, 17, 18, 20, 22, 24, 25, 26, 27, 28))
+    selection <- list(
+      c(10),
+      c(10, 26),
+      c(10, 18, 26),
+      c(10, 15, 18, 26),
+      c(10, 14, 15, 18, 26),
+      c(10, 14, 15, 17, 18, 26),
+      c(9, 10, 14, 15, 17, 18, 26),
+      c(9, 10, 14, 15, 17, 18, 23, 26),
+      c(9, 10, 14, 15, 17, 18, 23, 26, 28),
+      c(9, 10, 14, 15, 17, 18, 21, 24, 26, 28),
+      c(9, 10, 12, 14, 15, 17, 18, 21, 24, 26, 28),
+      c(3, 6, 9, 10, 12, 14, 15, 17, 18, 21, 24, 26),
+      c(3, 6, 9, 10, 12, 14, 15, 16, 17, 18, 21, 24, 26),
+      c(3, 6, 9, 10, 12, 14, 15, 16, 17, 18, 20, 22, 24, 26),
+      c(3, 6, 9, 10, 12, 14, 15, 16, 17, 18, 20, 22, 24, 26, 28),
+      c(3, 5, 7, 9, 10, 12, 14, 15, 16, 17, 18, 20, 22, 24, 26, 28),
+      c(3, 5, 7, 8, 9, 10, 12, 14, 15, 16, 17, 18, 20, 22, 24, 26, 28),
+      c(3, 5, 7, 8, 9, 10, 12, 14, 15, 16, 17, 18, 20, 22, 24, 26, 27, 28),
+      c(2, 4, 5, 7, 8, 9, 10, 12, 14, 15, 16, 17, 18, 20, 22, 24, 26, 27, 28),
+      c(2, 4, 5, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 20, 22, 24, 26, 27, 28),
+      c(2, 4, 5, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 21, 23, 25, 26, 27, 28),
+      c(2, 4, 5, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 21, 23, 25, 26, 27, 28, 29),
+      c(1, 2, 4, 5, 7, 8, 9, 10, 11, 13, 14, 15, 16, 17, 18, 19, 21, 23, 25, 26, 27, 28, 29)
+    )
     if (n < 24) {
       x <- selection[[n]]
     } else {
-      x <- rep_len(1:27, n)
+      x <- rep_len(1:29, n)
     }
     colours <- tol_rainbow[x]
   } else if (scheme == "cud") {

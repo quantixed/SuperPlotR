@@ -14,7 +14,8 @@
 #' @param pal name of colour palette to use (default is "tol_bright")
 #' @param pal_order optional order of the palette colours: NULL (default),
 #'   "reverse", "random" (the order used is printed so it can be reused), or an
-#'   integer vector containing each of 1 to the number of replicates once
+#'   integer vector containing a permutation of the sequence of numbers from 1
+#'   to the total
 #' @param xlab string for x label (default is empty)
 #' @param ylab string for y label (default is "Measurement")
 #' @param datadist string for data distribution to use, select ("sina" default,
@@ -107,7 +108,7 @@ superplot_spec <- function(df,
 
   # resolve once so a random order is only drawn (and printed) once
   pal_order <- resolve_pal_order(pal_order, nrepl)
-  sp_colours <- get_sp_colours(nrepl, pal, pal_order)
+  sp_colours <- get_sp_colours(nrepl, pal, order = pal_order)
   sp_shapes <- get_sp_shapes(nrepl, shapes)
 
   if (info == TRUE) {

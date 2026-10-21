@@ -24,3 +24,18 @@ test_that("get_sp_colours order argument works", {
   expect_error(get_sp_colours(3, "cud", c(1, 2, 4)), "once")
   expect_error(get_sp_colours(3, "cud", "foo"))
 })
+
+test_that("tol_rainbow returns the requested number of valid colours", {
+  for (n in 1:23) {
+    colours <- get_sp_colours(n, "tol_rainbow")
+    expect_length(colours, n)
+    expect_false(anyNA(colours))
+  }
+})
+
+test_that("23-colour tol_rainbow is complete", {
+  colours <- get_sp_colours(23, "tol_rainbow")
+  expect_length(colours, 23)
+  expect_false(anyNA(colours))
+  expect_true(all(nzchar(colours)))
+})
