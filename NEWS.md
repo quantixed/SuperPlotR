@@ -1,3 +1,8 @@
+# SuperPlotR 0.2.3
+
+* Bug fixes.
+* Vignettes are now better separated by topic.
+
 # SuperPlotR 0.2.2
 
 * Better handling of colours and colour palettes when large numbers of replicates are to be plotted.
