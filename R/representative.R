@@ -1,5 +1,6 @@
 #' Report the representative datapoints in a SuperPlot
 #'
+#' @description
 #' This function finds the representative datapoints for each condition and
 #' replicate in a SuperPlot dataset. It calculates the mean or median of the
 #' replicates (conditions), then ranks the individual measurements by their difference from

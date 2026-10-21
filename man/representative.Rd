@@ -49,8 +49,7 @@ replicates (conditions), then ranks the individual measurements by their differe
 the summary statistic. The function returns a data frame with the
 representative datapoints for each treatment and replicate, along with their
 rank of difference from the summary statistic.
-}
-\details{
+
 The top ranked datapoint for each treatment and replicate is printed to the
 console. This is useful for identifying the most representative datapoint
 for each condition, which can be used for showing in a figure.

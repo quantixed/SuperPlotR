@@ -92,7 +92,16 @@ is FALSE)}
 ggplot object
 }
 \description{
-The function \code{superplot()} creates a SuperPlot using \code{ggplot2}.
+The function \code{superplot()} creates a SuperPlot using \code{ggplot2}. At
+a minimum the user needs to supply a data frame with at least three columns
+that have the measurement (meas), condition (cond) and replicate (repl)
+information. There are direct arguments to change the colours, axes labels,
+sizes, and more (see details below). There is also a flexible \code{options}
+argument to supply a list to specify even more customisation.
+
+If you are building a very complicated SuperPlot, it is preferable to specify
+a superplot_spec using \code{superplot_spec()} and \code{sp_modify()} before
+plotting with \code{autoplot()}
 }
 \examples{
 superplot(lord_jcb,

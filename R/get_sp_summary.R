@@ -1,5 +1,6 @@
 #' Get summary statistics for SuperPlot data
 #'
+#' @description
 #' This function calculates summary statistics (mean and median) for each
 #' combination of condition and replicate in a SuperPlot dataset.
 #'

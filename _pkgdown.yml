@@ -8,7 +8,6 @@ articles:
 - title: How to...
   navbar: ~
   contents:
-  - SuperPlotR
   - colours
   - sizing
   - advanced
