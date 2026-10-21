@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">SuperPlotR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -19,7 +19,10 @@
 <li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/advanced.html">Advanced Usage</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/colours.html">Colour Options for SuperPlots</a></li>
+    <li><a class="dropdown-item" href="../articles/sizing.html">sizing</a></li>
+    <li><a class="dropdown-item" href="../articles/advanced.html">Advanced Usage</a></li>
+    <li><a class="dropdown-item" href="../articles/stats.html">Statistical testing for SuperPlots</a></li>
     <li><a class="dropdown-item" href="../articles/facets.html">Faceting a Superplot</a></li>
     <li><a class="dropdown-item" href="../articles/limitations.html">Limitations to SuperPlotR</a></li>
     <li><a class="dropdown-item" href="../articles/flatplot.html">Making non-SuperPlots - FlatPlots</a></li>
@@ -105,7 +108,8 @@ identifiers)</p></dd>
 <dt id="arg-pal-order">pal_order<a class="anchor" aria-label="anchor" href="#arg-pal-order"></a></dt>
 <dd><p>optional order of the palette colours: NULL (default),
 "reverse", "random" (the order used is printed so it can be reused), or an
-integer vector containing each of 1 to the number of replicates once</p></dd>
+integer vector containing a permutation of the sequence of numbers from 1
+to the total</p></dd>
 
 
 <dt id="arg-xlab">xlab<a class="anchor" aria-label="anchor" href="#arg-xlab"></a></dt>

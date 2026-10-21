@@ -5,96 +5,41 @@
 In this vignette, we will explore some of the more advanced features of
 SuperPlotR.
 
-But first, we need to deal with how to simply scale the plot so it looks
-good in your paper!
-
-### Sizing the SuperPlot
-
-The default setting is to use point sizes of 2 for the data and 3 for
-the summary points. The font size is 12. This looks good in the RStudio
-viewer, but is not well suited to a figure which is likely to be very
-small.
-
-``` r
-
-library(SuperPlotR)
-# the default plot
-superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)")
-```
-
-![](advanced_files/figure-html/sizing-1.png)
-
-``` r
-
-# the same plot but with custom sizing
-superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)",
-          size = c(0.8,1.5), fsize = 9)
-```
-
-![](advanced_files/figure-html/sizing-2.png)
-
-This does not look great in the viewer, but it will look better in a
-figure.
-
-``` r
-
-library(ggplot2)
-# the same plot but with custom sizing
-superplot(lord_jcb, "Speed", "Treatment", "Replicate",
-               ylab = "Speed (µm/min)", size = c(0.8,1.5), fsize = 9)
-```
-
-![](advanced_files/figure-html/sizing2-1.png)
-
-``` r
-
-ggsave("plot.pdf", width = 88, height = 50, units = "mm") # final size
-```
-
-This is preferable to
-
-``` r
-
-library(ggplot2)
-# the same plot but with custom sizing
-superplot(lord_jcb, "Speed", "Treatment", "Replicate",
-               ylab = "Speed (µm/min)")
-```
-
-![](advanced_files/figure-html/sizing3-1.png)
-
-``` r
-
-ggsave("plot.pdf", width = 88, height = 50, units = "mm") # final size
-```
-
-### Customising the SuperPlot
+### Adding an X label
 
 A couple of simple tweaks: an x label can be added, and the transparency
 of points can be altered like this.
 
 ``` r
 
+library(SuperPlotR)
 superplot(lord_jcb, "Speed", "Treatment", "Replicate",
           xlab = "Drug", ylab = "Speed (µm/min)", alpha = c(0.3,1))
 ```
 
 ![](advanced_files/figure-html/tweaks-1.png)
 
+### Changing the theme
+
 SuperPlotR returns a ggplot object which can be customised how you like.
 For example, the theme can be overridden like this:
 
 ``` r
 
+library(ggplot2)
 p <- superplot(lord_jcb, "Speed", "Treatment", "Replicate", ylab = "Speed (µm/min)")
 p + theme_minimal()
 ```
 
 ![](advanced_files/figure-html/theme-1.png)
 
-It can also accept a ggplot object using the `gg` parameter, and then
-add a SuperPlot to it (within reason!). For example, you might want to
-plot something behind the SuperPlot.
+### Adding layers behind the SuperPlot
+
+[`superplot()`](https://quantixed.github.io/SuperPlotR/reference/superplot.md)
+can also accept a ggplot object using the `gg` parameter, and then add a
+SuperPlot to it (within reason!).
+
+For example, you might want to plot something *behind* the SuperPlot.
 
 ``` r
 

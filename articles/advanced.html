@@ -25,7 +25,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">SuperPlotR</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.2</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.3</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,7 +39,10 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/advanced.html">Advanced Usage</a></li>
+<li><a class="dropdown-item" href="../articles/colours.html">Colour Options for SuperPlots</a></li>
+    <li><a class="dropdown-item" href="../articles/sizing.html">sizing</a></li>
+    <li><a class="dropdown-item" href="../articles/advanced.html">Advanced Usage</a></li>
+    <li><a class="dropdown-item" href="../articles/stats.html">Statistical testing for SuperPlots</a></li>
     <li><a class="dropdown-item" href="../articles/facets.html">Faceting a Superplot</a></li>
     <li><a class="dropdown-item" href="../articles/limitations.html">Limitations to SuperPlotR</a></li>
     <li><a class="dropdown-item" href="../articles/flatplot.html">Making non-SuperPlots - FlatPlots</a></li>
@@ -79,64 +82,37 @@
 </h2>
 <p>In this vignette, we will explore some of the more advanced features
 of SuperPlotR.</p>
-<p>But first, we need to deal with how to simply scale the plot so it
-looks good in your paper!</p>
 <div class="section level3">
-<h3 id="sizing-the-superplot">Sizing the SuperPlot<a class="anchor" aria-label="anchor" href="#sizing-the-superplot"></a>
-</h3>
-<p>The default setting is to use point sizes of 2 for the data and 3 for
-the summary points. The font size is 12. This looks good in the RStudio
-viewer, but is not well suited to a figure which is likely to be very
-small.</p>
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/quantixed/SuperPlotR" class="external-link">SuperPlotR</a></span><span class="op">)</span></span>
-<span><span class="co"># the default plot</span></span>
-<span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>, ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="advanced_files/figure-html/sizing-1.png" class="r-plt" alt="" width="576"></p>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="co"># the same plot but with custom sizing</span></span>
-<span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>, ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span>,</span>
-<span>          size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.8</span>,<span class="fl">1.5</span><span class="op">)</span>, fsize <span class="op">=</span> <span class="fl">9</span><span class="op">)</span></span></code></pre></div>
-<p><img src="advanced_files/figure-html/sizing-2.png" class="r-plt" alt="" width="576"></p>
-<p>This does not look great in the viewer, but it will look better in a
-figure.</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
-<span><span class="co"># the same plot but with custom sizing</span></span>
-<span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>,</span>
-<span>               ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span>, size <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.8</span>,<span class="fl">1.5</span><span class="op">)</span>, fsize <span class="op">=</span> <span class="fl">9</span><span class="op">)</span></span></code></pre></div>
-<p><img src="advanced_files/figure-html/sizing2-1.png" class="r-plt" alt="" width="172.8"></p>
-<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="st">"plot.pdf"</span>, width <span class="op">=</span> <span class="fl">88</span>, height <span class="op">=</span> <span class="fl">50</span>, units <span class="op">=</span> <span class="st">"mm"</span><span class="op">)</span> <span class="co"># final size</span></span></code></pre></div>
-<p>This is preferable to</p>
-<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
-<span><span class="co"># the same plot but with custom sizing</span></span>
-<span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>,</span>
-<span>               ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span><span class="op">)</span></span></code></pre></div>
-<p><img src="advanced_files/figure-html/sizing3-1.png" class="r-plt" alt="" width="172.8"></p>
-<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggsave.html" class="external-link">ggsave</a></span><span class="op">(</span><span class="st">"plot.pdf"</span>, width <span class="op">=</span> <span class="fl">88</span>, height <span class="op">=</span> <span class="fl">50</span>, units <span class="op">=</span> <span class="st">"mm"</span><span class="op">)</span> <span class="co"># final size</span></span></code></pre></div>
-</div>
-<div class="section level3">
-<h3 id="customising-the-superplot">Customising the SuperPlot<a class="anchor" aria-label="anchor" href="#customising-the-superplot"></a>
+<h3 id="adding-an-x-label">Adding an X label<a class="anchor" aria-label="anchor" href="#adding-an-x-label"></a>
 </h3>
 <p>A couple of simple tweaks: an x label can be added, and the
 transparency of points can be altered like this.</p>
-<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>,</span>
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/quantixed/SuperPlotR" class="external-link">SuperPlotR</a></span><span class="op">)</span></span>
+<span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>,</span>
 <span>          xlab <span class="op">=</span> <span class="st">"Drug"</span>, ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span>, alpha <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="fl">0.3</span>,<span class="fl">1</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 <p><img src="advanced_files/figure-html/tweaks-1.png" class="r-plt" alt="" width="576"></p>
+</div>
+<div class="section level3">
+<h3 id="changing-the-theme">Changing the theme<a class="anchor" aria-label="anchor" href="#changing-the-theme"></a>
+</h3>
 <p>SuperPlotR returns a ggplot object which can be customised how you
 like. For example, the theme can be overridden like this:</p>
-<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>, ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span><span class="op">)</span></span>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://ggplot2.tidyverse.org" class="external-link">ggplot2</a></span><span class="op">)</span></span>
+<span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>, ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span><span class="op">)</span></span>
 <span><span class="va">p</span> <span class="op">+</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_minimal</a></span><span class="op">(</span><span class="op">)</span></span></code></pre></div>
 <p><img src="advanced_files/figure-html/theme-1.png" class="r-plt" alt="" width="576"></p>
-<p>It can also accept a ggplot object using the <code>gg</code>
-parameter, and then add a SuperPlot to it (within reason!). For example,
-you might want to plot something behind the SuperPlot.</p>
-<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
+</div>
+<div class="section level3">
+<h3 id="adding-layers-behind-the-superplot">Adding layers behind the SuperPlot<a class="anchor" aria-label="anchor" href="#adding-layers-behind-the-superplot"></a>
+</h3>
+<p><code><a href="../reference/superplot.html">superplot()</a></code> can also accept a ggplot object using the
+<code>gg</code> parameter, and then add a SuperPlot to it (within
+reason!).</p>
+<p>For example, you might want to plot something <em>behind</em> the
+SuperPlot.</p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">p</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggplot.html" class="external-link">ggplot</a></span><span class="op">(</span><span class="op">)</span> <span class="op">+</span></span>
 <span>  <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/geom_abline.html" class="external-link">geom_hline</a></span><span class="op">(</span>yintercept <span class="op">=</span> <span class="fl">20</span>, linetype <span class="op">=</span> <span class="st">"dashed"</span>, col <span class="op">=</span> <span class="st">"grey"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>, ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span>, gg <span class="op">=</span> <span class="va">p</span><span class="op">)</span></span></code></pre></div>
@@ -156,7 +132,7 @@ workflow:</p>
 <li>Render with <code><a href="https://ggplot2.tidyverse.org/reference/autoplot.html" class="external-link">autoplot()</a></code>
 </li>
 </ol>
-<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">spec</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/superplot_spec.html">superplot_spec</a></span><span class="op">(</span></span>
 <span>  <span class="va">lord_jcb</span>,</span>
 <span>  meas <span class="op">=</span> <span class="st">"Speed"</span>,</span>
@@ -170,7 +146,7 @@ workflow:</p>
 <p><img src="advanced_files/figure-html/spec_workflow-1.png" class="r-plt" alt="" width="576"></p>
 <p>This is useful when you want to tune individual layers without adding
 many top-level arguments to <code><a href="../reference/superplot.html">superplot()</a></code>.</p>
-<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb5"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">spec2</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/sp_modify.html">sp_modify</a></span><span class="op">(</span></span>
 <span>  <span class="va">spec</span>,</span>
 <span>  summary_params <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/list.html" class="external-link">list</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">4</span>, alpha <span class="op">=</span> <span class="fl">1</span><span class="op">)</span>,</span>
@@ -186,7 +162,7 @@ many top-level arguments to <code><a href="../reference/superplot.html">superplo
 <p><img src="advanced_files/figure-html/spec_modify-1.png" class="r-plt" alt="" width="576"></p>
 <p>You can pass the same options directly from <code><a href="../reference/superplot.html">superplot()</a></code>
 using the <code>options</code> argument:</p>
-<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb6"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span></span>
 <span>  <span class="va">lord_jcb</span>,</span>
 <span>  <span class="st">"Speed"</span>,</span>
@@ -212,7 +188,7 @@ using the <code>options</code> argument:</p>
 </ul>
 <p>Here’s a final example of tweaking parameters for the crossbar,
 legend, raw points and summary points.</p>
-<div class="sourceCode" id="cb13"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb7"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span></span>
 <span>  <span class="va">lord_jcb</span>,</span>
 <span>  meas <span class="op">=</span> <span class="st">"Speed"</span>,</span>
@@ -234,7 +210,7 @@ legend, raw points and summary points.</p>
 </h3>
 <p>This is best done by reordering the levels of the factor in the input
 dataframe before calling <code>superplot</code>.</p>
-<div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb8"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">df</span> <span class="op">&lt;-</span> <span class="va">lord_jcb</span></span>
 <span><span class="va">df</span><span class="op">$</span><span class="va">Treatment</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/factor.html" class="external-link">factor</a></span><span class="op">(</span><span class="va">df</span><span class="op">$</span><span class="va">Treatment</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"Drug"</span>, <span class="st">"Control"</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">df</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>, ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span><span class="op">)</span></span></code></pre></div>
@@ -254,7 +230,7 @@ you received a warning that some replicates are missing some
 conditions.</p>
 <p>You can set the option <code>info = TRUE</code> when you call
 <code>superplot</code> to get more detailed information.</p>
-<div class="sourceCode" id="cb15"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb9"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/superplot.html">superplot</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span>, ylab <span class="op">=</span> <span class="st">"Speed (µm/min)"</span>,</span>
 <span>          info <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span>
 <span><span class="co">#&gt; SuperPlot information</span></span>
@@ -303,7 +279,7 @@ plot. However, if you want to see the legend, you can either set
 SuperPlot, you can use the <code>get_sp_summary</code> function. This
 will return a data frame with the summary data used to create the
 SuperPlot.</p>
-<div class="sourceCode" id="cb16"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb10"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">summary_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/get_sp_summary.html">get_sp_summary</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">summary_data</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 4</span></span></span>
@@ -327,7 +303,7 @@ representative image in the figure.</p>
 closeness to the summary of each replicate or condition (see
 <code><a href="../reference/representative.html">?representative</a></code> for more information). It also prints the
 top ranked datapoint to the console.</p>
-<div class="sourceCode" id="cb17"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb11"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">representative_data</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/representative.html">representative</a></span><span class="op">(</span><span class="va">lord_jcb</span>, <span class="st">"Speed"</span>, <span class="st">"Treatment"</span>, <span class="st">"Replicate"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; <span style="color: #949494;"># A tibble: 6 × 6</span></span></span>
 <span><span class="co">#&gt;   Treatment Replicate Speed rowno     diff  rank</span></span>
@@ -352,7 +328,7 @@ top ranked datapoint to the console.</p>
 is used as the label. If you have a label column, you can specify it
 using the <code>label</code> parameter. The label could be a filename or
 other identifier to identify where the datapoint came from.</p>
-<div class="sourceCode" id="cb18"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb12"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="co"># Assuming lord_jcb has a column "FileName" with the labels</span></span>
 <span><span class="va">example</span> <span class="op">&lt;-</span> <span class="va">lord_jcb</span></span>
 <span><span class="va">example</span><span class="op">$</span><span class="va">FileName</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/paste.html" class="external-link">paste0</a></span><span class="op">(</span><span class="st">"Image_"</span>, <span class="fu"><a href="https://rdrr.io/r/base/seq.html" class="external-link">seq_len</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/nrow.html" class="external-link">nrow</a></span><span class="op">(</span><span class="va">example</span><span class="op">)</span><span class="op">)</span>, <span class="st">".tif"</span><span class="op">)</span></span>

@@ -62,7 +62,8 @@ superplot(
 
   optional order of the palette colours: NULL (default), "reverse",
   "random" (the order used is printed so it can be reused), or an
-  integer vector containing each of 1 to the number of replicates once
+  integer vector containing a permutation of the sequence of numbers
+  from 1 to the total
 
 - xlab:
 
