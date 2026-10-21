@@ -1,6 +1,6 @@
-# sizing
+# Sizing the SuperPlot
 
-## Sizing the SuperPlot
+## Some guidance on sizing your SuperPlot
 
 The default setting is to use point sizes of 2 for the data and 3 for
 the summary points. The font size is 12. This looks good in the RStudio

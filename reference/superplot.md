@@ -1,6 +1,19 @@
 # Make a SuperPlot
 
-The function `superplot()` creates a SuperPlot using `ggplot2`.
+The function `superplot()` creates a SuperPlot using `ggplot2`. At a
+minimum the user needs to supply a data frame with at least three
+columns that have the measurement (meas), condition (cond) and replicate
+(repl) information. There are direct arguments to change the colours,
+axes labels, sizes, and more (see details below). There is also a
+flexible `options` argument to supply a list to specify even more
+customisation.
+
+If you are building a very complicated SuperPlot, it is preferable to
+specify a superplot_spec using
+[`superplot_spec()`](https://quantixed.github.io/SuperPlotR/reference/superplot_spec.md)
+and
+[`sp_modify()`](https://quantixed.github.io/SuperPlotR/reference/sp_modify.md)
+before plotting with `autoplot()`
 
 ## Usage
 

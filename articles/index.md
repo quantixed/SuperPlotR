@@ -2,11 +2,10 @@
 
 ### How to…
 
-- [Getting
-  Started](https://quantixed.github.io/SuperPlotR/articles/SuperPlotR.md):
 - [Colour Options for
   SuperPlots](https://quantixed.github.io/SuperPlotR/articles/colours.md):
-- [sizing](https://quantixed.github.io/SuperPlotR/articles/sizing.md):
+- [Sizing the
+  SuperPlot](https://quantixed.github.io/SuperPlotR/articles/sizing.md):
 - [Advanced
   Usage](https://quantixed.github.io/SuperPlotR/articles/advanced.md):
 - [Statistical testing for

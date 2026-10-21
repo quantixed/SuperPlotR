@@ -4,12 +4,24 @@ replicate in a SuperPlot dataset. It calculates the mean or median of the
 replicates (conditions), then ranks the individual measurements by their difference from
 the summary statistic. The function returns a data frame with the
 representative datapoints for each treatment and replicate, along with their
-rank of difference from the summary statistic."><meta property="og:description" content="This function finds the representative datapoints for each condition and
+rank of difference from the summary statistic.
+The top ranked datapoint for each treatment and replicate is printed to the
+console. This is useful for identifying the most representative datapoint
+for each condition, which can be used for showing in a figure.
+A label column can be specified to identify the datapoint (this could be a
+file name or other identifier). If no label is specified, the row number is
+used instead."><meta property="og:description" content="This function finds the representative datapoints for each condition and
 replicate in a SuperPlot dataset. It calculates the mean or median of the
 replicates (conditions), then ranks the individual measurements by their difference from
 the summary statistic. The function returns a data frame with the
 representative datapoints for each treatment and replicate, along with their
-rank of difference from the summary statistic."><meta property="og:image" content="https://quantixed.github.io/SuperPlotR/logo.png"></head><body>
+rank of difference from the summary statistic.
+The top ranked datapoint for each treatment and replicate is printed to the
+console. This is useful for identifying the most representative datapoint
+for each condition, which can be used for showing in a figure.
+A label column can be specified to identify the datapoint (this could be a
+file name or other identifier). If no label is specified, the row number is
+used instead."><meta property="og:image" content="https://quantixed.github.io/SuperPlotR/logo.png"></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -30,7 +42,7 @@ rank of difference from the summary statistic."><meta property="og:image" conten
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/colours.html">Colour Options for SuperPlots</a></li>
-    <li><a class="dropdown-item" href="../articles/sizing.html">sizing</a></li>
+    <li><a class="dropdown-item" href="../articles/sizing.html">Sizing the SuperPlot</a></li>
     <li><a class="dropdown-item" href="../articles/advanced.html">Advanced Usage</a></li>
     <li><a class="dropdown-item" href="../articles/stats.html">Statistical testing for SuperPlots</a></li>
     <li><a class="dropdown-item" href="../articles/facets.html">Faceting a Superplot</a></li>
@@ -61,6 +73,12 @@ replicates (conditions), then ranks the individual measurements by their differe
 the summary statistic. The function returns a data frame with the
 representative datapoints for each treatment and replicate, along with their
 rank of difference from the summary statistic.</p>
+<p>The top ranked datapoint for each treatment and replicate is printed to the
+console. This is useful for identifying the most representative datapoint
+for each condition, which can be used for showing in a figure.</p>
+<p>A label column can be specified to identify the datapoint (this could be a
+file name or other identifier). If no label is specified, the row number is
+used instead.</p>
     </div>
 
     <div class="section level2">
@@ -123,15 +141,6 @@ extreme datapoint in each treatment and replicate, default is FALSE.</p></dd>
     <h2 id="value">Value<a class="anchor" aria-label="anchor" href="#value"></a></h2>
     <p>data frame with the representative datapoints for each treatment and
 replicate, with the rank of the difference from the summary statistic.</p>
-    </div>
-    <div class="section level2">
-    <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>The top ranked datapoint for each treatment and replicate is printed to the
-console. This is useful for identifying the most representative datapoint
-for each condition, which can be used for showing in a figure.</p>
-<p>A label column can be specified to identify the datapoint (this could be a
-file name or other identifier). If no label is specified, the row number is
-used instead.</p>
     </div>
 
     <div class="section level2">

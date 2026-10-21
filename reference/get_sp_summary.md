@@ -3,6 +3,12 @@
 This function calculates summary statistics (mean and median) for each
 combination of condition and replicate in a SuperPlot dataset.
 
+It is useful to get the summary data and compute further stats or make
+plots. The function only needs 4 parameters from the superplot() call,
+anything else is ignored. This means you can simply exchange
+get_sp_summary() for your superplot() call and get the correct data
+frame to work with.
+
 ## Usage
 
 ``` r
@@ -43,14 +49,6 @@ get_sp_summary(df, meas, cond, repl, facet = NULL, ...)
 
 A data frame with columns for condition, replicate, rep_mean (mean of
 measurements), and rep_median (median of measurements)
-
-## Details
-
-It is useful to get the summary data and compute further stats or make
-plots. The function only needs 4 parameters from the superplot() call,
-anything else is ignored. This means you can simply exchange
-get_sp_summary() for your superplot() call and get the correct data
-frame to work with.
 
 ## Examples
 

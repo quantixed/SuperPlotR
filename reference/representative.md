@@ -8,6 +8,14 @@ frame with the representative datapoints for each treatment and
 replicate, along with their rank of difference from the summary
 statistic.
 
+The top ranked datapoint for each treatment and replicate is printed to
+the console. This is useful for identifying the most representative
+datapoint for each condition, which can be used for showing in a figure.
+
+A label column can be specified to identify the datapoint (this could be
+a file name or other identifier). If no label is specified, the row
+number is used instead.
+
 ## Usage
 
 ``` r
@@ -67,16 +75,6 @@ representative(
 
 data frame with the representative datapoints for each treatment and
 replicate, with the rank of the difference from the summary statistic.
-
-## Details
-
-The top ranked datapoint for each treatment and replicate is printed to
-the console. This is useful for identifying the most representative
-datapoint for each condition, which can be used for showing in a figure.
-
-A label column can be specified to identify the datapoint (this could be
-a file name or other identifier). If no label is specified, the row
-number is used instead.
 
 ## Examples
 
